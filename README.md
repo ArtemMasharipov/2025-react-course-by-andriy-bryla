@@ -42,7 +42,7 @@ src/
 
 ## 📱 Demo
 
-🔗 [View Demo](https://your-username.github.io/your-repo-name)
+🔗 [View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/src/)
 
 ## 🚀 Deployment Options
 
