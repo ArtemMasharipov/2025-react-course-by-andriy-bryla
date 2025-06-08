@@ -1,0 +1,143 @@
+<!--
+Задача 5. Додаток містить масив об'єктів (логін, пароль) -- існуючі логіни і паролі. Користувач вводить логін і пароль, а програма при натисненні на кнопку повідомляє чи може користувач бути авторизованим.
+-->
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання № 5 - Авторизація користувачів</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-type="module">
+      import { authenticateUser } from './js/userManager.js'
+      import { validateCredentials } from './js/validation.js'
+
+      function UserAuthentication() {
+        const [credentials, setCredentials] = React.useState({
+          login: '',
+          password: '',
+        })
+        const [authMessage, setAuthMessage] = React.useState('')
+
+        const handleSubmit = e => {
+          e.preventDefault()
+
+          if (!validateCredentials(credentials.login, credentials.password)) {
+            setAuthMessage('Будь ласка, заповніть усі поля')
+            return
+          }
+
+          const result = authenticateUser(
+            credentials.login,
+            credentials.password
+          )
+          setAuthMessage(result.message)
+
+          if (result.isAuthenticated) {
+            setCredentials({ login: '', password: '' })
+          }
+        }
+
+        const handleInputChange = field => e => {
+          setCredentials(prev => ({
+            ...prev,
+            [field]: e.target.value,
+          }))
+          if (authMessage) setAuthMessage('')
+        }
+
+        const getMessageClass = () => {
+          if (!authMessage) return ''
+          return authMessage.includes('успішна')
+            ? 'success-message'
+            : 'error-message'
+        }
+
+        return (
+          <div className="container">
+            <header className="task-page-header">
+              <h1>Завдання № 5</h1>
+              <p>Авторизація користувачів</p>
+            </header>{' '}
+            <div className="task-description-text">
+              <h3>📝 Опис завдання:</h3>
+              <p>
+                <strong>
+                  Додаток містить масив об'єктів (логін, пароль) -- існуючі
+                  логіни і паролі. Користувач вводить логін і пароль, а програма
+                  при натисненні на кнопку повідомляє чи може користувач бути
+                  авторизованим.
+                </strong>
+              </p>
+            </div>
+            <div className="calculator-form">
+              <form onSubmit={handleSubmit} className="auth-form">
+                <div className="form-group">
+                  <label htmlFor="login" className="form-label">
+                    Логін:
+                  </label>
+                  <input
+                    type="text"
+                    id="login"
+                    className="form-input"
+                    value={credentials.login}
+                    onChange={handleInputChange('login')}
+                    placeholder="Введіть логін..."
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="password" className="form-label">
+                    Пароль:
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    className="form-input"
+                    value={credentials.password}
+                    onChange={handleInputChange('password')}
+                    placeholder="Введіть пароль..."
+                    required
+                  />
+                </div>
+
+                <button type="submit" className="calculate-btn">
+                  🔐 Увійти
+                </button>
+              </form>
+
+              {authMessage && (
+                <div className={`auth-result ${getMessageClass()}`}>
+                  {authMessage}
+                </div>
+              )}
+            </div>{' '}
+            <nav className="navigation">
+              <a href="../task4/index.html" className="nav-btn">
+                ← Попереднє завдання
+              </a>
+            </nav>
+          </div>
+        )
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<UserAuthentication />)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!--
+Задача 2. Вводиться номер місяця. Автоматично виводити рекомендований одяг (зима – пальто, літо – шорти ….). Також автоматично виводити зображення з відповідним зображенням лісу (зима – ліс зі снігом, осінь – жовтий ліс, …).
+-->
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання № 2 - Сезонні рекомендації</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-type="module">
+      import { getMonthRecommendations } from './js/seasonalLogic.js'
+
+      /*
+        ЗАВДАННЯ № 2: Сезонні рекомендації одягу та зображення лісу
+
+        Функціонал:
+        - Введення номера місяця (1-12)
+        - Автоматичне визначення сезону
+        - Рекомендації одягу за сезоном
+        - Відображення зображення лісу відповідно до сезону      */ function SeasonalRecommendations() {
+        const [month, setMonth] = React.useState('')
+        const [recommendations, setRecommendations] = React.useState(null)
+        const [error, setError] = React.useState('')
+
+        const handleSubmit = e => {
+          e.preventDefault()
+          setRecommendations(null)
+          setError('')
+
+          const result = getMonthRecommendations(month)
+
+          if (result.error) {
+            setError(result.error)
+          } else {
+            setRecommendations(result)
+          }
+        }
+
+        return (
+          <div className="container">
+            <header className="task-page-header">
+              <h1>Завдання № 2</h1>
+              <p>Сезонні рекомендації одягу та зображення лісу</p>
+            </header>{' '}
+            <div className="task-description-text">
+              <h3>📝 Опис завдання:</h3>
+              <p>
+                <strong>
+                  Вводиться номер місяця. Автоматично виводити рекомендований
+                  одяг (зима – пальто, літо – шорти ….). Також автоматично
+                  виводити зображення з відповідним зображенням лісу (зима – ліс
+                  зі снігом, осінь – жовтий ліс, …).
+                </strong>
+              </p>
+            </div>
+            <form className="calculator-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="month" className="form-label">
+                  🗓️ Введіть номер місяця (1-12):
+                </label>
+                <input
+                  type="number"
+                  id="month"
+                  min="1"
+                  max="12"
+                  value={month}
+                  onChange={e => setMonth(e.target.value)}
+                  className="form-input"
+                  placeholder="Наприклад: 3 (березень)"
+                />
+              </div>{' '}
+              <button type="submit" className="calculate-btn" disabled={!month}>
+                🔍 Отримати рекомендації
+              </button>
+            </form>
+            {error && <div className="error-message">❌ {error}</div>}
+            {recommendations && (
+              <div className="results-section">
+                <h3 className="results-title">
+                  📅 Результати для місяця: {recommendations.monthName}
+                </h3>
+
+                <div className="recommendations-grid">
+                  <div className="recommendation-card">
+                    <h4 className="recommendation-title">
+                      👕 Рекомендований одяг
+                    </h4>
+                    <div className="clothing-display">
+                      <img
+                        src={recommendations.clothing.image}
+                        alt={recommendations.clothing.text}
+                        className="clothing-image"
+                        onError={e => {
+                          e.target.style.display = 'none'
+                          e.target.nextSibling.style.display = 'block'
+                        }}
+                      />
+                      <div
+                        className="clothing-fallback"
+                        style={{ display: 'none' }}
+                      >
+                        <span className="clothing-icon">
+                          {recommendations.clothing.icon}
+                        </span>
+                      </div>
+                      <div className="clothing-info">
+                        <span className="clothing-text">
+                          {recommendations.clothing.text}
+                        </span>
+                        <p className="clothing-description">
+                          {recommendations.clothing.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="recommendation-card">
+                    <h4 className="recommendation-title">🌲 Зображення лісу</h4>
+                    <div className="forest-display">
+                      <img
+                        src={recommendations.forest.image}
+                        alt={recommendations.forest.description}
+                        className="forest-image"
+                      />
+                      <div className="forest-info">
+                        <p className="forest-description">
+                          {recommendations.forest.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="season-info">
+                  <h4 className="season-title">
+                    🌍 Сезон: {recommendations.season}
+                  </h4>
+                </div>
+              </div>
+            )}{' '}
+            <nav className="navigation">
+              <a href="../task1/index.html" className="nav-btn">
+                ← Попереднє завдання
+              </a>
+              <a href="../../index.html" className="nav-btn">
+                🏠 Головна сторінка
+              </a>
+              <a href="../task3/index.html" className="nav-btn">
+                Наступне завдання →
+              </a>
+            </nav>
+          </div>
+        )
+      }
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<SeasonalRecommendations />)
+    </script>
+  </body>
+</html>

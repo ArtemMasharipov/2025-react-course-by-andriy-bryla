@@ -1,0 +1,211 @@
+<!--
+Задача 4. "Рахунок у банку"
+Вимоги:
+1) Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або зарахуванням на рахунок, або зняттям.
+2) Сума автоматично переводиться у долари та євро (фіксований курс задається у data).
+3) можливість зарахувати суму (контролювати, щоб не була від'ємною)
+4) можливість зняти (щоб не можна зняти більше ніж є на рахунку)
+5) при виконанні зняття і зарахування коштів вираховувати 3% від суми (відображати кількість відсотків автоматично)
+
+При зміні суми :
+- якщо було зняття, то суму відображати червоним
+- якщо було зарахування, то суму відображати зеленим
+Якщо сума валюти менша за 100 то відображати червоним кольором, інакше - зеленим
+-->
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання № 4 - Рахунок у банку</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-type="module">
+      import {
+        calculateBalances,
+        calculateFee,
+        canWithdraw,
+        executeTransaction,
+        getBalanceColor,
+        getCurrencyColor,
+      } from './js/bankCalculations.js'
+      import { validateAmount } from './js/validation.js'
+
+      function BankAccount() {
+        const [balance, setBalance] = React.useState(0)
+        const [amount, setAmount] = React.useState('')
+        const [lastDeposit, setLastDeposit] = React.useState(null)
+
+        const balances = calculateBalances(balance)
+        const numericAmount = validateAmount(amount)
+        const isValid = numericAmount !== null
+        const fee = isValid ? calculateFee(numericAmount) : 0
+        const canWithdrawAmount = isValid && canWithdraw(numericAmount, balance)
+
+        const handleTransaction = isDeposit => {
+          if (!isValid) return
+          if (!isDeposit && !canWithdrawAmount) return
+
+          const newBalance = executeTransaction(
+            balance,
+            numericAmount,
+            isDeposit
+          )
+          setBalance(newBalance)
+          setLastDeposit(isDeposit)
+          setAmount('')
+        }
+
+        return (
+          <div className="container">
+            <header className="task-page-header">
+              <h1>Завдання № 4</h1>
+              <p>Рахунок у банку</p>
+            </header>{' '}
+            <div className="task-description-text">
+              <h3>📝 Опис завдання:</h3>
+              <p>
+                <strong>"Рахунок у банку"</strong>
+              </p>
+              <p>
+                <strong>Вимоги:</strong>
+              </p>
+              <ol>
+                <li>
+                  Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або
+                  зарахуванням на рахунок, або зняттям.
+                </li>
+                <li>
+                  Сума автоматично переводиться у долари та євро (фіксований
+                  курс задається у data).
+                </li>
+                <li>
+                  можливість зарахувати суму (контролювати, щоб не була
+                  від'ємною)
+                </li>
+                <li>
+                  можливість зняти (щоб не можна зняти більше ніж є на рахунку)
+                </li>
+                <li>
+                  при виконанні зняття і зарахування коштів вираховувати 3% від
+                  суми (відображати кількість відсотків автоматично)
+                </li>
+              </ol>
+              <p>
+                <strong>При зміні суми :</strong>
+              </p>
+              <ul>
+                <li>якщо було зняття, то суму відображати червоним</li>
+                <li>якщо було зарахування, то суму відображати зеленим</li>
+              </ul>
+              <p>
+                Якщо сума валюти менша за 100 то відображати червоним кольором,
+                інакше - зеленим
+              </p>
+            </div>
+            <div className="calculator-form">
+              <div className="bank-card">
+                <div className="balance-section">
+                  <div className="balance-item primary">
+                    <span>💰 Баланс рахунку:</span>
+                    <span
+                      className={`balance-amount balance-${getBalanceColor(
+                        lastDeposit
+                      )}`}
+                    >
+                      {balances.uah} грн
+                    </span>
+                  </div>
+                  <div className="balance-item">
+                    <span>💵 Баланс в доларах:</span>
+                    <span
+                      className={`balance-amount balance-${getCurrencyColor(
+                        balances.usd
+                      )}`}
+                    >
+                      ${balances.usd}
+                    </span>
+                  </div>
+                  <div className="balance-item">
+                    <span>💶 Баланс в євро:</span>
+                    <span
+                      className={`balance-amount balance-${getCurrencyColor(
+                        balances.eur
+                      )}`}
+                    >
+                      €{balances.eur}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="amount" className="form-label">
+                    Сума операції:
+                  </label>
+                  <input
+                    type="number"
+                    id="amount"
+                    className="form-input"
+                    value={amount}
+                    onChange={e => setAmount(e.target.value)}
+                    placeholder="Введіть суму..."
+                    min="0.01"
+                    step="0.01"
+                  />
+                </div>
+
+                <div className="action-buttons">
+                  <button
+                    onClick={() => handleTransaction(true)}
+                    disabled={!isValid}
+                    className="btn-deposit"
+                  >
+                    💰 Поповнити
+                  </button>
+                  <button
+                    onClick={() => handleTransaction(false)}
+                    disabled={!isValid || !canWithdrawAmount}
+                    className="btn-withdraw"
+                  >
+                    💳 Зняти
+                  </button>
+                </div>
+
+                <div className="fee-info">
+                  <span>📊 Комісія за операцію: </span>
+                  <span className="fee-amount">{fee} грн</span>
+                </div>
+              </div>
+            </div>
+            <nav className="navigation">
+              <a href="../task3/index.html" className="nav-btn">
+                ← Попереднє завдання
+              </a>
+              <a href="../../index.html" className="nav-btn">
+                🏠 Головна сторінка
+              </a>
+              <a href="../task5/index.html" className="nav-btn">
+                Наступне завдання →
+              </a>
+            </nav>
+          </div>
+        )
+      }
+
+      ReactDOM.render(<BankAccount />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

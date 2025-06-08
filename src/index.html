@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашнє завдання - Урок 1</title>
+    <link rel="stylesheet" href="shared/css/common.css" />
+    <link rel="stylesheet" href="shared/css/styles.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-type="module">
+      import { TASKS, LABELS } from './shared/js/constants.js'
+
+      function HomeworkApp() {
+        return (
+          <div className="container">
+            <header className="header">
+              <h1>{LABELS.MAIN_TITLE}</h1>
+              <p className="course-info">{LABELS.SUBTITLE}</p>
+            </header>
+
+            <main className="main-content">
+              <div className="tasks-grid">
+                {TASKS.map(task => (
+                  <div key={task.id} className="task-card">
+                    <h2 className="task-title">{task.title}</h2>
+                    <p className="task-description">{task.description}</p>
+                    <a href={task.link} className="task-link">
+                      {LABELS.GO_TO_TASK}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </main>
+
+            <footer className="footer">
+              <p>{LABELS.FOOTER_TEXT}</p>
+            </footer>
+          </div>
+        )
+      }
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<HomeworkApp />)
+    </script>
+  </body>
+</html>

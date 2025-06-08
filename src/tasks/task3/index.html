@@ -1,0 +1,151 @@
+<!--
+Задача 3. Задано початок та кінець діапазону. При натисканні на кнопку випадковим чином генерувати значення з вказаного діапазону та відображати його.
+-->
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання № 3 - Генератор випадкових чисел</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel" data-type="module">
+      import { createRandomGeneratorResult } from './js/randomGenerator.js'
+      import { validateRange } from './js/validation.js'
+
+      function RandomNumberGenerator() {
+        const [minValue, setMinValue] = React.useState('')
+        const [maxValue, setMaxValue] = React.useState('')
+        const [result, setResult] = React.useState(null)
+        const [error, setError] = React.useState('')
+
+        const handleGenerate = e => {
+          e.preventDefault()
+          setError('')
+          setResult(null)
+
+          const validation = validateRange(minValue, maxValue)
+
+          if (validation.error) {
+            setError(validation.error)
+            return
+          }
+          const randomResult = createRandomGeneratorResult(
+            validation.minValue,
+            validation.maxValue
+          )
+          setResult(randomResult)
+        }
+
+        const handleInputChange = setter => e => {
+          setter(e.target.value)
+          if (error) setError('')
+        }
+
+        return (
+          <div className="container">
+            <header className="task-page-header">
+              <h1>Завдання № 3</h1>
+              <p>Генератор випадкових чисел з діапазону</p>
+            </header>{' '}
+            <div className="task-description-text">
+              <h3>📝 Опис завдання:</h3>
+              <p>
+                <strong>
+                  Задано початок та кінець діапазону. При натисканні на кнопку
+                  випадковим чином генерувати значення з вказаного діапазону та
+                  відображати його.
+                </strong>
+              </p>
+            </div>
+            <div className="calculator-form">
+              <form onSubmit={handleGenerate}>
+                <div className="form-group">
+                  <label htmlFor="minValue" className="form-label">
+                    🔢 Мінімальне значення:
+                  </label>{' '}
+                  <input
+                    type="number"
+                    id="minValue"
+                    className="form-input"
+                    value={minValue}
+                    onChange={handleInputChange(setMinValue)}
+                    placeholder="Введіть мінімальне число..."
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="maxValue" className="form-label">
+                    🔢 Максимальне значення:
+                  </label>{' '}
+                  <input
+                    type="number"
+                    id="maxValue"
+                    className="form-input"
+                    value={maxValue}
+                    onChange={handleInputChange(setMaxValue)}
+                    placeholder="Введіть максимальне число..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="calculate-btn"
+                  disabled={!minValue || !maxValue}
+                >
+                  🎲 Згенерувати число
+                </button>
+              </form>{' '}
+              {error && (
+                <div className="error-message">
+                  <p>❌ {error}</p>
+                </div>
+              )}{' '}
+              {result && (
+                <div className="results">
+                  <h3>🎯 Результат генерації:</h3>
+                  <div className="result-item">
+                    <span className="result-label">Згенероване число:</span>
+                    <span className="result-value big-number">
+                      {result.number}
+                    </span>
+                  </div>
+                  <div className="result-item">
+                    <span className="result-label">Діапазон:</span>
+                    <span className="result-value">{result.range}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            <nav className="navigation">
+              <a href="../task2/index.html" className="nav-btn">
+                ← Попереднє завдання
+              </a>
+              <a href="../../index.html" className="nav-btn">
+                🏠 Головна сторінка
+              </a>
+              <a href="../task4/index.html" className="nav-btn">
+                Наступне завдання →
+              </a>
+            </nav>
+          </div>
+        )
+      }
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<RandomNumberGenerator />)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!--
+Задача 1. Вводиться кількість пасажирів. Вивести:
+скільки потрібно автобусів (кожен автобус на 20 місць)
+скільки пляшок води (кожному пасажиру 2 пляшки)
+скільки бутербродів (кожному пасажиру 3 бутерброди)
+-->
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання № 1 - Калькулятор поїздки</title>
+    <link rel="stylesheet" href="../../shared/css/common.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel" data-type="module">
+      import { calculateTripResources } from './js/tripCalculator.js'
+      import { validatePassengers } from './js/validation.js'
+
+      function TripCalculator() {
+        const [passengers, setPassengers] = React.useState('')
+        const [results, setResults] = React.useState(null)
+        const handleCalculate = e => {
+          e.preventDefault()
+
+          const { isValid, value } = validatePassengers(passengers)
+          if (isValid) {
+            setResults(calculateTripResources(value))
+          }
+        }
+
+        const handleInputChange = e => {
+          setPassengers(e.target.value)
+
+          if (results) setResults(null)
+        }
+
+        return (
+          <div className="container">
+            <header className="task-page-header">
+              <h1>Завдання № 1</h1>
+              <p>Калькулятор для організації поїздки</p>
+            </header>{' '}
+            <div className="task-description-text">
+              <h3>📝 Опис завдання:</h3>
+              <p>
+                <strong>Вводиться кількість пасажирів. Вивести:</strong>
+              </p>
+              <ul>
+                <li>скільки потрібно автобусів (кожен автобус на 20 місць)</li>
+                <li>скільки пляшок води (кожному пасажиру 2 пляшки)</li>
+                <li>скільки бутербродів (кожному пасажиру 3 бутерброди)</li>
+              </ul>
+            </div>
+            <div className="calculator-form">
+              <form onSubmit={handleCalculate}>
+                <div className="form-group">
+                  <label htmlFor="passengers" className="form-label">
+                    Кількість пасажирів:
+                  </label>{' '}
+                  <input
+                    type="number"
+                    id="passengers"
+                    className="form-input"
+                    value={passengers}
+                    onChange={handleInputChange}
+                    placeholder="Введіть кількість пасажирів..."
+                    min="1"
+                    step="1"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="calculate-btn"
+                  disabled={!passengers}
+                >
+                  🧮 Розрахувати
+                </button>
+              </form>
+
+              {results && (
+                <div className="results">
+                  {' '}
+                  <h3>📊 Результати:</h3>{' '}
+                  <div className="result-item">
+                    <span>👥 Пасажирів:</span>
+                    <span className="result-value">{results.passengers}</span>
+                  </div>
+                  <div className="result-item">
+                    <span>🚌 Автобусів:</span>
+                    <span className="result-value">{results.buses}</span>
+                  </div>
+                  <div className="result-item">
+                    <span>💧 Пляшок води:</span>
+                    <span className="result-value">{results.water}</span>
+                  </div>
+                  <div className="result-item">
+                    <span>🥪 Сендвічів:</span>
+                    <span className="result-value">{results.sandwiches}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            <nav className="navigation">
+              <a href="../../index.html" className="nav-btn">
+                ← До списку завдань
+              </a>
+              <a href="../task2/index.html" className="nav-btn">
+                Наступне завдання →
+              </a>
+            </nav>
+          </div>
+        )
+      }
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<TripCalculator />)
+    </script>
+  </body>
+</html>
