@@ -1,57 +1,55 @@
-# 📚 JavaScript/React Homework - Lesson 1
+# 🎓 React JS Course by Andriy Bryla - Homework Repository
 
-A collection of JavaScript/React assignments developed as part of the course.
+This repository contains all homework assignments from the React JS course by Andriy Bryla (2025).
 
-## 🎯 Tasks
+## 📚 Course Structure
 
-- **Task 1**: Trip Calculator - calculate buses, water and sandwiches for passengers
-- **Task 2**: Seasons - interactive background changes based on season selection
-- **Task 3**: Random Number Generator - generate random numbers within specified range
-- **Task 4**: Banking Calculations - working with percentages and deposits
-- **Task 5**: User Manager - user management system
+### 📁 Homework Assignments
 
-## 🚀 How to Run
+| Lesson | Description | Technologies | Demo |
+|--------|-------------|--------------|------|
+| **Lesson 1** | JavaScript/React Tasks | HTML5, CSS3, JS ES6+, React 18 | [🔗 View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/hw-lesson-1/src/) |
+| **Lesson 2** | Coming Soon... | - | - |
+| **Lesson 3** | Coming Soon... | - | - |
 
-1. Open `src/index.html` in your browser to view the main page
-2. Each task is accessible through individual links
+## 🎯 Current Progress
 
-## 🛠 Technologies
+- ✅ **Homework 1**: 5 interactive JavaScript/React tasks completed
+  - Trip Calculator
+  - Seasonal Backgrounds
+  - Random Number Generator
+  - Banking Calculations
+  - User Manager
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- React 18 (via CDN)
-- Babel (for JSX transpilation)
+- 🔄 **Homework 2**: In progress...
+- 📋 **Homework 3**: Planned...
 
-## 📁 Project Structure
+## 🚀 How to Navigate
 
-```
-src/
-├── index.html          # Main page with navigation
-├── shared/             # Shared resources
-│   ├── assets/         # Common assets
-│   ├── css/           # Shared styles
-│   └── js/            # Shared utilities
-└── tasks/             # Individual tasks
-    ├── task1/         # Trip Calculator
-    ├── task2/         # Seasons
-    ├── task3/         # Random Generator
-    ├── task4/         # Banking Calculations
-    └── task5/         # User Manager
-```
+Each homework assignment is in its own folder:
+- `/hw-lesson-1/` - First homework with 5 tasks
+- `/hw-lesson-2/` - (Coming soon)
+- `/hw-lesson-3/` - (Coming soon)
 
-## 📱 Demo
+## 🛠 Technologies Used
 
-🔗 [View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/src/)
+- **Frontend**: HTML5, CSS3, JavaScript ES6+
+- **Framework**: React 18 (CDN)
+- **Build Tools**: Babel (JSX transpilation)
+- **Styling**: CSS3, Modern layouts
+- **Deployment**: GitHub Pages
 
-## 🚀 Deployment Options
+## 📖 About the Course
 
-This project can be easily deployed to:
-- **GitHub Pages** (Free)
-- **Netlify** (Free tier: 100GB bandwidth/month)
-- **Vercel** (Free for static sites)
-- **Surge.sh** (Free with custom domains)
+This repository tracks my progress through the React JS course by Andriy Bryla. Each lesson builds upon previous concepts, gradually introducing more complex React patterns and best practices.
+
+## 🌐 Live Demos
+
+All homework assignments are deployed and available online:
+- **GitHub Pages**: https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/
 
 ---
 
-Developed as part of React JS course by Andriy Bryla
+**Course:** React JS by Andriy Bryla (2025)  
+**Student:** Artem Masharipov  
+**Repository:** https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla
