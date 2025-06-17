@@ -198,6 +198,6 @@ This homework demonstrates:
 
 ---
 
-**Course:** React JS by Andriy Bryla (2025)
-**Student:** Artem Masharipov
+**Course:** React JS by Andriy Bryla (2025)  
+**Student:** Artem Masharipov  
 **Repository:** https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla
