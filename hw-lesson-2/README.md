@@ -8,28 +8,42 @@ This homework contains 6 interactive React tasks:
 
 ### 📋 Task List
 
-| Task | Description | Technologies | Features |
-|------|-------------|--------------|----------|
-| **Task 1** | Login Validation | React Hooks, Form Validation | Conditional styling, Special user handling |
-| **Task 2** | Airline Ticket Selection | Conditional Rendering, Cloudinary | Dynamic backgrounds, Class-based options |
-| **Task 3** | English Word Trainer | State Management, Effects | Interactive learning, Progress tracking |
-| **Task 4** | Employee List | List Rendering, Data Processing | Statistics, Formatted display |
-| **Task 5** | Search Results | Mock Data, Component Design | Modern UI, Tag system |
-| **Task 6** | Kitchen Orders (Kanban) | Complex State, Drag & Drop Logic | Multi-column workflow, Real-time updates |
+| Task       | Description              | Main Hook             | Key Components                                       | Key Features                             |
+| ---------- | ------------------------ | --------------------- | ---------------------------------------------------- | ---------------------------------------- |
+| **Task 1** | Login Validation         | useLogin.js           | TaskLogin, Input, LoadingButton                      | Form validation, special user handling   |
+| **Task 2** | Airline Ticket Selection | useTicketSelection.js | TaskTicket, ClassSelectionCard, BusinessClassOptions | Dynamic backgrounds, class-based options |
+| **Task 3** | English Word Trainer     | useTrainer.js         | TaskTrainer, Input, Button                           | Progress tracking, auto-progression      |
+| **Task 4** | Employee List            | useEmployees.js       | TaskEmployees, StatCard                              | Statistics dashboard, formatted display  |
+| **Task 5** | Search Results           | useSearch.js          | TaskSearch, SearchResult                             | Mock data, tag system, external links    |
+| **Task 6** | Kitchen Orders (Kanban)  | useKitchen.js         | TaskKitchen, KitchenColumn, KitchenOrderCard         | Multi-column workflow, order management  |
+
+### 🔧 Technical Implementation Details
+
+| Task       | React Concepts                               | State Management                     | UI Features                             | External Integrations |
+| ---------- | -------------------------------------------- | ------------------------------------ | --------------------------------------- | --------------------- |
+| **Task 1** | Controlled components, conditional rendering | useState for form data, error states | Loading animations, conditional styling | -                     |
+| **Task 2** | Conditional rendering, component composition | useState for ticket selection        | Dynamic backgrounds, responsive cards   | Cloudinary images     |
+| **Task 3** | useEffect for timers, state transitions      | useState for progress tracking       | Progress bars, emoji displays           | -                     |
+| **Task 4** | Array mapping, data formatting               | useState for employee data           | Statistics cards, responsive layout     | -                     |
+| **Task 5** | Static data rendering, external links        | useState for search results          | Tag badges, hover effects               | -                     |
+| **Task 6** | Complex state management, event handling     | useState for order tracking          | Kanban interface, statistics            | Nanoid for IDs        |
 
 ## 🚀 How to Run
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Start development server:**
+
    ```bash
    npm run dev
    ```
 
 3. **Build for production:**
+
    ```bash
    npm run build
    ```
@@ -81,45 +95,70 @@ src/
     │   ├── TaskTicket.jsx     # Main component
     │   ├── useTicketSelection.js # Custom hook
     │   ├── components/        # Task-specific components
+    │   │   ├── BusinessClassOptions.jsx # Business class form
+    │   │   ├── ClassSelectionCard.jsx   # Class selection card
+    │   │   └── EconomyClassOptions.jsx  # Economy class form
     │   └── constants/         # Task constants
+    │       └── constants.js   # Ticket configuration
     ├── task_3_trainer/        # English trainer task
+    │   ├── TaskTrainer.jsx    # Main component
+    │   ├── useTrainer.js      # Custom hook
+    │   └── constants.js       # Word pairs and config
     ├── task_4_employees/      # Employee list task
+    │   ├── TaskEmployees.jsx  # Main component
+    │   ├── useEmployees.js    # Custom hook
+    │   └── constants.js       # Employee data and stats
     ├── task_5_search/         # Search results task
+    │   ├── TaskSearch.jsx     # Main component
+    │   ├── useSearch.js       # Custom hook
+    │   └── constants.js       # Mock search data
     └── task_6_kitchen/        # Kitchen orders task
+        ├── TaskKitchen.jsx    # Main component
+        ├── useKitchen.js      # Custom hook
+        ├── constants.js       # Order statuses and config
+        └── components/        # Task-specific components
+            ├── KitchenColumn.jsx     # Kanban column
+            └── KitchenOrderCard.jsx  # Order card
 ```
 
 ## ✨ Features
 
 ### Task 1: Login Validation
+
 - Form validation with real-time feedback
 - Conditional error styling based on username
 - Loading states and success messages
 
 ### Task 2: Flight Ticket Selection
+
 - Class selection (Business/Economy)
 - Conditional rendering based on class
 - Dynamic background images from Cloudinary
 - Interactive form elements
 
 ### Task 3: English Word Trainer
+
 - Interactive vocabulary learning
 - Progress tracking
 - Immediate feedback with animations
 - State-based background changes
 
 ### Task 4: Employee List
+
 - Formatted employee data display
 - Salary formatting with Ukrainian locale
 - Statistics cards with employee metrics
 - Responsive grid layout
 
 ### Task 5: Search Results
+
 - Dynamic search result display
 - Tag system with filtering
 - External link handling
 - Card-based layout with hover effects
 
 ### Task 6: Kitchen Order Management
+
 - Kanban-style workflow (Waiting → Processing → Completed)
 - Real-time order tracking
 - Statistics dashboard
@@ -149,6 +188,7 @@ Each task can be accessed through the navigation bar at the top of the applicati
 ## 🎓 Learning Objectives
 
 This homework demonstrates:
+
 - React component lifecycle and hooks
 - Conditional rendering patterns
 - State management strategies
@@ -158,6 +198,6 @@ This homework demonstrates:
 
 ---
 
-**Course:** React JS by Andriy Bryla (2025)  
-**Student:** Artem Masharipov  
+**Course:** React JS by Andriy Bryla (2025)
+**Student:** Artem Masharipov
 **Repository:** https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla
