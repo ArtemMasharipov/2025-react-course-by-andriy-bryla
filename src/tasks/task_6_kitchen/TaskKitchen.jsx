@@ -8,12 +8,12 @@ import { THEME } from '../../shared/constants/index.js';
 import KitchenColumn from './components/KitchenColumn.jsx';
 
 import {
-    KANBAN_COLUMNS,
-    ORDER_STATUS,
-    STATUS_CONFIG,
-    getNextStatus,
-    getRemoveCondition,
-    getStatsCards
+  KANBAN_COLUMNS,
+  ORDER_STATUS,
+  STATUS_CONFIG,
+  getNextStatus,
+  getRemoveCondition,
+  getStatsCards
 } from './constants.js';
 import { useKitchen } from './useKitchen.js';
 

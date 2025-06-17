@@ -1,36 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { STATES, TIMING, WORD_PAIRS } from './constants.js'
 
-export const useTrainer = () => {  const [currentIndex, setCurrentIndex] = useState(0)
+export const useTrainer = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [userInput, setUserInput] = useState('')
   const [state, setState] = useState(STATES.TRAINING)
   const [completedWords, setCompletedWords] = useState([])
   const inputRef = useRef(null)
   const currentWord = WORD_PAIRS[currentIndex]
   const isCompleted = state === STATES.COMPLETED
-
-  useEffect(() => {
-    const handleKeyPress = e => {
-      if (e.key === 'Escape' && state !== STATES.TRAINING) {
-        if (state === STATES.CORRECT) {
-          const nextIndex = currentIndex + 1
-          if (nextIndex >= WORD_PAIRS.length) {
-            setState(STATES.COMPLETED)
-          } else {
-            setCurrentIndex(nextIndex)
-            setUserInput('')
-            setState(STATES.TRAINING)
-          }
-        } else if (state === STATES.INCORRECT) {
-          setState(STATES.TRAINING)
-        }
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyPress)
-    return () => document.removeEventListener('keydown', handleKeyPress)
-  }, [state, currentIndex])
-
   useEffect(() => {
     if (state === STATES.TRAINING && inputRef.current) {
       setTimeout(() => {
@@ -40,6 +18,7 @@ export const useTrainer = () => {  const [currentIndex, setCurrentIndex] = useSt
       }, TIMING.FOCUS_DELAY)
     }
   }, [state])
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus()
@@ -69,7 +48,8 @@ export const useTrainer = () => {  const [currentIndex, setCurrentIndex] = useSt
       setState(STATES.INCORRECT)
       setUserInput('')
       setTimeout(() => {
-        setState(STATES.TRAINING)      }, TIMING.FEEDBACK_DURATION)
+        setState(STATES.TRAINING)
+      }, TIMING.FEEDBACK_DURATION)
     }
   }
 
@@ -79,7 +59,8 @@ export const useTrainer = () => {  const [currentIndex, setCurrentIndex] = useSt
 
   const handleSubmit = e => {
     e.preventDefault()
-    if (userInput.trim() && !isCompleted) {      checkAnswer()
+    if (userInput.trim() && !isCompleted) {
+      checkAnswer()
     }
   }
 
