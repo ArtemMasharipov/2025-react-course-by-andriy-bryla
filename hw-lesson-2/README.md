@@ -1,4 +1,4 @@
-# 📚 Homework Lesson 2 - React Development
+# 📚 Homework Lesson 2 - Styles. Conditional Rendering. Lists. Deploy
 
 A comprehensive React application demonstrating modern development practices including styling, conditional rendering, lists, and deployment.
 
