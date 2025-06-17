@@ -5,13 +5,13 @@ import TaskLayout from '../../shared/components/layouts/TaskLayout.jsx';
 import { THEME } from '../../shared/constants/index.js';
 
 import {
-    STATES,
-    WORD_PAIRS,
-    getBackgroundClass,
-    getFeedbackClassName,
-    getFeedbackIcon,
-    getFeedbackMessage,
-    getInputClass
+  STATES,
+  WORD_PAIRS,
+  getBackgroundClass,
+  getFeedbackClassName,
+  getFeedbackIcon,
+  getFeedbackMessage,
+  getInputClass
 } from './constants.js';
 import { useTrainer } from './useTrainer.js';
 

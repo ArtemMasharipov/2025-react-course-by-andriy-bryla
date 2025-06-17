@@ -9,29 +9,6 @@ export const useTrainer = () => {
   const inputRef = useRef(null)
   const currentWord = WORD_PAIRS[currentIndex]
   const isCompleted = state === STATES.COMPLETED
-
-  useEffect(() => {
-    const handleKeyPress = e => {
-      if (e.key === 'Escape' && state !== STATES.TRAINING) {
-        if (state === STATES.CORRECT) {
-          const nextIndex = currentIndex + 1
-          if (nextIndex >= WORD_PAIRS.length) {
-            setState(STATES.COMPLETED)
-          } else {
-            setCurrentIndex(nextIndex)
-            setUserInput('')
-            setState(STATES.TRAINING)
-          }
-        } else if (state === STATES.INCORRECT) {
-          setState(STATES.TRAINING)
-        }
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyPress)
-    return () => document.removeEventListener('keydown', handleKeyPress)
-  }, [state, currentIndex])
-
   useEffect(() => {
     if (state === STATES.TRAINING && inputRef.current) {
       setTimeout(() => {
@@ -39,7 +16,8 @@ export const useTrainer = () => {
           inputRef.current.focus()
         }
       }, TIMING.FOCUS_DELAY)
-    }  }, [state])
+    }
+  }, [state])
 
   useEffect(() => {
     if (inputRef.current) {
@@ -70,7 +48,9 @@ export const useTrainer = () => {
       setState(STATES.INCORRECT)
       setUserInput('')
       setTimeout(() => {
-        setState(STATES.TRAINING)      }, TIMING.FEEDBACK_DURATION)    }
+        setState(STATES.TRAINING)
+      }, TIMING.FEEDBACK_DURATION)
+    }
   }
 
   const handleInputChange = e => {
@@ -79,7 +59,9 @@ export const useTrainer = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    if (userInput.trim() && !isCompleted) {      checkAnswer()    }
+    if (userInput.trim() && !isCompleted) {
+      checkAnswer()
+    }
   }
 
   const resetTrainer = () => {
