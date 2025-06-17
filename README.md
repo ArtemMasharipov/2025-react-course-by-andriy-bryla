@@ -9,7 +9,7 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson | Description | Technologies | Demo |
 |--------|-------------|--------------|------|
 | **Lesson 1** | JavaScript/React Tasks | HTML5, CSS3, JS ES6+, React 18 | [🔗 View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/hw-lesson-1/src/) |
-| **Lesson 2** | Modern React Practice | React 18, Vite, Modern Hooks | [🔗 View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/hw-lesson-2/) |
+| **Lesson 2** | Modern React Practice | React 18, Vite, Modern Hooks | [🔗 View Demo](https://hw-lesson-2.vercel.app/) |
 | **Lesson 3** | Coming Soon... | - | - |
 
 ## 🎯 Current Progress
