@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Specific lesson folders
+hw-lesson-1/node_modules/
+hw-lesson-2/node_modules/
+hw-lesson-3/node_modules/
