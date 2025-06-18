@@ -28,11 +28,11 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      case: 'off',
+      'case': 'off',
       'bem/class-names': 'off',
       'class-methods-use-this': 'off',
       'naming-convention': 'off',
-      camelcase: 'off',
+      'camelcase': 'off',
     },
   },
 ]
