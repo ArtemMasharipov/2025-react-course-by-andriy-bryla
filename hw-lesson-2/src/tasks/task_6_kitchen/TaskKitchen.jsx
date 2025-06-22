@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid';
+import { useState } from 'react';
 import Button from '../../shared/components/Button.jsx';
 import Input from '../../shared/components/Input.jsx';
 import TaskDescription from '../../shared/components/TaskDescription.jsx';
@@ -10,28 +12,56 @@ import KitchenColumn from './components/KitchenColumn.jsx';
 import {
     KANBAN_COLUMNS,
     ORDER_STATUS,
-    STATUS_CONFIG,
+    STATUS_CONFIG
+} from './constants.js';
+import {
     getNextStatus,
     getRemoveCondition,
     getStatsCards
-} from './constants.js';
-import { useKitchen } from './useKitchen.js';
+} from './utils.js';
 
 const TaskKitchen = () => {
-  const {
-    newDish,
-    setNewDish,
-    getOrdersByStatus,
-    moveOrder,
-    removeOrder,
-    handleSubmit
-  } = useKitchen();
+  const [newDish, setNewDish] = useState('');
+  const [orders, setOrders] = useState([]);
+
+  const addOrder = () => {
+    if (newDish.trim()) {
+      const order = {
+        id: nanoid(),
+        dish: newDish.trim(),
+        status: ORDER_STATUS.WAITING,
+        createdAt: new Date().toLocaleTimeString(),
+      };
+      setOrders(prev => [...prev, order]);
+      setNewDish('');
+    }
+  };
+
+  const moveOrder = (orderId, newStatus) => {
+    setOrders(prev =>
+      prev.map(order =>
+        order.id === orderId ? { ...order, status: newStatus } : order
+      )
+    );
+  };
+
+  const removeOrder = orderId => {
+    setOrders(prev => prev.filter(order => order.id !== orderId));
+  };
+
+  const getOrdersByStatus = status => {
+    return orders.filter(order => order.status === status);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    addOrder();
+  };
+  const handleNewDishChange = (e) => setNewDish(e.target.value);
 
   const waitingOrders = getOrdersByStatus(ORDER_STATUS.WAITING);
   const processingOrders = getOrdersByStatus(ORDER_STATUS.PROCESSING);
   const completedOrders = getOrdersByStatus(ORDER_STATUS.COMPLETED);
-
-  const handleNewDishChange = (e) => setNewDish(e.target.value);
 
   const statsCards = getStatsCards(
     waitingOrders.length,

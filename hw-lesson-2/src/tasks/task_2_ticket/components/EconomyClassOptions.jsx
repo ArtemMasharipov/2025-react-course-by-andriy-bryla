@@ -1,4 +1,4 @@
-import { getOptionCardClasses, getOptionTextClasses } from '../constants/constants.js';
+import { getOptionCardClasses, getOptionTextClasses } from '../utils.js';
 
 const EconomyClassOptions = ({ state, config, onBeerChange, onChipsChange }) => {
   return (

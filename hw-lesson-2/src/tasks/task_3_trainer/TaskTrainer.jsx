@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Button from '../../shared/components/Button.jsx';
 import Input from '../../shared/components/Input.jsx';
 import TaskDescription from '../../shared/components/TaskDescription.jsx';
@@ -6,27 +7,88 @@ import { THEME } from '../../shared/constants/index.js';
 
 import {
   STATES,
+  TIMING,
   WORD_PAIRS,
+} from './constants.js';
+import {
   getBackgroundClass,
   getFeedbackClassName,
   getFeedbackIcon,
   getFeedbackMessage,
-  getInputClass
-} from './constants.js';
-import { useTrainer } from './useTrainer.js';
+  getInputClass,
+} from './utils.js';
 
 const TaskTrainer = () => {
-  const {
-    currentWord,
-    userInput,
-    state,
-    completedWords,
-    isCompleted,
-    inputRef,
-    handleInputChange,
-    handleSubmit,
-    handleReset,
-  } = useTrainer();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [userInput, setUserInput] = useState('');
+  const [state, setState] = useState(STATES.TRAINING);
+  const [completedWords, setCompletedWords] = useState([]);
+  const inputRef = useRef(null);
+
+  const currentWord = WORD_PAIRS[currentIndex];
+  const isCompleted = state === STATES.COMPLETED;
+
+  useEffect(() => {
+    if (state === STATES.TRAINING && inputRef.current) {
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, TIMING.FOCUS_DELAY);
+    }
+  }, [state]);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
+  const checkAnswer = () => {
+    const isCorrect =
+      userInput.toLowerCase().trim() === currentWord.english.toLowerCase();
+
+    if (isCorrect) {
+      setState(STATES.CORRECT);
+      setCompletedWords(prev => [...prev, currentWord]);
+
+      setTimeout(() => {
+        const nextIndex = currentIndex + 1;
+        if (nextIndex >= WORD_PAIRS.length) {
+          setState(STATES.COMPLETED);
+          setUserInput('');
+        } else {
+          setCurrentIndex(nextIndex);
+          setUserInput('');
+          setState(STATES.TRAINING);
+        }
+      }, TIMING.FEEDBACK_DURATION);
+    } else {
+      setState(STATES.INCORRECT);
+      setUserInput('');
+      setTimeout(() => {
+        setState(STATES.TRAINING);
+      }, TIMING.FEEDBACK_DURATION);
+    }
+  };
+
+  const handleInputChange = e => {
+    setUserInput(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (userInput.trim() && !isCompleted) {
+      checkAnswer();
+    }
+  };
+
+  const handleReset = () => {
+    setCurrentIndex(0);
+    setUserInput('');
+    setState(STATES.TRAINING);
+    setCompletedWords([]);
+  };
 
   return (    <div className={`min-h-screen ${getBackgroundClass(state)}`}>
       <TaskLayout>

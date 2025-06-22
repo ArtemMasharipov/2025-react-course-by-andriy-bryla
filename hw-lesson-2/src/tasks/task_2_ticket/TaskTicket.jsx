@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import TaskDescription from '../../shared/components/TaskDescription.jsx';
 import TaskLayout from '../../shared/components/layouts/TaskLayout.jsx';
 import { getTicketBackgroundUrl } from '../../shared/utils/cloudinary.js';
@@ -6,7 +7,6 @@ import BusinessClassOptions from './components/BusinessClassOptions.jsx';
 import ClassSelectionCard from './components/ClassSelectionCard.jsx';
 import EconomyClassOptions from './components/EconomyClassOptions.jsx';
 import { TICKET_CLASSES, TICKET_CONFIG } from './constants/constants.js';
-import { useTicketSelection } from './useTicketSelection.js';
 
 const CLASS_ENTRIES = Object.entries(TICKET_CONFIG);
 
@@ -73,7 +73,29 @@ const SummaryCard = ({ state }) => {
 };
 
 const TaskTicket = () => {
-  const { state, updateTicketClass, updateSelection } = useTicketSelection();
+  const [state, setState] = useState({
+    ticketClass: '',
+    newspaper: '',
+    cognac: false,
+    snack: '',
+    beerType: '',
+    chips: '',
+  });
+
+  const updateTicketClass = ticketClass => {
+    setState({
+      ticketClass,
+      newspaper: '',
+      cognac: false,
+      snack: '',
+      beerType: '',
+      chips: '',
+    });
+  };
+
+  const updateSelection = (key, value) => {
+    setState(prev => ({ ...prev, [key]: value }));
+  };
 
   const config = TICKET_CONFIG[state.ticketClass] || {};
 
@@ -124,24 +146,23 @@ const TaskTicket = () => {
             </div>
           </div>
 
-          {showBusinessOptions && (
-            <BusinessClassOptions
-              state={state}
-              config={config}
-              onNewspaperChange={(value) => updateSelection('newspaper', value)}
-              onCognacChange={(value) => updateSelection('cognac', value)}
-              onSnackChange={(value) => updateSelection('snack', value)}
-            />
-          )}
+          {showBusinessOptions && (          <BusinessClassOptions
+            state={state}
+            config={config}
+            onNewspaperChange={(value) => updateSelection('newspaper', value)}
+            onCognacChange={(value) => updateSelection('cognac', value)}
+            onSnackChange={(value) => updateSelection('snack', value)}
+          />
+        )}
 
-          {showEconomyOptions && (
-            <EconomyClassOptions
-              state={state}
-              config={config}
-              onBeerChange={(value) => updateSelection('beerType', value)}
-              onChipsChange={(value) => updateSelection('chips', value)}
-            />
-          )}
+        {showEconomyOptions && (
+          <EconomyClassOptions
+            state={state}
+            config={config}
+            onBeerChange={(value) => updateSelection('beerType', value)}
+            onChipsChange={(value) => updateSelection('chips', value)}
+          />
+        )}
 
           <SummaryCard state={state} />
         </div>

@@ -9,14 +9,6 @@ export const EMPLOYEES = [
   { id: 8, name: 'Наталя Орлова', salary: 84000 },
 ]
 
-export const formatSalary = amount => {
-  return new Intl.NumberFormat('uk-UA', {
-    style: 'currency',
-    currency: 'UAH',
-    minimumFractionDigits: 0,
-  }).format(amount)
-}
-
 export const STATS_CONFIG = [
   {
     key: 'totalEmployees',
