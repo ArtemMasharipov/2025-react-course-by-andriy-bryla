@@ -1,7 +1,7 @@
 import {
   createSelectionClasses,
   THEME,
-} from '../../../shared/constants/index.js'
+} from '../../shared/constants/index.js'
 
 export const getOptionCardClasses = isSelected => {
   return createSelectionClasses(
