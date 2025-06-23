@@ -8,14 +8,14 @@ This homework contains 6 interactive React tasks:
 
 ### 📋 Task List
 
-| Task       | Description              | Main Hook             | Key Components                                       | Key Features                             |
-| ---------- | ------------------------ | --------------------- | ---------------------------------------------------- | ---------------------------------------- |
-| **Task 1** | Login Validation         | useLogin.js           | TaskLogin, Input, LoadingButton                      | Form validation, special user handling   |
-| **Task 2** | Airline Ticket Selection | useTicketSelection.js | TaskTicket, ClassSelectionCard, BusinessClassOptions | Dynamic backgrounds, class-based options |
-| **Task 3** | English Word Trainer     | useTrainer.js         | TaskTrainer, Input, Button                           | Progress tracking, auto-progression      |
-| **Task 4** | Employee List            | useEmployees.js       | TaskEmployees, StatCard                              | Statistics dashboard, formatted display  |
-| **Task 5** | Search Results           | useSearch.js          | TaskSearch, SearchResult                             | Mock data, tag system, external links    |
-| **Task 6** | Kitchen Orders (Kanban)  | useKitchen.js         | TaskKitchen, KitchenColumn, KitchenOrderCard         | Multi-column workflow, order management  |
+| Task       | Description              | Key Components                                       | Key Features                             |
+| ---------- | ------------------------ | ---------------------------------------------------- | ---------------------------------------- |
+| **Task 1** | Login Validation         | TaskLogin, Input, LoadingButton                      | Form validation, special user handling   |
+| **Task 2** | Airline Ticket Selection | TaskTicket, ClassSelectionCard, BusinessClassOptions | Dynamic backgrounds, class-based options |
+| **Task 3** | English Word Trainer     | TaskTrainer, Input, Button                           | Progress tracking, auto-progression      |
+| **Task 4** | Employee List            | TaskEmployees, StatCard                              | Statistics dashboard, formatted display  |
+| **Task 5** | Search Results           | TaskSearch, SearchResult                             | Mock data, tag system, external links    |
+| **Task 6** | Kitchen Orders (Kanban)  | TaskKitchen, KitchenColumn, KitchenOrderCard         | Multi-column workflow, order management  |
 
 ### 🔧 Technical Implementation Details
 
@@ -88,34 +88,33 @@ src/
 └── tasks/                     # Individual task implementations
     ├── task_1_login/          # Login validation task
     │   ├── TaskLogin.jsx      # Main component
-    │   ├── useLogin.js        # Custom hook
     │   ├── validation.js      # Validation logic
-    │   └── constants.js       # Task constants
+    │   ├── constants.js       # Task constants
+    │   └── utils.js           # Task utilities
     ├── task_2_ticket/         # Airline ticket task
     │   ├── TaskTicket.jsx     # Main component
-    │   ├── useTicketSelection.js # Custom hook
     │   ├── components/        # Task-specific components
     │   │   ├── BusinessClassOptions.jsx # Business class form
     │   │   ├── ClassSelectionCard.jsx   # Class selection card
     │   │   └── EconomyClassOptions.jsx  # Economy class form
-    │   └── constants/         # Task constants
-    │       └── constants.js   # Ticket configuration
+    │   ├── constants/         # Task constants
+    │   │   └── constants.js   # Ticket configuration
+    │   └── utils.js           # Task utilities
     ├── task_3_trainer/        # English trainer task
     │   ├── TaskTrainer.jsx    # Main component
-    │   ├── useTrainer.js      # Custom hook
-    │   └── constants.js       # Word pairs and config
+    │   ├── constants.js       # Word pairs and config
+    │   └── utils.js           # Task utilities
     ├── task_4_employees/      # Employee list task
     │   ├── TaskEmployees.jsx  # Main component
-    │   ├── useEmployees.js    # Custom hook
-    │   └── constants.js       # Employee data and stats
+    │   ├── constants.js       # Employee data and stats
+    │   └── utils.js           # Task utilities
     ├── task_5_search/         # Search results task
     │   ├── TaskSearch.jsx     # Main component
-    │   ├── useSearch.js       # Custom hook
     │   └── constants.js       # Mock search data
     └── task_6_kitchen/        # Kitchen orders task
         ├── TaskKitchen.jsx    # Main component
-        ├── useKitchen.js      # Custom hook
         ├── constants.js       # Order statuses and config
+        ├── utils.js           # Task utilities
         └── components/        # Task-specific components
             ├── KitchenColumn.jsx     # Kanban column
             └── KitchenOrderCard.jsx  # Order card
@@ -195,9 +194,10 @@ This homework demonstrates:
 - Modern CSS with Tailwind
 - Component reusability
 - Project structure organization
+- Utility function separation
 
 ---
 
-**Course:** React JS by Andriy Bryla (2025)  
-**Student:** Artem Masharipov  
+**Course:** React JS by Andriy Bryla (2025)
+**Student:** Artem Masharipov
 **Repository:** https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla

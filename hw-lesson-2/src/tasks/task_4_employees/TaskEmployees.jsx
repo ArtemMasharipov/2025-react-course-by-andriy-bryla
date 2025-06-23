@@ -3,23 +3,21 @@ import StatCard from '../../shared/components/layouts/StatCard.jsx';
 import TaskLayout from '../../shared/components/layouts/TaskLayout.jsx';
 import { THEME } from '../../shared/constants/index.js';
 
-import { STATS_CONFIG } from './constants.js';
-import { useEmployees } from './useEmployees.js';
+import { EMPLOYEES, STATS_CONFIG } from './constants.js';
+import {
+    calculateEmployeeStats,
+    formatSalary,
+    getEmployeeInitials,
+    getEmployeeNumber
+} from './utils.js';
 
 const TaskEmployees = () => {
-  const { employees, totalEmployees, totalSalary, averageSalary } = useEmployees();
+  const statsData = calculateEmployeeStats(EMPLOYEES);
 
-  const statsData = {
-    totalEmployees,
-    totalSalary,
-    averageSalary
-  };
-
-  const getEmployeeInitials = (name) => {
-    return name.split(' ').map(n => n[0]).join('');
-  };
-
-  const getEmployeeNumber = (index) => index + 1;
+  const formattedEmployees = EMPLOYEES.map(employee => ({
+    ...employee,
+    formattedSalary: formatSalary(employee.salary),
+  }));
 
   return (
     <TaskLayout>
@@ -39,7 +37,7 @@ const TaskEmployees = () => {
 
       <div className={THEME.card}>
         <ul className="space-y-0 divide-y divide-gray-200">
-          {employees.map((employee, index) => {
+          {formattedEmployees.map((employee, index) => {
             const initials = getEmployeeInitials(employee.name);
             const employeeNumber = getEmployeeNumber(index);
 

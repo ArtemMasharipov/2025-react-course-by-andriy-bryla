@@ -1,5 +1,6 @@
 import { THEME } from '../../../shared/constants/index.js';
-import { YES_NO_OPTIONS, getOptionCardClasses, getOptionTextClasses } from '../constants/constants.js';
+import { YES_NO_OPTIONS } from '../constants/constants.js';
+import { getOptionCardClasses, getOptionTextClasses } from '../utils.js';
 
 const YesNoQuestion = ({ question, value, onChange }) => (
   <div className="space-y-4">

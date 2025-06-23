@@ -1,7 +1,7 @@
 import TaskDescription from '../../shared/components/TaskDescription.jsx';
 import TaskLayout from '../../shared/components/layouts/TaskLayout.jsx';
 
-import { useSearch } from './useSearch.js';
+import { SEARCH_RESULTS } from './constants.js';
 
 const SearchResult = ({ result }) => {
   return (
@@ -49,13 +49,12 @@ const SearchResult = ({ result }) => {
 };
 
 const TaskSearch = () => {
-  const { results } = useSearch();
   return (
     <TaskLayout>
       <TaskDescription taskId={5} />
 
       <div className="space-y-4">
-        {results.map((result, index) => (
+        {SEARCH_RESULTS.map((result, index) => (
           <SearchResult
             key={result.id}
             result={result}
