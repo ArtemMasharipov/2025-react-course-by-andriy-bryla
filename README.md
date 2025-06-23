@@ -10,7 +10,7 @@ This repository contains all homework assignments from the React JS course by An
 |--------|-------------|--------------|------|
 | **Lesson 1** | JavaScript/React Tasks | HTML5, CSS3, JS ES6+, React 18 | [🔗 View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/hw-lesson-1/src/) |
 | **Lesson 2** | Modern React Practice | React 18, Vite, Modern Hooks | [🔗 View Demo](https://hw-lesson-2.vercel.app/) |
-| **Lesson 3** | Coming Soon... | - | - |
+| **Lesson 3** | React Hooks (useRef, useEffect) | React 19, Vite, Tailwind CSS 4.1 | [🔗 View Demo](#) |
 
 ## 🎯 Current Progress
 
@@ -29,14 +29,16 @@ This repository contains all homework assignments from the React JS course by An
   - 🔍 Search & Filtering (Dynamic Lists)
   - 🍽️ Kitchen Orders (Drag & Drop)
 
-- 📋 **Homework 3**: Planned...
+- ✅ **Homework 3**: 2 React hooks tasks completed
+  - 🧮 Addition Trainer (useRef for timers, useEffect cleanup)
+  - 🏨 Hotel Booking (useRef for forms, useEffect management)
 
 ## 🚀 How to Navigate
 
 Each homework assignment is in its own folder:
 - 📁 `/hw-lesson-1/` - First homework with 5 basic tasks
 - 📁 `/hw-lesson-2/` - Second homework with 6 modern React tasks
-- 📁 `/hw-lesson-3/` - (Coming soon)
+- 📁 `/hw-lesson-3/` - Third homework with hooks mastery
 
 ## 🛠️ Technologies Used
 
@@ -52,6 +54,13 @@ Each homework assignment is in its own folder:
 - **Styling**: CSS3, Custom styling
 - **State Management**: React Hooks (useState, useEffect, useCallback)
 - **Features**: Form validation, API integration, Drag & Drop
+
+### 🪝 Homework 3
+- **Frontend**: React 19, JSX
+- **Build Tool**: Vite 6.3.5
+- **Styling**: Tailwind CSS 4.1.10
+- **State Management**: React Hooks (useState, useRef, useEffect)
+- **Features**: Timer management, Form handling, Memory cleanup
 
 ## 📖 About the Course
 
