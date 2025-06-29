@@ -1,0 +1,5 @@
+export const TRAINER_CONFIG = {
+  MIN_EXAMPLES: 1,
+  MAX_EXAMPLES: 20,
+  TIME_PER_QUESTION: 10,
+}
