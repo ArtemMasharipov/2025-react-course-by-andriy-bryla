@@ -1,0 +1,39 @@
+{
+  // Показывать относительный путь к файлу в табах
+  "workbench.editor.labelFormat": "medium",
+
+  // Показывать путь к файлу в заголовке таба
+  "workbench.editor.tabSizing": "fit",
+  "workbench.editor.wrapTabs": true,
+
+  // Автоматически показывать breadcrumbs (хлебные крошки)
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.symbolPath": "on",
+
+  // Улучшенное отображение структуры файлов
+  "explorer.compactFolders": false,
+
+  // Настройки для лучшей навигации по импортам
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+
+  // Показывать полные пути в Quick Open
+  "workbench.quickOpen.preserveInput": false,
+
+  // Настройки для поиска и навигации
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.git": true
+  },
+
+  // Автосохранение для лучшей работы с импортами
+  "files.autoSave": "onFocusChange",
+
+  // Настройки форматирования
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  }
+}
