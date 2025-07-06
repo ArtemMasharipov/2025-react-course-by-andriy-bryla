@@ -1,58 +1,80 @@
 import { useState } from 'react'
 import { TASKS } from '../../app/constants'
-import { Button, Card, TaskDescription } from '../../shared'
+import { Card, TaskDescription, UIButton } from '../../shared'
 
 import { PLAYERS } from './constants'
 import {
+  DigitsDisplay,
   DigitSelector,
   GameEndStatus,
-  GuessedDigitsDisplay,
-  PlayersPanel,
-  UsedDigitsDisplay
+  PlayersPanel
 } from './ui'
-import { generateThreeDigitNumber, isDigitInNumber } from './utils'
+import {
+  createGameDigits,
+  generateThreeDigitNumber
+} from './utils'
 
 export default function NumberGuessingGame() {
-  const [targetNumber, setTargetNumber] = useState(() => generateThreeDigitNumber())
-  const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
-  const [usedDigits, setUsedDigits] = useState([])
-  const [guessedDigits, setGuessedDigits] = useState([])
-  const [playerGuesses, setPlayerGuesses] = useState({ [PLAYERS[0]]: [], [PLAYERS[1]]: [] })
-  const [winner, setWinner] = useState('')
+
+  const createInitialGameState = () => {
+    const targetNumber = generateThreeDigitNumber()
+    return {
+      targetNumber,
+      gameDigits: createGameDigits(targetNumber),
+      currentPlayerIndex: 0,
+      usedDigits: [],
+      winner: ''
+    }
+  }
+
+  const [gameState, setGameState] = useState(createInitialGameState)
+
+  const { targetNumber, gameDigits, currentPlayerIndex, usedDigits, winner } = gameState
 
   const currentPlayer = PLAYERS[currentPlayerIndex]
-  const availableDigits = Array.from({length: 10}, (_, i) => i).filter(digit => !usedDigits.includes(digit))
   const isGameFinished = winner !== ''
+  const availableDigits = Array.from({length: 10}, (_, i) => i).filter(digit => !usedDigits.includes(digit))
+
+  const guessedDigitsData = gameDigits.filter(digit => digit.isGuessed)
+  const guessedDigits = guessedDigitsData.map(digit => digit.value)
+  const playerGuesses = {
+    [PLAYERS[0]]: guessedDigitsData.filter(digit => digit.guessedBy === PLAYERS[0]).map(digit => digit.value),
+    [PLAYERS[1]]: guessedDigitsData.filter(digit => digit.guessedBy === PLAYERS[1]).map(digit => digit.value)
+  }
 
   const makeGuess = (digit) => {
-    const newUsedDigits = [...usedDigits, digit]
-    setUsedDigits(newUsedDigits)
+    setGameState(prevState => {
+      const newUsedDigits = [...prevState.usedDigits, digit]
 
-    if (isDigitInNumber(digit, targetNumber)) {
-      const newGuessedDigits = [...guessedDigits, digit]
-      setGuessedDigits(newGuessedDigits)
+      if (prevState.targetNumber.includes(digit)) {
+        const newGameDigits = prevState.gameDigits.map(gameDigit =>
+          gameDigit.value === digit
+            ? { ...gameDigit, isGuessed: true, guessedBy: currentPlayer }
+            : gameDigit
+        )
 
-      setPlayerGuesses(prev => ({
-        ...prev,
-        [currentPlayer]: [...prev[currentPlayer], digit]
-      }))
+        const guessedCount = newGameDigits.filter(d => d.isGuessed).length
+        const gameWon = guessedCount === 3
 
-      if (newGuessedDigits.length === 3) {
-        setWinner(currentPlayer)
-        return
+        return {
+          ...prevState,
+          usedDigits: newUsedDigits,
+          gameDigits: newGameDigits,
+          winner: gameWon ? currentPlayer : '',
+          currentPlayerIndex: gameWon ? prevState.currentPlayerIndex : (prevState.currentPlayerIndex + 1) % 2
+        }
       }
-    }
 
-    setCurrentPlayerIndex(prev => (prev + 1) % 2)
+      return {
+        ...prevState,
+        usedDigits: newUsedDigits,
+        currentPlayerIndex: (prevState.currentPlayerIndex + 1) % 2
+      }
+    })
   }
 
   const resetGame = () => {
-    setTargetNumber(generateThreeDigitNumber())
-    setCurrentPlayerIndex(0)
-    setUsedDigits([])
-    setGuessedDigits([])
-    setPlayerGuesses({ [PLAYERS[0]]: [], [PLAYERS[1]]: [] })
-    setWinner('')
+    setGameState(createInitialGameState())
   }
 
   const taskInfo = TASKS.find(task => task.id === 'guess-number')
@@ -77,11 +99,13 @@ export default function NumberGuessingGame() {
             </p>
           </div>
 
-          {isGameFinished && (
-            <GameEndStatus winner={winner} targetNumber={targetNumber} />
-          )}
+          {isGameFinished && <GameEndStatus winner={winner} targetNumber={targetNumber} />}
 
-          <GuessedDigitsDisplay digits={guessedDigits} />
+          <DigitsDisplay
+            title="Вгадані цифри"
+            digits={guessedDigits}
+            type="large"
+          />
 
           <PlayersPanel
             players={PLAYERS}
@@ -91,17 +115,20 @@ export default function NumberGuessingGame() {
             usedDigits={usedDigits}
           />
 
-          <UsedDigitsDisplay digits={usedDigits} />
+          <DigitsDisplay
+            title="Використані цифри"
+            digits={usedDigits}
+          />
 
-          {!isGameFinished ? (
+          {isGameFinished ? (
+            <UIButton onClick={resetGame} size="lg" className="w-full sm:w-auto">
+              Нова гра
+            </UIButton>
+          ) : (
             <DigitSelector
               availableDigits={availableDigits}
               onDigitClick={makeGuess}
             />
-          ) : (
-            <Button onClick={resetGame} size="lg" className="w-full sm:w-auto">
-              Нова гра
-            </Button>
           )}
         </div>
       </Card>

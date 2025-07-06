@@ -9,6 +9,10 @@ export const generateThreeDigitNumber = () => {
   return digits
 }
 
-export const isDigitInNumber = (digit, targetNumber) => {
-  return targetNumber.includes(digit)
+export const createGameDigits = targetNumbers => {
+  return targetNumbers.map(value => ({
+    value,
+    isGuessed: false,
+    guessedBy: null,
+  }))
 }

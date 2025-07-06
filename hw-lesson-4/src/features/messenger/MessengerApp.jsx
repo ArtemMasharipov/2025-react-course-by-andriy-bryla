@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { TASKS } from '../../app/constants'
-import { Button, Card, TaskDescription, useLocalStorage } from '../../shared'
+import { Card, TaskDescription, UIButton, useLocalStorage } from '../../shared'
 
 import { INITIAL_MESSAGES, USERS } from './constants'
 import { MessageForm, MessageList, UserSwitcher } from './ui'
@@ -64,15 +64,15 @@ export default function MessengerApp() {
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center mb-6 w-full">
           <h2 className="text-2xl font-bold text-gray-800 w-full sm:w-auto text-center sm:text-left">Месенджер</h2>
           <div className="flex flex-col gap-2 w-full sm:flex-row sm:w-auto">
-            <Button
+            <UIButton
               onClick={handleResetToDefault}
               variant="outline"
               size="sm"
               className="w-full sm:w-40"
             >
               Скинути
-            </Button>
-            <Button
+            </UIButton>
+            <UIButton
               onClick={handleClearMessages}
               variant="outline"
               size="sm"
@@ -80,7 +80,7 @@ export default function MessengerApp() {
               className="w-full sm:w-40"
             >
               Очистити чат
-            </Button>
+            </UIButton>
           </div>
         </div>
         <div className="space-y-4">

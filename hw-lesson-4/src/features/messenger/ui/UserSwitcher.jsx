@@ -1,4 +1,4 @@
-import { Button } from '../../../shared'
+import { UIButton } from '../../../shared'
 import { USERS } from '../constants'
 
 export default function UserSwitcher({ currentUser, onUserChange }) {
@@ -12,7 +12,7 @@ export default function UserSwitcher({ currentUser, onUserChange }) {
       </div>
       <div className="flex flex-col gap-2 w-full sm:flex-row sm:gap-2">
         {USERS.map(user => (
-          <Button
+          <UIButton
             key={user}
             onClick={handleUserClick(user)}
             variant={currentUser === user ? 'primary' : 'outline'}
@@ -20,7 +20,7 @@ export default function UserSwitcher({ currentUser, onUserChange }) {
             className="w-full sm:w-32"
           >
             {user}
-          </Button>
+          </UIButton>
         ))}
       </div>
     </div>

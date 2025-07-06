@@ -1,4 +1,4 @@
-import { Button } from '../../../shared'
+import { UIButton } from '../../../shared'
 
 export default function DigitSelector({ availableDigits, onDigitClick }) {
   return (
@@ -6,14 +6,14 @@ export default function DigitSelector({ availableDigits, onDigitClick }) {
       <div className="text-sm text-gray-600 mb-3">Оберіть цифру:</div>
       <div className="grid grid-cols-5 gap-2 max-w-sm mx-auto">
         {availableDigits.map(digit => (
-          <Button
+          <UIButton
             key={digit}
             onClick={() => onDigitClick(digit)}
             variant="outline"
             className="aspect-square text-sm sm:text-base"
           >
             {digit}
-          </Button>
+          </UIButton>
         ))}
       </div>
     </div>

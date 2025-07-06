@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-import { Button } from '../../../shared'
+import { UIButton } from '../../../shared'
 
 export default function MessageForm({ currentUser, onSubmit }) {
   const [messageText, setMessageText] = useState('')
@@ -37,13 +37,13 @@ export default function MessageForm({ currentUser, onSubmit }) {
         className="flex-1 px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 text-sm sm:text-base w-full"
         autoFocus
       />
-      <Button
+      <UIButton
         type="submit"
         disabled={!messageText.trim()}
         className="px-4 py-2 sm:px-6 sm:py-3 font-medium text-sm sm:text-base w-24 sm:w-auto"
       >
         Надіслати
-      </Button>
+      </UIButton>
     </form>
   )
 }
