@@ -42,7 +42,7 @@ This repository contains all homework assignments from the React JS course by An
 **Homework 6**: 4 React performance optimization tasks completed
 - ‚ö° Selective Rendering (React.memo, useMemo for calculations)
 - Ì≥ä Large Dataset Handling (react-window virtualization, useDeferredValue)
-- Ì≥è Window Size Monitoring (Custom hooks, debouncing)
+- Ì≥ê Window Size Monitoring (Custom hooks, debouncing)
 - Ì¥ç Optimized Search (Debounced input, performance patterns)
 
 ## Ì≥Å Project Structure

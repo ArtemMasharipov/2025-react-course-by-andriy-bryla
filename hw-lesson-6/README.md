@@ -20,7 +20,7 @@ This project implements performance optimization patterns including React.memo, 
 - **useCallback** for optimized event handlers
 - FixedSizeList component for performance optimization
 
-### Task 3: ��� Window Size Monitoring
+### Task 3: ��� Window Size Monitoring
 - Custom **useWindowSize** hook with debouncing
 - Performance-optimized resize event handling
 - Real-time display of window dimensions
@@ -74,32 +74,125 @@ npm run lint
 ## ��� Project Structure
 
 ```
-src/
-├── app/
-│   ├── App.jsx
-│   ├── layout/MainLayout.jsx
-│   └── metadata/tasks.js
-├── features/
-│   ├── task-1/          # ⚡ Selective Rendering
-│   ├── task-2/          # ��� Large Dataset Handling (react-window)
-│   ├── task-3/          # ��� Window Size Monitoring
-│   └── task-4/          # ��� Optimized Search
-└── shared/
-    └── ui/              # Reusable components
+hw-lesson-6/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── app/
+│   │   ├── App.jsx                    # Main application component
+│   │   ├── layout/
+│   │   │   └── MainLayout.jsx         # Central layout with task navigation
+│   │   └── metadata/
+│   │       └── tasks.js               # Task descriptions and metadata
+│   ├── assets/
+│   │   └── react.svg
+│   ├── features/
+│   │   ├── navbar/
+│   │   │   ├── Navbar.jsx             # Navigation component
+│   │   │   └── constants.js           # Navigation constants
+│   │   ├── task-1/                    # ⚡ Selective Rendering
+│   │   │   ├── Task1.jsx              # Task 1 main component
+│   │   │   ├── constants.js           # Task 1 constants
+│   │   │   └── components/
+│   │   │       ├── Calculator.jsx     # Main calculator component
+│   │   │       ├── Counter.jsx        # Independent counter
+│   │   │       ├── NumberInput.jsx    # Memoized input component
+│   │   │       └── ResultDisplay.jsx  # Memoized result display
+│   │   ├── task-2/                    # ��� Large Dataset Handling
+│   │   │   ├── Task2.jsx              # Task 2 main component
+│   │   │   ├── constants.js           # Virtualization config
+│   │   │   ├── components/
+│   │   │   │   ├── DataGrid.jsx       # Main grid with react-window
+│   │   │   │   ├── GridHeader.jsx     # Sortable header
+│   │   │   │   ├── GridRow.jsx        # Virtualized row component
+│   │   │   │   └── SearchInput.jsx    # Search input component
+│   │   │   └── utils/
+│   │   │       └── dataUtils.js       # Data filtering and sorting
+│   │   ├── task-3/                    # ��� Window Size Monitoring
+│   │   │   ├── Task3.jsx              # Task 3 main component
+│   │   │   ├── constants.js           # Task 3 constants
+│   │   │   ├── components/
+│   │   │   │   ├── InfoRow.jsx        # Information display row
+│   │   │   │   └── WindowSizeDisplay.jsx # Window size component
+│   │   │   └── hooks/
+│   │   │       └── useWindowSize.js   # Custom window size hook
+│   │   └── task-4/                    # ��� Optimized Search
+│   │       ├── Task4.jsx              # Task 4 main component
+│   │       ├── constants.js           # Search constants
+│   │       ├── components/
+│   │       │   ├── DebouncedSearch.jsx # Main search component
+│   │       │   ├── SearchInput.jsx    # Search input
+│   │       │   └── SearchResults.jsx  # Results display
+│   │       └── hooks/
+│   │           └── useDebounce.js     # Custom debounce hook
+│   ├── shared/
+│   │   └── ui/
+│   │       ├── TaskCard.jsx           # Reusable task card
+│   │       ├── TaskContainer.jsx      # Task wrapper component
+│   │       └── TaskDescription.jsx    # Task description component
+│   ├── index.css                      # Global styles and Tailwind
+│   └── main.jsx                       # Application entry point
+├── .gitignore                         # Git ignore rules
+├── README.md                          # This file
+├── eslint.config.js                   # ESLint configuration
+├── index.html                         # HTML template
+├── package.json                       # Dependencies and scripts
+├── package-lock.json                  # Dependency lock file
+├── tailwind.config.js                 # Tailwind CSS configuration
+└── vite.config.js                     # Vite configuration with path aliases
 ```
 
 ## ��� Dependencies
 
-- **react-window**: Virtual scrolling for efficient rendering of large lists
-- **tailwindcss**: Utility-first CSS framework
-- **vite**: Fast build tool and development server
+### Production Dependencies
+- **react**: ^19.0.0 - Core React library
+- **react-dom**: ^19.0.0 - React DOM renderer
+- **react-window**: ^1.8.11 - Virtual scrolling for large lists
 
-## ��� Code Quality
+### Development Dependencies
+- **@vitejs/plugin-react**: ^4.3.4 - Vite React plugin
+- **eslint**: ^9.17.0 - JavaScript linter
+- **eslint-plugin-react**: ^7.37.2 - React-specific linting rules
+- **eslint-plugin-react-hooks**: ^5.0.0 - React Hooks linting
+- **eslint-plugin-react-refresh**: ^0.4.16 - React Fast Refresh support
+- **tailwindcss**: ^4.1.10 - Utility-first CSS framework
+- **vite**: ^6.0.7 - Build tool and dev server
+
+## ��� Configuration Files
+
+- **vite.config.js**: Path aliases configuration (`@/` → `./src/`)
+- **eslint.config.js**: Custom ESLint rules for React 19
+- **tailwind.config.js**: TailwindCSS 4.x configuration
+- **package.json**: Scripts and dependencies management
+
+## ��� Code Quality
 
 - ESLint configuration with React 19 rules
 - Import ordering conventions with path aliases
-- Consistent naming patterns
+- Consistent naming patterns (PascalCase for components)
 - Ukrainian language UI (educational context)
+- No TypeScript (vanilla JavaScript for simplicity)
+
+## ��� Available Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server with HMR
+npm run build        # Build for production
+npm run preview      # Preview production build
+
+# Code Quality
+npm run lint         # Run ESLint with auto-fix
+```
+
+## ��� Learning Objectives
+
+1. **Performance Optimization**: Understanding React performance bottlenecks
+2. **Memoization**: Proper usage of React.memo, useMemo, useCallback
+3. **Deferred Values**: Managing non-urgent updates with useDeferredValue
+4. **Virtualization**: Handling large datasets efficiently
+5. **Custom Hooks**: Creating reusable logic with custom hooks
+6. **Architecture**: Feature-based project organization
 
 ---
 **Course:** React JS by Andriy Bryla (2025)  
