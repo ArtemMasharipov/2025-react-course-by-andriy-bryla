@@ -2,19 +2,19 @@
 
 This repository contains all homework assignments from the React JS course by Andriy Bryla (2025).
 
-## Course Structure
+## Ì≥ö Course Structure
 
 ### Homework Assignments
 
 | Lesson       | Description                     | Technologies                     | Demo                                                                                                    |
 | ------------ | ------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **Lesson 1** | JavaScript/React Tasks          | HTML5, CSS3, JS ES6+, React 18   | [View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/hw-lesson-1/src/) |
-| **Lesson 2** | Modern React Practice           | React 18, Vite, Modern Hooks     | [View Demo](https://hw-lesson-2.vercel.app/)                                                       |
-| **Lesson 3** | React Hooks (useRef, useEffect) | React 19, Vite, Tailwind CSS 4.1 | [View Demo](#)                                                                                      |
-| **Lesson 4** | Components Practice             | React 19, Vite, Tailwind CSS     | [View Demo](#)                                                                                      |
-| **Lesson 6** | Performance Optimization        | React 19, Vite, TailwindCSS 4.x  | [View Demo](#)                                                                                      |
+| **Lesson 1** | JavaScript/React Tasks          | HTML5, CSS3, JS ES6+, React 18   | [Ì¥ó View Demo](https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/hw-lesson-1/src/) |
+| **Lesson 2** | Modern React Practice           | React 18, Vite, Modern Hooks     | [Ì¥ó View Demo](https://hw-lesson-2.vercel.app/)                                                       |
+| **Lesson 3** | React Hooks (useRef, useEffect) | React 19, Vite, Tailwind CSS 4.1 | [Ì¥ó View Demo](#)                                                                                      |
+| **Lesson 4** | Components Practice             | React 19, Vite, Tailwind CSS     | [Ì¥ó View Demo](#)                                                                                      |
+| **Lesson 6** | Performance Optimization        | React 19, Vite, TailwindCSS 4.x  | [Ì¥ó View Demo](#)                                                                                      |
 
-## Current Progress
+## ‚úÖ Current Progress
 
 **Homework 1**: 5 interactive JavaScript/React tasks completed
 - Trip Calculator
@@ -40,12 +40,12 @@ This repository contains all homework assignments from the React JS course by An
 - Number Guessing Game (Turn-based gameplay, State management)
 
 **Homework 6**: 4 React performance optimization tasks completed
-- Selective Rendering (React.memo, useMemo for calculations)
-- Large Dataset Handling (react-window virtualization, useDeferredValue)
-- Window Size Monitoring (Custom hooks, debouncing)
-- Optimized Search (Debounced input, performance patterns)
+- ‚ö° Selective Rendering (React.memo, useMemo for calculations)
+- Ì≥ä Large Dataset Handling (react-window virtualization, useDeferredValue)
+- Ì≥è Window Size Monitoring (Custom hooks, debouncing)
+- Ì¥ç Optimized Search (Debounced input, performance patterns)
 
-## Project Structure
+## Ì≥Å Project Structure
 
 Each homework assignment is in its own folder:
 - `/hw-lesson-1/` - First homework with 5 basic tasks
@@ -54,7 +54,7 @@ Each homework assignment is in its own folder:
 - `/hw-lesson-4/` - Fourth homework with component practice
 - `/hw-lesson-6/` - Sixth homework with performance optimization
 
-## Technologies Used
+## Ìª†Ô∏è Technologies Used
 
 ### Homework 1
 - **Frontend**: HTML5, CSS3, JavaScript ES6+
@@ -90,11 +90,11 @@ Each homework assignment is in its own folder:
 - **State Management**: React Hooks (useState, useMemo, useDeferredValue, useCallback)
 - **Features**: Performance optimization, react-window virtualization, Debouncing, Selective rendering
 
-## About the Course
+## Ì≥ñ About the Course
 
 This repository tracks my progress through the React JS course by Andriy Bryla. Each lesson builds upon previous concepts, gradually introducing more complex React patterns and best practices.
 
-## Live Demos
+## Ìºê Live Demos
 
 All homework assignments are deployed and available online:
 - **GitHub Pages**: https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/
