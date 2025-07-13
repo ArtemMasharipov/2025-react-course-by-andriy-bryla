@@ -52,7 +52,6 @@ function Navbar({ activeTask, onTaskChange }) {
               HW Lesson 6. Hooks. Practice.
             </h1>
 
-            {/* Desktop меню */}
             <div className="hidden md:flex space-x-1">
               {TASKS.map((task) => (
                 <button
@@ -69,7 +68,6 @@ function Navbar({ activeTask, onTaskChange }) {
               ))}
             </div>
 
-            {/* Mobile бургер-кнопка */}
             <button
               onClick={toggleMenu}
               className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -98,31 +96,20 @@ function Navbar({ activeTask, onTaskChange }) {
         </div>
       </nav>
 
-      {/* Overlay */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-          onClick={() => setIsMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Mobile боковое меню */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 left-0 h-full w-full bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {/* Заголовок меню */}
-        <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
+        <div className="flex items-center justify-between p-6 border-b">
+          <h2 className="text-2xl font-semibold text-gray-900">Menu</h2>
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-label="Close menu"
           >
             <svg
-              className="w-5 h-5 text-gray-600"
+              className="w-6 h-6 text-gray-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -137,16 +124,15 @@ function Navbar({ activeTask, onTaskChange }) {
           </button>
         </div>
 
-        {/* Меню пунктов */}
-        <div className="p-4 space-y-2">
+        <div className="p-6 space-y-4">
           {TASKS.map((task) => (
             <button
               key={task.id}
               onClick={() => handleTaskChange(task.id)}
-              className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors duration-200 ${
+              className={`w-full text-left px-6 py-4 rounded-xl font-medium text-lg transition-colors duration-200 ${
                 activeTask === task.id
-                  ? 'bg-blue-500 text-white shadow-sm'
-                  : 'text-gray-700 hover:text-blue-500 hover:bg-gray-100'
+                  ? 'bg-blue-500 text-white shadow-lg'
+                  : 'text-gray-700 hover:text-blue-500 hover:bg-gray-50 border border-gray-200'
               }`}
             >
               {task.name}
