@@ -10,7 +10,7 @@ This repository contains all homework assignments from the React JS course by An
 |--------|-------------|--------------|------|
 | Lesson 1 | JavaScript/React Tasks | HTML5, CSS3, JS ES6+, React 18 | :globe_with_meridians: [View Demo](hw-lesson-1/) |
 | Lesson 2 | Modern React Practice | React 18, Vite, Modern Hooks | :globe_with_meridians: [View Demo](hw-lesson-2/) |
-| Lesson 3 | React Hooks (useRef, useEffect) | React 19, Vite, Tailwind CSS 4.1 | :globe_with_meridians: [View Demo]([hw-lesson-3/](https://hw-lesson-3.vercel.app/)) |
+| Lesson 3 | React Hooks (useRef, useEffect) | React 19, Vite, Tailwind CSS 4.1 | :globe_with_meridians: [View Demo](https://hw-lesson-3.vercel.app/) |
 | Lesson 4 | Components Practice | React 19, Vite, Tailwind CSS | :globe_with_meridians: [View Demo](hw-lesson-4/) |
 | Lesson 6 | Performance Optimization | React 19, Vite, TailwindCSS 4.x | :globe_with_meridians: [View Demo](hw-lesson-6/) |
 
