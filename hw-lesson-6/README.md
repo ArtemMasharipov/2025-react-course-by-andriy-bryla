@@ -1,4 +1,4 @@
-# React Performance Optimization - Homework 6
+# HW Lesson 6. Hooks. Practice.
 
 Educational project demonstrating React 19 performance optimization techniques through 4 practical tasks.
 
