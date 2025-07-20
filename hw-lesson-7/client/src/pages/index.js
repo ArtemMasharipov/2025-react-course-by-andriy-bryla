@@ -1,0 +1,8 @@
+export { default as CategoriesPage } from './CategoriesPage'
+export { default as CategoryProductsPage } from './CategoryProductsPage'
+export { default as ContactsPage } from './ContactsPage'
+export { default as HomePage } from './HomePage'
+export { default as NotFoundPage } from './NotFoundPage'
+export { default as PaymentRulesPage } from './PaymentRulesPage'
+export { default as ProductDetails } from './ProductDetails'
+export { default as ShopPage } from './ShopPage'

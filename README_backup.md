@@ -13,7 +13,6 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson 3 | React Hooks (useRef, useEffect) | React 19, Vite, Tailwind CSS 4.1 | :globe_with_meridians: [View Demo](https://hw-lesson-3.vercel.app/) |
 | Lesson 4 | Components Practice | React 19, Vite, Tailwind CSS | :globe_with_meridians: [View Demo](https://hw-lesson-4.vercel.app/) |
 | Lesson 6 | Performance Optimization | React 19, Vite, TailwindCSS 4.x | :globe_with_meridians: [View Demo](https://hw-lesson-6.vercel.app/) |
-| Lesson 7 | Full-Stack React Application | React 19, React Router 7, Node.js, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-7.vercel.app/) |
 
 ## Current Progress
 
@@ -46,21 +45,15 @@ This repository contains all homework assignments from the React JS course by An
 - :straight_ruler: Window Size Monitoring (Custom hooks, debouncing)
 - :mag: Optimized Search (Debounced input, performance patterns)
 
-**Homework 7:** Full-stack e-commerce application completed
-- :shopping_cart: Product Catalog (Category browsing, product details)
-- :gear: State Machine Architecture (Loading, error, empty, success states)
-- :iphone: Professional UI/UX (Sticky navbar, mobile burger menu, responsive design)
-- :zap: Performance Optimized (Memoization, AbortController, image fallbacks)
-
 ## Project Structure
 
 Each homework assignment is in its own folder:
+
 - `/hw-lesson-1/` - First homework with 5 basic tasks
 - `/hw-lesson-2/` - Second homework with 6 modern React tasks
 - `/hw-lesson-3/` - Third homework with hooks mastery
 - `/hw-lesson-4/` - Fourth homework with component practice
 - `/hw-lesson-6/` - Sixth homework with performance optimization
-- `/hw-lesson-7/` - Seventh homework with full-stack React application
 
 ## Technologies Used
 
@@ -98,14 +91,6 @@ Each homework assignment is in its own folder:
 - **State Management:** React Hooks (useState, useMemo, useDeferredValue, useCallback)
 - **Features:** Performance optimization, react-window virtualization, Debouncing, Selective rendering
 
-### Homework 7
-- **Frontend:** React 19, React Router 7, Tailwind CSS 4.x
-- **Backend:** Node.js, Express 4.21, MongoDB
-- **Build Tool:** Vite 7.0.4
-- **Architecture:** Feature-based organization, State machines
-- **API:** Axios with interceptors, AbortController
-- **Features:** Full-stack integration, Professional UI/UX, Mobile-responsive design
-
 ## About the Course
 
 This repository tracks my progress through the React JS course by Andriy Bryla. Each lesson builds upon previous concepts, gradually introducing more complex React patterns and best practices.
@@ -113,6 +98,7 @@ This repository tracks my progress through the React JS course by Andriy Bryla. 
 ## Live Demos
 
 All homework assignments are deployed and available online:
+
 - **GitHub Pages:** https://artemmasharipov.github.io/2025-react-course-by-andriy-bryla/
 
 ---
