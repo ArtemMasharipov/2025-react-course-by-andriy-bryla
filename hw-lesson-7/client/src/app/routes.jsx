@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom'
-import { ROUTES } from './routes.constants'
+import { ROUTES, buildRoute } from './routes.constants'
 
 import { MainLayout, SimpleLayout } from '../layout'
 
@@ -19,7 +19,7 @@ export const appRoutes = (
     <Route element={<MainLayout />}>
       <Route index element={<HomePage />} />
 
-      <Route path="shop" element={<ShopPage />}>
+      <Route path={ROUTES.SHOP} element={<ShopPage />}>
         <Route index element={<CategoriesPage />} />
         <Route path=":categoryId">
           <Route index element={<CategoryProductsPage />} />
@@ -27,11 +27,11 @@ export const appRoutes = (
         </Route>
       </Route>
 
-      <Route path="payment-rules" element={<PaymentRulesPage />} />
+      <Route path={ROUTES.PAYMENT_RULES} element={<PaymentRulesPage />} />
     </Route>
 
     <Route element={<SimpleLayout />}>
-      <Route path="contacts" element={<ContactsPage />} />
+      <Route path={ROUTES.CONTACTS} element={<ContactsPage />} />
     </Route>
 
     <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
