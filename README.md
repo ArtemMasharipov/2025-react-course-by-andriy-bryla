@@ -14,6 +14,7 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson 4 | Components Practice | React 19, Vite, Tailwind CSS | :globe_with_meridians: [View Demo](https://hw-lesson-4.vercel.app/) |
 | Lesson 6 | Performance Optimization | React 19, Vite, TailwindCSS 4.x | :globe_with_meridians: [View Demo](https://hw-lesson-6.vercel.app/) |
 | Lesson 7 | Full-Stack React Application | React 19, React Router 7, Node.js, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-7.vercel.app/) |
+| Lesson 8 | Teachers & Meetings App | React 19, Vite 7, Tailwind CSS 4.x, Express, MongoDB | _deploy pending_ |
 
 ## Current Progress
 
@@ -61,6 +62,7 @@ Each homework assignment is in its own folder:
 - `/hw-lesson-4/` - Fourth homework with component practice
 - `/hw-lesson-6/` - Sixth homework with performance optimization
 - `/hw-lesson-7/` - Seventh homework with full-stack React application
+- `/hw-lesson-8/` - Eighth homework with full-stack teachers & meeting management (2 participants limit)
 
 ## Technologies Used
 
@@ -105,6 +107,15 @@ Each homework assignment is in its own folder:
 - **Architecture:** Feature-based organization, State machines
 - **API:** Axios with interceptors, AbortController
 - **Features:** Full-stack integration, Professional UI/UX, Mobile-responsive design
+
+### Homework 8
+- **Frontend:** React 19, Vite 7, Tailwind CSS 4.x, React Router 7
+- **Backend:** Node.js 18+, Express 4.21, MongoDB, Mongoose
+- **Build Tool:** Vite 7.0.x
+- **Architecture:** Feature-based, barrel exports, optimistic state pattern
+- **State Patterns:** Optimistic UI (`useOptimistic` + `startTransition`)
+- **API:** Axios client with normalized `{ data: ... }` responses
+- **Features:** Teachers CRUD, single active meeting (max 2 participants), avatar upload (Base64), fixed header + mobile drawer navigation, utility extraction
 
 ## About the Course
 
