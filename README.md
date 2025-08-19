@@ -14,7 +14,7 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson 4 | Components Practice | React 19, Vite, Tailwind CSS | :globe_with_meridians: [View Demo](https://hw-lesson-4.vercel.app/) |
 | Lesson 6 | Performance Optimization | React 19, Vite, TailwindCSS 4.x | :globe_with_meridians: [View Demo](https://hw-lesson-6.vercel.app/) |
 | Lesson 7 | Full-Stack React Application | React 19, React Router 7, Node.js, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-7-tau.vercel.app/) |
-| Lesson 8 | Teachers & Meetings App | React 19, Vite 7, Tailwind CSS 4.x, Express, MongoDB | [View Demo](https://hw-lesson-8-peach.vercel.app/) |
+| Lesson 8 | Teachers & Meetings App | React 19, Vite 7, Tailwind CSS 4.x, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-8-peach.vercel.app/) |
 
 ## Current Progress
 
