@@ -1,6 +1,5 @@
-import 'express-async-errors'
-import cors from 'cors'
 import compression from 'compression'
+import cors from 'cors'
 import express from 'express'
 import helmet from 'helmet'
 import morgan from 'morgan'
@@ -16,10 +15,17 @@ const app = express()
 
 app.set('trust proxy', true)
 
-const allowedOrigins = [config.clientUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'].filter(Boolean)
+const allowedOrigins = [
+  config.clientUrl,
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+].filter(Boolean)
 app.use(
   cors({
-    origin: (origin, cb) => (!origin || allowedOrigins.includes(origin) ? cb(null, true) : cb(new Error('CORS'))),
+    origin: (origin, cb) =>
+      !origin || allowedOrigins.includes(origin)
+        ? cb(null, true)
+        : cb(new Error('CORS')),
     credentials: true,
   })
 )
