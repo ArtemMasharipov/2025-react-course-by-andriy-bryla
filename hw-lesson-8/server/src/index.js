@@ -1,20 +1,41 @@
+import 'express-async-errors'
 import cors from 'cors'
+import compression from 'compression'
 import express from 'express'
+import helmet from 'helmet'
+import morgan from 'morgan'
+
 import connectDB from '../config/database.js'
 import config from '../config/default.mjs'
 import { errorHandler, notFound } from '../middleware/errorHandler.js'
-import meetingRoutes from './v1/routes/meeting.routes.js'
-import teacherRoutes from './v1/routes/teacher.routes.js'
+import v1Routes from './v1/routes/index.js'
+
 await connectDB()
+
 const app = express()
-app.use(cors({ origin: config.clientUrl, credentials: true }))
-app.use(express.json())
-app.use('/api/v1/teachers', teacherRoutes)
-app.use('/api/v1/meetings', meetingRoutes)
-// Express 5 + path-to-regexp v6: '*' shorthand can throw (Missing parameter name)
-// Use a safe catch-all pattern
-app.all('/*', notFound)
+
+app.set('trust proxy', true)
+
+const allowedOrigins = [config.clientUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'].filter(Boolean)
+app.use(
+  cors({
+    origin: (origin, cb) => (!origin || allowedOrigins.includes(origin) ? cb(null, true) : cb(new Error('CORS'))),
+    credentials: true,
+  })
+)
+
+app.use(helmet())
+app.use(compression())
+app.use(express.json({ limit: '1mb' }))
+app.use(morgan('tiny'))
+
+app.get('/health', (req, res) => res.json({ ok: true }))
+
+app.use('/api/v1', v1Routes)
+
+app.use(notFound)
 app.use(errorHandler)
+
 app.listen(config.port, () => {
   console.log(`🚀 Server running at http://localhost:${config.port}`)
 })
