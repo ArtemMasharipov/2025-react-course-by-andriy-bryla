@@ -13,7 +13,7 @@ Full React 19 + Vite application demonstrating Context API, custom hooks, and mo
 - **Component Architecture**: Reusable components with variant-based styling
 - **Drawer Navigation**: Accessible overlay sidebar with portal rendering
 
-## í¾¯ Learning Objectives
+## ðŸŽ¯ Learning Objectives
 
 This project demonstrates:
 
@@ -42,7 +42,7 @@ This project demonstrates:
    - Focus management
    - Keyboard navigation
 
-## í»  Technologies
+## ðŸ›  Technologies
 
 - **Frontend**: React 19, JSX
 - **Build Tool**: Vite 7.0+
@@ -51,7 +51,7 @@ This project demonstrates:
 - **State Management**: React Context API
 - **Storage**: localStorage with custom hooks
 
-## íº€ Getting Started
+## ðŸš€ Getting Started
 
 ```bash
 # Install dependencies
@@ -62,10 +62,3 @@ npm run dev
 
 # Build for production
 npm run build
-```
-
----
-
-**Lesson**: Context API & State Management
-**Technologies**: React 19, Vite 7, Tailwind CSS 4.x, React Router 7
-**Focus**: Context patterns, custom hooks, accessibility, responsive design
