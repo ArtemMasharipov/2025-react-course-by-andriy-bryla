@@ -15,7 +15,6 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson 6 | Performance Optimization | React 19, Vite, TailwindCSS 4.x | :globe_with_meridians: [View Demo](https://hw-lesson-6.vercel.app/) |
 | Lesson 7 | Full-Stack React Application | React 19, React Router 7, Node.js, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-7-tau.vercel.app/) |
 | Lesson 8 | Teachers & Meetings App | React 19, Vite 7, Tailwind CSS 4.x, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-8-peach.vercel.app/) |
-| Lesson 10 | Travel Planner with Context API | React 19, Vite 7, Tailwind CSS 4.x, React Router 7 | :globe_with_meridians: [View Demo](https://hw-lesson-10.vercel.app/) |
 
 ## Current Progress
 
@@ -54,18 +53,6 @@ This repository contains all homework assignments from the React JS course by An
 - :iphone: Professional UI/UX (Sticky navbar, mobile burger menu, responsive design)
 - :zap: Performance Optimized (Memoization, AbortController, image fallbacks)
 
-**Homework 8:** Full-stack teachers & meeting management application completed
-- :teachers: Teachers CRUD (Add, edit, delete teachers with avatar upload)
-- :calendar: Meeting Management (Single active meeting, 2 participants max)
-- :gear: Optimistic UI (useOptimistic + startTransition patterns)
-- :iphone: Mobile Navigation (Fixed header + full-width slide-in drawer)
-
-**Homework 10:** Context API and state management application completed
-- :globe_with_meridians: Travel Planner (Context API, ThemeContext, SelectionContext)
-- :gear: State Management (useCallback, useMemo optimization patterns)
-- :iphone: Responsive Design (Mobile drawer, accessible navigation)
-- :art: Theme System (Dark/light mode with localStorage persistence)
-
 ## Project Structure
 
 Each homework assignment is in its own folder:
@@ -76,7 +63,6 @@ Each homework assignment is in its own folder:
 - `/hw-lesson-6/` - Sixth homework with performance optimization
 - `/hw-lesson-7/` - Seventh homework with full-stack React application
 - `/hw-lesson-8/` - Eighth homework with full-stack teachers & meeting management (2 participants limit)
-- `/hw-lesson-10/` - Tenth homework with Context API and state management
 
 ## Technologies Used
 
@@ -145,12 +131,3 @@ All homework assignments are deployed and available online:
 **Course:** React JS by Andriy Bryla (2025)  
 **Student:** Artem Masharipov  
 **Repository:** https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla
-
-### Homework 10
-- **Frontend:** React 19, JSX
-- **Build Tool:** Vite 7.0+
-- **Styling:** Tailwind CSS 4.x
-- **Routing:** React Router 7
-- **State Management:** React Context API (ThemeContext, SelectionContext)
-- **Storage:** localStorage with custom hooks
-- **Features:** Context patterns, custom hooks, accessibility, responsive design with mobile drawer navigation
