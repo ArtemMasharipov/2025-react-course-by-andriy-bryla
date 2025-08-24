@@ -8,7 +8,9 @@ export default function HomePage() {
   return (
     <div className="space-y-6" data-theme={theme}>
       <section>
-        <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">Travel Planner</h1>
+  <h1 className="text-2xl font-bold tracking-tight heading-primary">
+          Travel Planner
+        </h1>
         <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-prose">
           Select the bus routes and hotels you need, then view the summary on the Summary page.
           Switch themes and save your selections between reloads.

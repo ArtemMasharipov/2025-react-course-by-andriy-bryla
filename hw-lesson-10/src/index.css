@@ -1,5 +1,18 @@
 @import 'tailwindcss';
 
+:root {
+  --color-heading: #111827; /* neutral-900 */
+}
+.dark {
+  --color-heading: #ffffff; /* white in dark mode for max contrast */
+}
+
+@layer utilities {
+  .heading-primary {
+    color: var(--color-heading);
+  }
+}
+
 @layer utilities {
   @keyframes drawerSlideIn {
     from {
