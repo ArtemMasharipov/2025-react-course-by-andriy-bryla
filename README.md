@@ -131,6 +131,15 @@ Each homework assignment is in its own folder:
 - **API:** Axios client with normalized `{ data: ... }` responses
 - **Features:** Teachers CRUD, single active meeting (max 2 participants), avatar upload (Base64), fixed header + mobile drawer navigation, utility extraction
 
+### Homework 10
+- **Frontend:** React 19, JSX
+- **Build Tool:** Vite 7.0+
+- **Styling:** Tailwind CSS 4.x
+- **Routing:** React Router 7
+- **State Management:** React Context API (ThemeContext, SelectionContext)
+- **Storage:** localStorage with custom hooks
+- **Features:** Context patterns, custom hooks, accessibility, responsive design with mobile drawer navigation
+- 
 ## About the Course
 
 This repository tracks my progress through the React JS course by Andriy Bryla. Each lesson builds upon previous concepts, gradually introducing more complex React patterns and best practices.
@@ -146,11 +155,3 @@ All homework assignments are deployed and available online:
 **Student:** Artem Masharipov  
 **Repository:** https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla
 
-### Homework 10
-- **Frontend:** React 19, JSX
-- **Build Tool:** Vite 7.0+
-- **Styling:** Tailwind CSS 4.x
-- **Routing:** React Router 7
-- **State Management:** React Context API (ThemeContext, SelectionContext)
-- **Storage:** localStorage with custom hooks
-- **Features:** Context patterns, custom hooks, accessibility, responsive design with mobile drawer navigation
