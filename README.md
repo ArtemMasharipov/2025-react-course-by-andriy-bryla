@@ -17,7 +17,6 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson 8 | Teachers & Meetings App | React 19, Vite 7, Tailwind CSS 4.x, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-8-peach.vercel.app/) |
 | Lesson 10 | Travel Planner with Context API | React 19, Vite 7, Tailwind CSS 4.x, React Router 7 | :globe_with_meridians: [View Demo](https://hw-lesson-10.vercel.app/) |
 | Lesson 11 | Products Management App (Redux Toolkit & Performance) | React 19 + Redux Toolkit, Vite 7, Tailwind CSS 4.x, React Router 7 | :globe_with_meridians: [View Demo](https://hw-lesson-11-rtk-seven.vercel.app/) |
-- `/hw-lesson-11/` - Eleventh homework with advanced performance optimization and full-stack development
 
 ## Current Progress
 
