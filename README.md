@@ -44,22 +44,22 @@ This repository contains all homework assignments from the React JS course by An
 - Number Guessing Game (Turn-based gameplay, State management)
 
 **Homework 6:** 4 React performance optimization tasks completed
-- :zap: Selective Rendering (React.memo, useMemo for calculations)
-- :bar_chart: Large Dataset Handling (react-window virtualization, useDeferredValue)
-- :straight_ruler: Window Size Monitoring (Custom hooks, debouncing)
-- :mag: Optimized Search (Debounced input, performance patterns)
+- Selective Rendering (React.memo, useMemo for calculations)
+- Large Dataset Handling (react-window virtualization, useDeferredValue)
+- Window Size Monitoring (Custom hooks, debouncing)
+- Optimized Search (Debounced input, performance patterns)
 
 **Homework 7:** Full-stack e-commerce application completed
-- :shopping_cart: Product Catalog (Category browsing, product details)
-- :gear: State Machine Architecture (Loading, error, empty, success states)
-- :iphone: Professional UI/UX (Sticky navbar, mobile burger menu, responsive design)
-- :zap: Performance Optimized (Memoization, AbortController, image fallbacks)
+- Product Catalog (Category browsing, product details)
+- State Machine Architecture (Loading, error, empty, success states)
+- Professional UI/UX (Sticky navbar, mobile burger menu, responsive design)
+- Performance Optimized (Memoization, AbortController, image fallbacks)
 
 **Homework 8:** Full-stack teachers & meeting management application completed
-- :teachers: Teachers CRUD (Add, edit, delete teachers with avatar upload)
-- :calendar: Meeting Management (Single active meeting, 2 participants max)
-- :gear: Optimistic UI (useOptimistic + startTransition patterns)
-- :iphone: Mobile Navigation (Fixed header + full-width slide-in drawer)
+- Teachers CRUD (Add, edit, delete teachers with avatar upload)
+- Meeting Management (Single active meeting, 2 participants max)
+- Optimistic UI (useOptimistic + startTransition patterns)
+- Mobile Navigation (Fixed header + full-width slide-in drawer)
 
 **Homework 10:** Context API and state management application completed
 ### Homework 11
@@ -70,16 +70,16 @@ This repository contains all homework assignments from the React JS course by An
 - **Performance**: React.memo, useMemo, useCallback, useDeferredValue
 - **Features**: Full-stack CRUD, search & filtering, mobile-responsive design, database seeding
 **Homework 11:** Advanced performance optimization and full-stack development completed
-- :zap: Frontend Performance Optimization (React.memo, useMemo, useCallback, custom hooks)
-- :gear: Advanced Redux Toolkit Patterns (Entity adapters, createSelector, optimistic updates)
-- :iphone: Professional UI/UX (Emerald theme, sticky navigation, mobile drawer)
-- :shopping_cart: Full-Stack Products App (React 19 + Express + MongoDB)
-- :bar_chart: Database Seeding & Cleanup (30 sample products with automated scripts)
-- :art: Design System Implementation (Consistent theming, accessibility, responsive design)
-- :globe_with_meridians: Travel Planner (Context API, ThemeContext, SelectionContext)
-- :gear: State Management (useCallback, useMemo optimization patterns)
-- :iphone: Responsive Design (Mobile drawer, accessible navigation)
-- :art: Theme System (Dark/light mode with localStorage persistence)
+- Frontend Performance Optimization (React.memo, useMemo, useCallback, custom hooks)
+- Advanced Redux Toolkit Patterns (Entity adapters, createSelector, optimistic updates)
+- Professional UI/UX (Emerald theme, sticky navigation, mobile drawer)
+- Full-Stack Products App (React 19 + Express + MongoDB)
+- Database Seeding & Cleanup (30 sample products with automated scripts)
+- Design System Implementation (Consistent theming, accessibility, responsive design)
+- Travel Planner (Context API, ThemeContext, SelectionContext)
+- State Management (useCallback, useMemo optimization patterns)
+- Responsive Design (Mobile drawer, accessible navigation)
+- Theme System (Dark/light mode with localStorage persistence)
 
 ## Project Structure
 
