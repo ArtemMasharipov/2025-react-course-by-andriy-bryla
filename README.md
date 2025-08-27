@@ -15,7 +15,8 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson 6 | Performance Optimization | React 19, Vite, TailwindCSS 4.x | :globe_with_meridians: [View Demo](https://hw-lesson-6.vercel.app/) |
 | Lesson 7 | Full-Stack React Application | React 19, React Router 7, Node.js, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-7-tau.vercel.app/) |
 | Lesson 8 | Teachers & Meetings App | React 19, Vite 7, Tailwind CSS 4.x, Express, MongoDB | :globe_with_meridians: [View Demo](https://hw-lesson-8-peach.vercel.app/) |
-| Lesson 10 | Travel Planner with Context API | React 19, Vite 7, Tailwind CSS 4.x, React Router 7 | :globe_with_meridians: [View Demo](https://hw-lesson-10.vercel.app/) |
+| Lesson 11 | Travel Planner with Context API | React 19, Vite 7, Tailwind CSS 4.x, React Router 7 | :globe_with_meridians: [View Demo](https://hw-lesson-10.vercel.app/) |
+- `/hw-lesson-11/` - Eleventh homework with advanced performance optimization and full-stack development
 
 ## Current Progress
 
@@ -61,6 +62,20 @@ This repository contains all homework assignments from the React JS course by An
 - :iphone: Mobile Navigation (Fixed header + full-width slide-in drawer)
 
 **Homework 10:** Context API and state management application completed
+### Homework 11
+- **Frontend**: React 19, Redux Toolkit, React Router 7, Tailwind CSS 4.x
+- **Backend**: Node.js, Express 5, MongoDB, Mongoose
+- **Build Tool**: Vite 7.0+
+- **State Management**: Redux Toolkit with entity adapters and custom hooks
+- **Performance**: React.memo, useMemo, useCallback, useDeferredValue
+- **Features**: Full-stack CRUD, search & filtering, mobile-responsive design, database seeding
+**Homework 11:** Advanced performance optimization and full-stack development completed
+- :zap: Frontend Performance Optimization (React.memo, useMemo, useCallback, custom hooks)
+- :gear: Advanced Redux Toolkit Patterns (Entity adapters, createSelector, optimistic updates)
+- :iphone: Professional UI/UX (Emerald theme, sticky navigation, mobile drawer)
+- :shopping_cart: Full-Stack Products App (React 19 + Express + MongoDB)
+- :bar_chart: Database Seeding & Cleanup (30 sample products with automated scripts)
+- :art: Design System Implementation (Consistent theming, accessibility, responsive design)
 - :globe_with_meridians: Travel Planner (Context API, ThemeContext, SelectionContext)
 - :gear: State Management (useCallback, useMemo optimization patterns)
 - :iphone: Responsive Design (Mobile drawer, accessible navigation)
@@ -77,6 +92,7 @@ Each homework assignment is in its own folder:
 - `/hw-lesson-7/` - Seventh homework with full-stack React application
 - `/hw-lesson-8/` - Eighth homework with full-stack teachers & meeting management (2 participants limit)
 - `/hw-lesson-10/` - Tenth homework with Context API and state management
+- `/hw-lesson-11/` - Eleventh homework with advanced performance optimization and full-stack development
 
 ## Technologies Used
 
@@ -132,6 +148,13 @@ Each homework assignment is in its own folder:
 - **Features:** Teachers CRUD, single active meeting (max 2 participants), avatar upload (Base64), fixed header + mobile drawer navigation, utility extraction
 
 ### Homework 10
+### Homework 11
+- **Frontend**: React 19, Redux Toolkit, React Router 7, Tailwind CSS 4.x
+- **Backend**: Node.js, Express 5, MongoDB, Mongoose
+- **Build Tool**: Vite 7.0+
+- **State Management**: Redux Toolkit with entity adapters and custom hooks
+- **Performance**: React.memo, useMemo, useCallback, useDeferredValue
+- **Features**: Full-stack CRUD, search & filtering, mobile-responsive design, database seeding
 - **Frontend:** React 19, JSX
 - **Build Tool:** Vite 7.0+
 - **Styling:** Tailwind CSS 4.x

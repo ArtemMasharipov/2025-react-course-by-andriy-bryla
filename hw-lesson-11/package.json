@@ -1,0 +1,28 @@
+{
+  "name": "products-app",
+  "version": "1.0.0",
+  "description": "Full-stack React + Node.js products management application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm run dev",
+    "server:start": "cd server && npm start",
+    "client:build": "cd client && npm run build",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "redux-toolkit"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^8.2.2"
+  }
+}
