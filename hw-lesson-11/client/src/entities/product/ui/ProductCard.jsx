@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 /* ProductCard: Presentational component for a single product item */
-const ProductCard = ({ product, onDelete }) => {
+const ProductCard = ({ product, onDelete, isDeleting }) => {
   const { _id, name, price, createdAt } = product
   return (
     <div
@@ -28,10 +28,11 @@ const ProductCard = ({ product, onDelete }) => {
         </Link>
         <button
           onClick={() => onDelete?.(_id)}
-          className="rounded-md border border-rose-300 bg-rose-50 px-3 py-2 text-xs font-medium text-rose-600 transition hover:bg-rose-100 hover:text-rose-700 focus-visible:outline-2 focus-visible:outline-rose-400 dark:border-rose-600 dark:bg-rose-800/50 dark:text-rose-400 dark:hover:bg-rose-700/60"
+          disabled={isDeleting}
+          className="rounded-md border border-rose-300 bg-rose-50 px-3 py-2 text-xs font-medium text-rose-600 transition hover:bg-rose-100 hover:text-rose-700 focus-visible:outline-2 focus-visible:outline-rose-400 disabled:opacity-50 disabled:cursor-not-allowed dark:border-rose-600 dark:bg-rose-800/50 dark:text-rose-400 dark:hover:bg-rose-700/60"
           aria-label={`Delete ${name}`}
         >
-          Delete
+          {isDeleting ? 'Deleting...' : 'Delete'}
         </button>
       </div>
       <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 ring-2 ring-emerald-400/40 transition group-hover:opacity-100" />

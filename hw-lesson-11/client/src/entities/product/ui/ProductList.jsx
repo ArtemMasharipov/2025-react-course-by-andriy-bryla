@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { REQUEST_STATUS } from '../../../shared/config/api'
-import { selectFilteredProducts, selectProductsError, selectProductsStatus } from '../model/selectors'
+import { selectFilteredProducts, selectProductsError, selectProductsStatus, selectDeleteProductStatus } from '../model/selectors'
 import { deleteProductThunk } from '../model/thunks'
 import ProductCard from './ProductCard'
 
@@ -9,6 +9,7 @@ const ProductList = () => {
   const products = useSelector(selectFilteredProducts)
   const status = useSelector(selectProductsStatus)
   const error = useSelector(selectProductsError)
+  const deleteStatus = useSelector(selectDeleteProductStatus)
 
   const handleDelete = productId => {
     if (window.confirm('Are you sure you want to delete this product?')) {
@@ -33,7 +34,7 @@ const ProductList = () => {
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {products.map(p => (
-          <ProductCard key={p._id} product={p} onDelete={handleDelete} />
+          <ProductCard key={p._id} product={p} onDelete={handleDelete} isDeleting={deleteStatus === REQUEST_STATUS.LOADING} />
         ))}
       </div>
     </div>
