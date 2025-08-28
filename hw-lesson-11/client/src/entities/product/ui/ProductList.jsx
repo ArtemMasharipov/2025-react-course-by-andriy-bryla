@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { REQUEST_STATUS } from '../../../shared/config/api'
-import { selectFilteredProducts, selectProductsError, selectProductsStatus, selectDeleteProductStatus } from '../model/selectors'
+import { selectDeleteProductStatus, selectFilteredProducts, selectProductsError, selectProductsStatus } from '../model/selectors'
 import { deleteProductThunk } from '../model/thunks'
 import ProductCard from './ProductCard'
 

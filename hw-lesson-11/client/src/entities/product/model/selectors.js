@@ -16,12 +16,17 @@ export const selectProductsStatus = state => selectProductState(state).status
 export const selectProductsError = state => selectProductState(state).error
 
 // CRUD operation states
-export const selectAddProductStatus = state => selectProductState(state).addStatus
+export const selectAddProductStatus = state =>
+  selectProductState(state).addStatus
 export const selectAddProductError = state => selectProductState(state).addError
-export const selectUpdateProductStatus = state => selectProductState(state).updateStatus
-export const selectUpdateProductError = state => selectProductState(state).updateError
-export const selectDeleteProductStatus = state => selectProductState(state).deleteStatus
-export const selectDeleteProductError = state => selectProductState(state).deleteError
+export const selectUpdateProductStatus = state =>
+  selectProductState(state).updateStatus
+export const selectUpdateProductError = state =>
+  selectProductState(state).updateError
+export const selectDeleteProductStatus = state =>
+  selectProductState(state).deleteStatus
+export const selectDeleteProductError = state =>
+  selectProductState(state).deleteError
 
 export { selectAllProducts, selectProductById }
 

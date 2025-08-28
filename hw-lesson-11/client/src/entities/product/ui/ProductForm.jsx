@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectProductById, selectProductsError } from '../model/selectors'
+import { REQUEST_STATUS } from '../../../shared/config/api'
+import { selectAddProductError, selectAddProductStatus, selectProductById, selectUpdateProductError, selectUpdateProductStatus } from '../model/selectors'
 import { addProductThunk, updateProductThunk } from '../model/thunks'
 
 const ProductForm = ({ productId = null, onClose = null }) => {
   const dispatch = useDispatch()
-  const error = useSelector(selectProductsError)
   const existingProduct = useSelector(state => productId ? selectProductById(state, productId) : null)
+  const addStatus = useSelector(selectAddProductStatus)
+  const addError = useSelector(selectAddProductError)
+  const updateStatus = useSelector(selectUpdateProductStatus)
+  const updateError = useSelector(selectUpdateProductError)
   const [formData, setFormData] = useState({ name: '', price: '' })
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const isEditMode = !!productId
+  const isSubmitting = isEditMode ? updateStatus === REQUEST_STATUS.LOADING : addStatus === REQUEST_STATUS.LOADING
+  const error = isEditMode ? updateError : addError
 
   useEffect(() => {
     if (isEditMode && existingProduct) {
@@ -41,7 +46,7 @@ const ProductForm = ({ productId = null, onClose = null }) => {
   const handleSubmit = async e => {
     e.preventDefault()
     if (!isFormValid()) return
-    setIsSubmitting(true)
+
     try {
       if (isEditMode) {
         await dispatch(updateProductThunk({
@@ -57,7 +62,7 @@ const ProductForm = ({ productId = null, onClose = null }) => {
         })).unwrap()
         onClose && onClose()
       }
-    } catch { /* error handled in slice */ } finally { setIsSubmitting(false) }
+    } catch { /* error handled in slice */ }
   }
 
   return (

@@ -12,7 +12,16 @@ const adapter = createEntityAdapter({
   sortComparer: (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
 })
 
-const initialExtra = { status: REQUEST_STATUS.IDLE, error: null }
+const initialExtra = {
+  status: REQUEST_STATUS.IDLE,
+  error: null,
+  addStatus: REQUEST_STATUS.IDLE,
+  addError: null,
+  updateStatus: REQUEST_STATUS.IDLE,
+  updateError: null,
+  deleteStatus: REQUEST_STATUS.IDLE,
+  deleteError: null,
+}
 
 const slice = createSlice({
   name: 'product',
@@ -32,17 +41,44 @@ const slice = createSlice({
         state.status = REQUEST_STATUS.FAILED
         state.error = action.payload
       })
+      .addCase(addProductThunk.pending, state => {
+        state.addStatus = REQUEST_STATUS.LOADING
+        state.addError = null
+      })
       .addCase(addProductThunk.fulfilled, (state, action) => {
+        state.addStatus = REQUEST_STATUS.SUCCEEDED
         adapter.addOne(state, action.payload)
       })
+      .addCase(addProductThunk.rejected, (state, action) => {
+        state.addStatus = REQUEST_STATUS.FAILED
+        state.addError = action.payload
+      })
+      .addCase(updateProductThunk.pending, state => {
+        state.updateStatus = REQUEST_STATUS.LOADING
+        state.updateError = null
+      })
       .addCase(updateProductThunk.fulfilled, (state, action) => {
+        state.updateStatus = REQUEST_STATUS.SUCCEEDED
         adapter.updateOne(state, {
           id: action.payload._id,
           changes: action.payload,
         })
       })
+      .addCase(updateProductThunk.rejected, (state, action) => {
+        state.updateStatus = REQUEST_STATUS.FAILED
+        state.updateError = action.payload
+      })
+      .addCase(deleteProductThunk.pending, state => {
+        state.deleteStatus = REQUEST_STATUS.LOADING
+        state.deleteError = null
+      })
       .addCase(deleteProductThunk.fulfilled, (state, action) => {
+        state.deleteStatus = REQUEST_STATUS.SUCCEEDED
         adapter.removeOne(state, action.payload)
+      })
+      .addCase(deleteProductThunk.rejected, (state, action) => {
+        state.deleteStatus = REQUEST_STATUS.FAILED
+        state.deleteError = action.payload
       })
   },
 })
