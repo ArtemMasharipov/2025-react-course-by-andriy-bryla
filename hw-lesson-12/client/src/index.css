@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+html {
+  overflow-y: scroll;
+}
+
+@layer components {
+  /* End of List Animation */
+  .end-of-list {
+    @apply transition-all duration-500;
+  }
+
+  .end-of-list-icon {
+    @apply animate-bounce;
+  }
+}
