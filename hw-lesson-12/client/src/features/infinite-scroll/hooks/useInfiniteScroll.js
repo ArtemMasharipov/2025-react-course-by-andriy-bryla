@@ -1,32 +1,41 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { postApi } from '../../../entities/post'
+import {
+  selectAllPosts,
+  selectPostStatus,
+} from '../../../entities/post/model/selectors'
+import { fetchPostsThunk } from '../../../entities/post/model/thunks'
 
 import {
   selectInfiniteCurrentPage,
   selectInfiniteHasNextPage,
-  selectInfiniteIsLoading,
-  selectInfinitePosts,
+  selectInfiniteStatus,
   selectIsFetchingMore,
 } from '../model/selectors'
 import {
-  addPosts,
   setCurrentPage,
   setError,
   setFetchingMore,
-  setHasNextPage,
   setStatus,
 } from '../model/slice'
 
 export const useInfiniteScroll = () => {
   const dispatch = useDispatch()
-  const posts = useSelector(selectInfinitePosts)
+
+  // Use posts from main entity adapter instead of separate infinite scroll state
+  const posts = useSelector(selectAllPosts)
+  const mainStatus = useSelector(selectPostStatus)
+
   const currentPage = useSelector(selectInfiniteCurrentPage)
   const hasNextPage = useSelector(selectInfiniteHasNextPage)
-  const isLoading = useSelector(selectInfiniteIsLoading)
+  const infiniteStatus = useSelector(selectInfiniteStatus)
   const isFetchingMore = useSelector(selectIsFetchingMore)
+
   const observer = useRef()
+
+  // Combine statuses for loading state
+  const isLoading = mainStatus === 'loading' || infiniteStatus === 'loading'
 
   const fetchPosts = useCallback(
     async page => {
@@ -37,11 +46,8 @@ export const useInfiniteScroll = () => {
           dispatch(setFetchingMore(true))
         }
 
-        const response = await postApi.getPosts({ page, limit: 10 })
-        const { posts: newPosts, pagination } = response
-
-        dispatch(addPosts({ posts: newPosts, page }))
-        dispatch(setHasNextPage(pagination.hasNextPage))
+        // Use the main fetchPostsThunk instead of direct API call
+        await dispatch(fetchPostsThunk({ page, limit: 10 })).unwrap()
 
         if (page === 1) {
           dispatch(setStatus('succeeded'))
@@ -49,9 +55,12 @@ export const useInfiniteScroll = () => {
           dispatch(setFetchingMore(false))
         }
       } catch (error) {
-        dispatch(setError(error.message))
-        dispatch(setStatus('failed'))
-        dispatch(setFetchingMore(false))
+        dispatch(setError(error.message || 'Failed to fetch posts'))
+        if (page === 1) {
+          dispatch(setStatus('failed'))
+        } else {
+          dispatch(setFetchingMore(false))
+        }
       }
     },
     [dispatch]
