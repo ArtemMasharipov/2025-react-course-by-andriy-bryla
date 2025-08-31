@@ -1,20 +1,5 @@
 # Posts Management Application
 
-<div align="center">
-
-![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=for-the-badge&logo=react)
-![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2.8.2-764ABC?style=for-the-badge&logo=redux)
-![Express](https://img.shields.io/badge/Express-5.1.0-000000?style=for-the-badge&logo=express)
-![MongoDB](https://img.shields.io/badge/MongoDB-8.16.5-47A248?style=for-the-badge&logo=mongodb)
-![Vite](https://img.shields.io/badge/Vite-7.0+-646CFF?style=for-the-badge&logo=vite)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.12-38B2AC?style=for-the-badge&logo=tailwind-css)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-</div>
-
----
-
 ## Overview
 
 Professional full-stack application for posts management built with React 19 and Node.js. Features advanced state management, performance optimizations, and modern architectural patterns.
