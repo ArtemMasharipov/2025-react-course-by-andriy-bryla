@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constants'
-import { InfiniteScrollList } from '@/features/infinite-scroll'
 
 import { setViewMode } from '../model/slice'
-import { PaginatedPostList } from './PaginatedPostList'
+import { PostList } from './PostList'
 import { PostTabs } from './PostTabs'
 
 const PostsManager = () => {
@@ -23,25 +22,26 @@ const PostsManager = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-0">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-emerald-900 mb-2">Posts Manager</h1>
-        <p className="text-emerald-600">Manage your posts with different viewing options</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-emerald-900 mb-2">Posts Manager</h1>
+        <p className="text-emerald-600 text-sm sm:text-base">Manage your posts with different viewing options</p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-emerald-200 p-6">
-        <div className="flex justify-between items-center mb-4">
+      <div className="bg-white rounded-lg shadow-sm border border-emerald-200 p-4 sm:p-6">
+        {/* Mobile: Stack tabs and button vertically */}
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
           <PostTabs activeTab={activeTab} onTabChange={handleTabChange} />
           <Link
             to={ROUTES.CREATE_POST}
-            className="px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-md hover:bg-emerald-700 transition-colors"
+            className="w-full sm:w-auto px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-md hover:bg-emerald-700 transition-colors text-center"
           >
             Create Post
           </Link>
         </div>
 
-        <div className="mt-6">
-          {activeTab === 'pagination' ? <PaginatedPostList /> : <InfiniteScrollList />}
+        <div className="mt-4 sm:mt-6">
+          <PostList mode={activeTab} />
         </div>
       </div>
     </div>

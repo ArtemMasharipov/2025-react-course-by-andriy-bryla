@@ -1,252 +1,195 @@
 # Posts Management Application
 
-## Overview
+Full-stack posts management system built with React 19 and Node.js.
 
-Professional full-stack application for posts management built with React 19 and Node.js. Features advanced state management, performance optimizations, and modern architectural patterns.
+## Features
 
-### Key Features
-
-- Advanced State Management with Redux Toolkit & Entity Adapters
-- Feature-Sliced Design (FSD) Architecture
-- Performance Optimization with React.memo and lazy loading
-- RESTful API with comprehensive error handling
-- Responsive UI/UX with modern design system
-- Real-time Updates with optimistic UI patterns
-- Type-Safe Development with ESLint
-
----
+- Posts CRUD operations with pagination and infinite scroll
+- Redux Toolkit state management with Entity Adapters
+- Feature-Sliced Design architecture
+- RESTful API with MongoDB
+- Responsive design with Tailwind CSS
+- Form validation and error handling
 
 ## Technology Stack
 
-### Frontend
+**Frontend:**
+- React 19.1.1
+- Redux Toolkit 2.8.2
+- React Router 7.8.2
+- Tailwind CSS 4.1.12
+- Vite 7.1.2
 
-- **React 19.1.1** - Modern React with latest features
-- **Vite 7.0+** - Fast build tool with HMR
-- **Redux Toolkit 2.8.2** - Modern state management
-- **React Router 7.8.2** - Client-side routing
-- **Tailwind CSS 4.1.12** - Utility-first CSS framework
-- **Axios 1.11.0** - HTTP client with interceptors
-- **ESLint 9.33.0** - Code quality enforcement
-
-### Backend
-
-- **Node.js 18+** - JavaScript runtime
-- **Express 5.1.0** - Web framework for Node.js
-- **MongoDB 8.16.5** - NoSQL database with Mongoose ODM
-- **Express Validator 7.2.1** - Data validation and sanitization
-- **CORS 2.8.5** - Cross-Origin Resource Sharing
-
-### Architecture Patterns
-
-- **Feature-Sliced Design (FSD)** - Business domain structuring
-- **Entity Adapters** - Optimized Redux collection management
-- **Custom Hooks** - Component logic reuse
-- **Optimistic Updates** - Enhanced UX for async operations
-- **Path Aliases** - Clean imports with @/ prefix
-
----
+**Backend:**
+- Node.js + Express 5.1.0
+- MongoDB/Mongoose 8.16.5
+- Express Validator 7.2.1
 
 ## Project Structure
 
 ```
 hw-lesson-12/
+├── README.md               # Project documentation
+├── .gitignore              # Git ignore rules
+│
 ├── server/                 # Backend API (Express + MongoDB)
 │   ├── src/
 │   │   ├── index.js        # Server entry point
-│   │   └── v1/
-│   │       ├── controllers/# API controllers
-│   │       ├── models/     # MongoDB models (Mongoose)
-│   │       ├── routes/     # API routes
-│   │       ├── services/   # Business logic
-│   │       ├── utils/      # Utilities (asyncHandler, httpError)
-│   │       └── validators/ # Data validation (express-validator)
-│   ├── config/             # Configuration files
-│   ├── middleware/         # Middleware layer
-│   ├── .env.example        # Environment template
-│   └── package.json        # Dependencies
+│   │   └── v1/             # API version 1
+│   │       ├── controllers/
+│   │       │   └── post.controller.js    # Post route handlers
+│   │       ├── models/
+│   │       │   └── Post.js               # Mongoose Post model
+│   │       ├── routes/
+│   │       │   └── post.routes.js        # Post API routes
+│   │       ├── services/
+│   │       │   └── post.service.js       # Business logic layer
+│   │       ├── utils/
+│   │       │   ├── asyncHandler.js       # Async error wrapper
+│   │       │   └── httpError.js          # HTTP error class
+│   │       └── validators/
+│   │           └── post.schema.js        # Data validation schemas
+│   ├── config/
+│   │   ├── database.js     # MongoDB connection
+│   │   └── default.mjs     # Environment configuration
+│   ├── middleware/
+│   │   └── errorHandler.js # Global error handling
+│   ├── package.json        # Server dependencies
+│   ├── README.md           # Server documentation
+│   └── .gitignore          # Server-specific ignore rules
 │
 └── client/                 # Frontend React App (Vite)
     ├── src/
-    │   ├── app/            # Application core
-    │   │   ├── App.jsx     # Main component
-    │   │   ├── router/     # Routing configuration
-    │   │   └── store/      # Redux store setup
+    │   ├── app/            # Application core layer (FSD)
+    │   │   ├── App.jsx     # Root application component
+    │   │   ├── router/
+    │   │   │   ├── index.jsx           # Router configuration
+    │   │   │   └── routes.constants.js # Route definitions
+    │   │   └── store/
+    │   │       └── index.js            # Redux store setup
     │   ├── entities/       # Business entities (FSD)
-    │   │   └── post/       # Post domain
-    │   │       ├── api/    # API integration
-    │   │       ├── model/  # Business logic
-    │   │       └── ui/     # UI components
-    │   ├── features/       # Application features
-    │   │   ├── infinite-scroll/ # Infinite scroll
-    │   │   ├── pagination/ # Pagination system
-    │   │   └── post-form/  # Post form management
-    │   ├── shared/         # Shared resources
-    │   │   ├── config/     # App configuration
-    │   │   └── ui/         # Reusable components
-    │   ├── layouts/        # Page layouts
+    │   │   └── post/       # Post domain entity
+    │   │       ├── api/
+    │   │       │   └── postApi.js      # API integration layer
+    │   │       ├── model/
+    │   │       │   ├── selectors.js    # Redux selectors
+    │   │       │   ├── slice.js        # Redux slice + entity adapter
+    │   │       │   └── thunks.js       # Async thunks
+    │   │       ├── ui/
+    │   │       │   ├── PostCard.jsx    # Post display component
+    │   │       │   ├── PostForm.jsx    # Post creation/editing
+    │   │       │   ├── PostList.jsx    # Posts list with pagination
+    │   │       │   ├── PostsManager.jsx # Main posts management
+    │   │       │   └── PostTabs.jsx    # View mode switcher
+    │   │       └── index.js            # Entity public API
+    │   ├── features/       # Application features (FSD)
+    │   │   ├── infinite-scroll/
+    │   │   │   ├── hooks/
+    │   │   │   │   └── useInfiniteScroll.js # Infinite scroll logic
+    │   │   │   ├── model/
+    │   │   │   │   ├── selectors.js    # Feature selectors
+    │   │   │   │   └── slice.js        # Feature state
+    │   │   │   ├── ui/
+    │   │   │   │   └── InfiniteScrollList.jsx # Scroll component
+    │   │   │   └── index.js            # Feature public API
+    │   │   ├── pagination/
+    │   │   │   ├── hooks/
+    │   │   │   │   └── usePagination.js # Pagination logic
+    │   │   │   ├── model/
+    │   │   │   │   ├── selectors.js    # Pagination selectors
+    │   │   │   │   ├── slice.js        # Pagination state
+    │   │   │   │   └── thunks.js       # Pagination thunks
+    │   │   │   ├── ui/
+    │   │   │   │   └── Pagination.jsx  # Pagination controls
+    │   │   │   └── index.js            # Feature public API
+    │   │   └── post-form/
+    │   │       ├── model/
+    │   │       │   └── slice.js        # Form state management
+    │   │       ├── ui/
+    │   │       │   └── PostForm.jsx    # Form component
+    │   │       └── index.js            # Feature public API
+    │   ├── shared/         # Shared resources (FSD)
+    │   │   ├── config/
+    │   │   │   └── api.js              # API configuration
+    │   │   ├── hooks/
+    │   │   │   └── usePosts.js         # Reusable posts hook
+    │   │   ├── ui/
+    │   │   │   ├── LoadingRowSkeleton.jsx   # Loading skeleton
+    │   │   │   ├── PageBoundaryBadge.jsx    # Page separator
+    │   │   │   ├── PostListSkeleton.jsx     # Posts skeleton
+    │   │   │   └── ProgressBar.jsx          # Loading indicator
+    │   │   └── index.js                # Shared exports
+    │   ├── layouts/        # Layout components
+    │   │   └── MainLayout.jsx          # Main app layout
     │   ├── pages/          # Application pages
+    │   │   ├── HomePage.jsx            # Landing page
+    │   │   ├── PostFormPage.jsx        # Create/edit post page
+    │   │   └── PostsPage.jsx           # Posts listing page
     │   ├── widgets/        # Complex UI widgets
-    │   ├── main.jsx        # Entry point
-    │   └── index.css       # Global styles
-    ├── .env.example        # Environment variables
-    ├── package.json        # Dependencies
-    ├── vite.config.js      # Vite configuration
-    ├── tailwind.config.js  # Tailwind config
+    │   │   ├── Breadcrumbs.jsx         # Navigation breadcrumbs
+    │   │   ├── Navbar.jsx              # Main navigation
+    │   │   ├── MobileDrawer/           # Mobile navigation
+    │   │   │   ├── MobileDrawer.jsx    # Drawer component
+    │   │   │   ├── MobileMenuButton.jsx # Toggle button
+    │   │   │   └── index.js            # Widget exports
+    │   │   └── index.js                # Widgets exports
+    │   ├── main.jsx        # Application entry point
+    │   └── index.css       # Global styles + Tailwind
+    ├── package.json        # Client dependencies & scripts
+    ├── vite.config.js      # Vite configuration + path aliases
+    ├── tailwind.config.js  # Tailwind CSS configuration
+    ├── eslint.config.js    # ESLint configuration
+    ├── vercel.json         # Vercel deployment config
     └── index.html          # HTML template
 ```
 
----
-
 ## Quick Start
 
-### Prerequisites
+**Prerequisites:** Node.js 18+, MongoDB
 
-- Node.js 18+
-- MongoDB 4.0+
-- npm 8.0+
-
-### Installation
-
+**Installation:**
 ```bash
-# Clone repository
 git clone https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla.git
-cd hw-lesson-12
+cd 2025-react-course-by-andriy-bryla/hw-lesson-12
 
-# Install dependencies
-npm run install:all
+# Server
+cd server && npm install && npm run dev
 
-# Configure environment
-cp server/.env.example server/.env
-cp client/.env.example client/.env
-
-# Start development servers
-npm run dev
+# Client (new terminal)
+cd client && npm install && npm run dev
 ```
 
-### Access Points
+**Access:**
+- Frontend: http://localhost:5173
+- Backend: http://localhost:4000
 
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:4000
+## API Endpoints
 
----
-
-## Core Functionality
-
-### Posts Management
-
-| Feature                                  | Status |
-| ---------------------------------------- | ------ |
-| View Posts (paginated & infinite scroll) | ✅     |
-| Create Posts (with validation)           | ✅     |
-| Edit Posts (optimistic updates)          | ✅     |
-| Delete Posts (confirmation dialogs)      | ✅     |
-| Search & Filter                          | ✅     |
-| Responsive Design                        | ✅     |
-
-### User Experience
-
-| Feature                       | Status |
-| ----------------------------- | ------ |
-| Modern Design (Emerald theme) | ✅     |
-| Navigation (sticky navbar)    | ✅     |
-| Loading States (skeletons)    | ✅     |
-| Error Handling (boundaries)   | ✅     |
-| Form Validation               | ✅     |
-| Accessibility (ARIA)          | ✅     |
-| Performance (memoization)     | ✅     |
-
----
-
-## API Reference
-
-### Endpoints
-
-```http
-GET    /api/v1/posts           # Get all posts (paginated)
+```
+GET    /api/v1/posts           # Get posts (paginated)
+POST   /api/v1/posts           # Create post
 GET    /api/v1/posts/:id       # Get single post
-POST   /api/v1/posts           # Create new post
-PUT    /api/v1/posts/:id       # Update existing post
+PUT    /api/v1/posts/:id       # Update post
 DELETE /api/v1/posts/:id       # Delete post
 ```
 
-### Response Format
+## Development
 
-```json
-{
-  "success": true,
-  "data": {
-    "posts": [...],
-    "pagination": {
-      "page": 1,
-      "limit": 10,
-      "total": 100,
-      "pages": 10
-    }
-  },
-  "message": "Posts retrieved successfully"
-}
-```
-
----
-
-## Development Scripts
-
-### Root Scripts
-
+**Server:**
 ```bash
-npm run dev              # Start both frontend and backend
-npm run install:all      # Install all dependencies
-npm run build            # Build for production
-npm run lint             # Run linting
+cd server
+npm run dev    # Development with nodemon
+npm start      # Production
 ```
 
-### Client Scripts
-
+**Client:**
 ```bash
-npm run dev              # Development server with HMR
-npm run build            # Production build
-npm run preview          # Preview production build
-npm run lint             # ESLint checks
-```
-
-### Server Scripts
-
-```bash
-npm run dev              # Development with nodemon
-npm run start            # Production server
-npm run seed             # Seed database
+cd client
+npm run dev    # Development server
+npm run build  # Production build
+npm run lint   # Code linting
 ```
 
 ---
 
-## Performance Metrics
-
-| Metric                 | Target  | Status |
-| ---------------------- | ------- | ------ |
-| Initial Bundle Size    | < 200KB | ✅     |
-| First Contentful Paint | < 1.5s  | ✅     |
-| Time to Interactive    | < 2.5s  | ✅     |
-| Lighthouse Score       | > 90    | ✅     |
-
----
-
-## Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
----
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-**Course**: React JS by Andriy Bryla (2025)
-**Lesson**: 12 - Advanced Architecture & Performance
-**Student**: Artem Masharipov
-**Repository**: https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla
+**Course:** React JS by Andriy Bryla (2025) | **Lesson:** 12

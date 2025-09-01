@@ -1,7 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
 
-import { REQUEST_STATUS } from '../../../shared/config/api'
-
 import {
   addPostThunk,
   deletePostThunk,
@@ -10,156 +8,237 @@ import {
   updatePostThunk,
 } from './thunks'
 
-const postAdapter = createEntityAdapter({
+const postsAdapter = createEntityAdapter({
   selectId: post => post._id,
   sortComparer: (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
 })
 
-const initialState = postAdapter.getInitialState({
-  status: REQUEST_STATUS.IDLE,
-  error: null,
-  viewMode: 'infinite',
+const initialState = postsAdapter.getInitialState({
+  loading: {
+    fetch: false,
+    add: false,
+    update: false,
+    delete: false,
+  },
   pagination: {
     currentPage: 1,
     totalPages: 1,
+    itemsPerPage: 10,
     totalItems: 0,
     hasNextPage: false,
+    hasPrevPage: false,
   },
-  accumulatedPosts: [],
-  addStatus: REQUEST_STATUS.IDLE,
-  addError: null,
-  updateStatus: REQUEST_STATUS.IDLE,
-  updateError: null,
-  deleteStatus: REQUEST_STATUS.IDLE,
-  deleteError: null,
+  ui: {
+    viewMode: 'pagination',
+    pageMarkers: [],
+    isLoadingMore: false,
+    isLoadingPage: false,
+  },
+  errors: {
+    fetch: null,
+    add: null,
+    update: null,
+    delete: null,
+  },
 })
 
-const postSlice = createSlice({
-  name: 'post',
+const postsSlice = createSlice({
+  name: 'posts',
   initialState,
   reducers: {
+    // Loading states
+    setFetchLoading: (state, action) => {
+      state.loading.fetch = action.payload
+    },
+    setLoadingMore: (state, action) => {
+      state.ui.isLoadingMore = action.payload
+    },
+    setLoadingPage: (state, action) => {
+      state.ui.isLoadingPage = action.payload
+    },
+
+    // Pagination
+    setPagination: (state, action) => {
+      const { currentPage, totalPages, totalItems, itemsPerPage } =
+        action.payload
+      state.pagination = {
+        currentPage: currentPage || state.pagination.currentPage,
+        totalPages: totalPages || state.pagination.totalPages,
+        totalItems: totalItems || state.pagination.totalItems,
+        itemsPerPage: itemsPerPage || state.pagination.itemsPerPage,
+        hasNextPage: currentPage < totalPages,
+        hasPrevPage: currentPage > 1,
+      }
+    },
+
+    setCurrentPage: (state, action) => {
+      state.pagination.currentPage = action.payload
+      state.pagination.hasNextPage =
+        action.payload < state.pagination.totalPages
+      state.pagination.hasPrevPage = action.payload > 1
+    },
+
+    // View mode
     setViewMode: (state, action) => {
-      state.viewMode = action.payload
+      state.ui.viewMode = action.payload
+      if (action.payload === 'pagination') {
+        state.ui.pageMarkers = []
+      }
     },
+
+    // Page markers for infinite scroll
+    addPageMarker: (state, action) => {
+      const marker = action.payload
+      if (!state.ui.pageMarkers.includes(marker)) {
+        state.ui.pageMarkers.push(marker)
+      }
+    },
+
+    resetPageMarkers: state => {
+      state.ui.pageMarkers = []
+    },
+
+    // Clear states
     clearErrors: state => {
-      state.error = null
-      state.addError = null
-      state.updateError = null
-      state.deleteError = null
+      state.errors = { fetch: null, add: null, update: null, delete: null }
     },
-    resetAddStatus: state => {
-      state.addStatus = REQUEST_STATUS.IDLE
-      state.addError = null
-    },
-    resetUpdateStatus: state => {
-      state.updateStatus = REQUEST_STATUS.IDLE
-      state.updateError = null
-    },
-    resetDeleteStatus: state => {
-      state.deleteStatus = REQUEST_STATUS.IDLE
-      state.deleteError = null
+
+    resetLoadingStates: state => {
+      state.loading = { fetch: false, add: false, update: false, delete: false }
+      state.ui.isLoadingMore = false
+      state.ui.isLoadingPage = false
     },
   },
+
   extraReducers: builder => {
     builder
-      .addCase(fetchPostsThunk.pending, state => {
-        state.status = REQUEST_STATUS.LOADING
-        state.error = null
+      // Fetch posts
+      .addCase(fetchPostsThunk.pending, (state, action) => {
+        const { page = 1 } = action.meta.arg || {}
+        if (page === 1) {
+          state.loading.fetch = true
+        } else {
+          state.ui.isLoadingMore = true
+        }
+        state.errors.fetch = null
       })
       .addCase(fetchPostsThunk.fulfilled, (state, action) => {
-        state.status = REQUEST_STATUS.SUCCEEDED
         const { posts, pagination } = action.payload
+        const { page = 1 } = action.meta.arg || {}
 
-        if (state.viewMode === 'pagination') {
-          // For pagination: always replace all posts with current page
-          postAdapter.setAll(state, posts)
-          state.accumulatedPosts = posts
+        if (state.ui.viewMode === 'pagination' || page === 1) {
+          postsAdapter.setAll(state, posts)
+          if (page === 1) {
+            state.ui.pageMarkers = []
+            // Add marker for first page if we're in infinite mode
+            if (state.ui.viewMode === 'infinite' && posts.length > 0) {
+              state.ui.pageMarkers.push(posts.length - 1)
+            }
+          }
         } else {
-          // For infinite scroll: accumulate posts
-          if (pagination.currentPage === 1) {
-            postAdapter.setAll(state, posts)
-            state.accumulatedPosts = posts
-          } else {
-            postAdapter.addMany(state, posts)
-            state.accumulatedPosts = [...state.accumulatedPosts, ...posts]
+          // Infinite scroll: add new posts
+          const existingIds = new Set(state.ids)
+          const newPosts = posts.filter(post => !existingIds.has(post._id))
+          postsAdapter.addMany(state, newPosts)
+
+          // Add page marker at the end of this page
+          if (newPosts.length > 0) {
+            const pageEndIndex = state.ids.length - 1
+            state.ui.pageMarkers.push(pageEndIndex)
           }
         }
 
-        state.pagination = pagination
+        state.pagination = {
+          currentPage: pagination.currentPage,
+          totalPages: pagination.totalPages,
+          totalItems: pagination.total,
+          itemsPerPage: pagination.limit || 10,
+          hasNextPage: pagination.hasNextPage,
+          hasPrevPage: pagination.hasPrevPage,
+        }
+
+        state.loading.fetch = false
+        state.ui.isLoadingMore = false
+        state.ui.isLoadingPage = false
       })
       .addCase(fetchPostsThunk.rejected, (state, action) => {
-        state.status = REQUEST_STATUS.FAILED
-        state.error = action.payload
+        state.loading.fetch = false
+        state.ui.isLoadingMore = false
+        state.ui.isLoadingPage = false
+        state.errors.fetch = action.payload
       })
+
+      // Add post
       .addCase(addPostThunk.pending, state => {
-        state.addStatus = REQUEST_STATUS.LOADING
-        state.addError = null
+        state.loading.add = true
+        state.errors.add = null
       })
       .addCase(addPostThunk.fulfilled, (state, action) => {
-        state.addStatus = REQUEST_STATUS.SUCCEEDED
-        postAdapter.addOne(state, action.payload)
-        state.accumulatedPosts.unshift(action.payload)
+        postsAdapter.addOne(state, action.payload)
+        state.loading.add = false
+        // Update total items count
+        state.pagination.totalItems += 1
       })
       .addCase(addPostThunk.rejected, (state, action) => {
-        state.addStatus = REQUEST_STATUS.FAILED
-        state.addError = action.payload
+        state.loading.add = false
+        state.errors.add = action.payload
       })
+
+      // Update post
       .addCase(updatePostThunk.pending, state => {
-        state.updateStatus = REQUEST_STATUS.LOADING
-        state.updateError = null
+        state.loading.update = true
+        state.errors.update = null
       })
       .addCase(updatePostThunk.fulfilled, (state, action) => {
-        state.updateStatus = REQUEST_STATUS.SUCCEEDED
-        postAdapter.updateOne(state, {
+        postsAdapter.updateOne(state, {
           id: action.payload._id,
           changes: action.payload,
         })
-
-        const index = state.accumulatedPosts.findIndex(
-          p => p._id === action.payload._id
-        )
-        if (index !== -1) {
-          state.accumulatedPosts[index] = action.payload
-        }
+        state.loading.update = false
       })
       .addCase(updatePostThunk.rejected, (state, action) => {
-        state.updateStatus = REQUEST_STATUS.FAILED
-        state.updateError = action.payload
+        state.loading.update = false
+        state.errors.update = action.payload
       })
+
+      // Delete post
       .addCase(deletePostThunk.pending, state => {
-        state.deleteStatus = REQUEST_STATUS.LOADING
-        state.deleteError = null
+        state.loading.delete = true
+        state.errors.delete = null
       })
       .addCase(deletePostThunk.fulfilled, (state, action) => {
-        state.deleteStatus = REQUEST_STATUS.SUCCEEDED
-        postAdapter.removeOne(state, action.payload)
-        state.accumulatedPosts = state.accumulatedPosts.filter(
-          p => p._id !== action.payload
+        postsAdapter.removeOne(state, action.payload)
+        state.loading.delete = false
+        // Update total items count
+        state.pagination.totalItems = Math.max(
+          0,
+          state.pagination.totalItems - 1
         )
       })
       .addCase(deletePostThunk.rejected, (state, action) => {
-        state.deleteStatus = REQUEST_STATUS.FAILED
-        state.deleteError = action.payload
+        state.loading.delete = false
+        state.errors.delete = action.payload
       })
+
+      // Fetch post by ID
       .addCase(fetchPostByIdThunk.fulfilled, (state, action) => {
-        postAdapter.upsertOne(state, action.payload)
-        // Also add to accumulatedPosts if not already there
-        const exists = state.accumulatedPosts.find(
-          p => p._id === action.payload._id
-        )
-        if (!exists) {
-          state.accumulatedPosts.push(action.payload)
-        }
+        postsAdapter.upsertOne(state, action.payload)
       })
   },
 })
 
 export const {
+  setFetchLoading,
+  setLoadingMore,
+  setLoadingPage,
+  setPagination,
+  setCurrentPage,
   setViewMode,
+  addPageMarker,
+  resetPageMarkers,
   clearErrors,
-  resetAddStatus,
-  resetUpdateStatus,
-  resetDeleteStatus,
-} = postSlice.actions
-export { postAdapter }
-export default postSlice.reducer
+  resetLoadingStates,
+} = postsSlice.actions
+
+export { postsAdapter }
+export default postsSlice.reducer
