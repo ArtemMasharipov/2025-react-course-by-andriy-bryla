@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  @apply bg-gray-50;
+}
+
+@layer components {
+  /* Mobile optimizations */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .mobile-full-width {
+    @apply w-full sm:w-auto;
+  }
+
+  /* Remove outer margins on mobile */
+  @media (max-width: 640px) {
+    .container {
+      @apply px-0 mx-0 w-full;
+    }
+  }
+
+  /* End of List Animation */
+  .end-of-list {
+    @apply transition-all duration-500;
+  }
+
+  .end-of-list-icon {
+    @apply animate-bounce;
+  }
+}
