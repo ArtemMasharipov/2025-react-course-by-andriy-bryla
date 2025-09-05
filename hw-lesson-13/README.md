@@ -1,22 +1,23 @@
-# Posts Management Application - RTK Query
+# Posts Management Application - RTK Query Integration
 
-Full-stack posts management system built with React 19 and Node.js.
+Advanced full-stack posts management system showcasing RTK Query for efficient data fetching and caching.
 
-## Features
+## Key Features
 
-- Posts CRUD operations with pagination and infinite scroll
-- Redux Toolkit state management with Entity Adapters
-- Feature-Sliced Design architecture
-- RESTful API with MongoDB
-- Responsive design with Tailwind CSS
-- Form validation and error handling
+- **RTK Query Integration**: Automatic caching, background refetching, and data synchronization
+- **Infinite Scroll**: Seamless post loading with Intersection Observer API
+- **Dual View Modes**: Toggle between pagination and infinite scroll
+- **Optimistic Updates**: Real-time UI updates with automatic cache invalidation
+- **Scroll-to-Top**: Enhanced UX with smooth scrolling functionality
+- **Feature-Sliced Design**: Modern architecture with clean separation of concerns
+- **Responsive Design**: Mobile-first approach with Tailwind CSS 4.x
 
 ## Technology Stack
 
 **Frontend:**
 
 - React 19.1.1
-- Redux Toolkit 2.8.2
+- **RTK Query 2.8.2** (instead of traditional Redux Toolkit slices)
 - React Router 7.8.2
 - Tailwind CSS 4.1.12
 - Vite 7.1.2
@@ -30,7 +31,7 @@ Full-stack posts management system built with React 19 and Node.js.
 ## Project Structure
 
 ```
-hw-lesson-12/
+hw-lesson-13/
 ├── README.md               # Project documentation
 ├── .gitignore              # Git ignore rules
 │
@@ -68,58 +69,30 @@ hw-lesson-12/
     │   │   │   ├── index.jsx           # Router configuration
     │   │   │   └── routes.constants.js # Route definitions
     │   │   └── store/
-    │   │       └── index.js            # Redux store setup
+    │   │       └── index.js            # RTK Query store setup
     │   ├── entities/       # Business entities (FSD)
     │   │   └── post/       # Post domain entity
     │   │       ├── api/
-    │   │       │   └── postApi.js      # API integration layer
-    │   │       ├── model/
-    │   │       │   ├── selectors.js    # Redux selectors
-    │   │       │   ├── slice.js        # Redux slice + entity adapter
-    │   │       │   └── thunks.js       # Async thunks
+    │   │       │   └── postsApi.js     # RTK Query API slice
     │   │       ├── ui/
     │   │       │   ├── PostCard.jsx    # Post display component
     │   │       │   ├── PostForm.jsx    # Post creation/editing
-    │   │       │   ├── PostList.jsx    # Posts list with pagination
+    │   │       │   ├── PostList/       # Posts list components
+    │   │       │   │   ├── PostList.jsx # Main posts list with modes
+    │   │       │   │   ├── components/
+    │   │       │   │   │   └── PaginationControls.jsx # Extracted pagination
+    │   │       │   │   └── index.js    # Component exports
     │   │       │   ├── PostsManager.jsx # Main posts management
     │   │       │   └── PostTabs.jsx    # View mode switcher
     │   │       └── index.js            # Entity public API
-    │   ├── features/       # Application features (FSD)
-    │   │   ├── infinite-scroll/
-    │   │   │   ├── hooks/
-    │   │   │   │   └── useInfiniteScroll.js # Infinite scroll logic
-    │   │   │   ├── model/
-    │   │   │   │   ├── selectors.js    # Feature selectors
-    │   │   │   │   └── slice.js        # Feature state
-    │   │   │   ├── ui/
-    │   │   │   │   └── InfiniteScrollList.jsx # Scroll component
-    │   │   │   └── index.js            # Feature public API
-    │   │   ├── pagination/
-    │   │   │   ├── hooks/
-    │   │   │   │   └── usePagination.js # Pagination logic
-    │   │   │   ├── model/
-    │   │   │   │   ├── selectors.js    # Pagination selectors
-    │   │   │   │   ├── slice.js        # Pagination state
-    │   │   │   │   └── thunks.js       # Pagination thunks
-    │   │   │   ├── ui/
-    │   │   │   │   └── Pagination.jsx  # Pagination controls
-    │   │   │   └── index.js            # Feature public API
-    │   │   └── post-form/
-    │   │       ├── model/
-    │   │       │   └── slice.js        # Form state management
-    │   │       ├── ui/
-    │   │       │   └── PostForm.jsx    # Form component
-    │   │       └── index.js            # Feature public API
     │   ├── shared/         # Shared resources (FSD)
-    │   │   ├── config/
-    │   │   │   └── api.js              # API configuration
+    │   │   ├── api/
+    │   │   │   └── baseApi.js          # RTK Query base API
     │   │   ├── hooks/
-    │   │   │   └── usePosts.js         # Reusable posts hook
+    │   │   │   ├── useInfiniteScrollQuery.js # Infinite scroll hook
+    │   │   │   └── usePostsQuery.js    # Posts query hook
     │   │   ├── ui/
-    │   │   │   ├── LoadingRowSkeleton.jsx   # Loading skeleton
-    │   │   │   ├── PageBoundaryBadge.jsx    # Page separator
-    │   │   │   ├── PostListSkeleton.jsx     # Posts skeleton
-    │   │   │   └── ProgressBar.jsx          # Loading indicator
+    │   │   │   └── PostListSkeleton.jsx # Loading skeleton
     │   │   └── index.js                # Shared exports
     │   ├── layouts/        # Layout components
     │   │   └── MainLayout.jsx          # Main app layout
@@ -153,7 +126,7 @@ hw-lesson-12/
 
 ```bash
 git clone https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla.git
-cd 2025-react-course-by-andriy-bryla/hw-lesson-12
+cd 2025-react-course-by-andriy-bryla/hw-lesson-13
 
 # Server
 cd server && npm install && npm run dev
@@ -167,7 +140,29 @@ cd client && npm install && npm run dev
 - Frontend: http://localhost:5173
 - Backend: http://localhost:4000
 
-## API Endpoints
+## RTK Query Implementation
+
+### Key Features
+
+**Automatic Caching:**
+
+- Smart caching with automatic background refetching
+- Cache invalidation on mutations (create, update, delete)
+- Optimistic updates for better UX
+
+**Infinite Scroll:**
+
+- Intersection Observer API for efficient scroll detection
+- Automatic data fetching as user scrolls
+- Scroll-to-top functionality for enhanced navigation
+
+**Component Architecture:**
+
+- Extracted `PaginationControls` for modularity
+- Clean separation between pagination and infinite scroll modes
+- Feature-Sliced Design with RTK Query integration
+
+### API Endpoints
 
 ```
 GET    /api/v1/posts           # Get posts (paginated)
@@ -198,4 +193,11 @@ npm run lint   # Code linting
 
 ---
 
-**Course:** React JS by Andriy Bryla (2025) | **Lesson:** 13
+**Course:** React JS by Andriy Bryla (2025) | **Lesson:** 13 - RTK Query Integration
+
+**Key Learning Outcomes:**
+
+- RTK Query for efficient data management
+- Intersection Observer API for infinite scroll
+- Component extraction and modular design
+- Performance optimization with automatic caching
