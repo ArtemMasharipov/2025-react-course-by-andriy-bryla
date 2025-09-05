@@ -1,4 +1,4 @@
-import { PostListSkeleton } from '@/shared'
+import { Loading, PostListSkeleton } from '@/shared'
 import { useInfiniteScrollQuery } from '@/shared/hooks/useInfiniteScrollQuery'
 import { usePostsQuery } from '@/shared/hooks/usePostsQuery'
 import { PostCard } from '../PostCard'
@@ -59,16 +59,15 @@ export const PostList = ({ mode = 'pagination' }) => {
   if (!data.posts?.length) return <EmptyState />
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 post-list-container scroll-container">
       {mode === 'pagination' && data.isFetching && (
-        <div className="text-center py-2">
-          <div className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-emerald-600"></div>
-          <span className="ml-2 text-sm text-emerald-600">Loading...</span>
-        </div>
+        <Loading size="sm" text="Loading..." className="py-2" />
       )}
 
       {mode === 'pagination' && data.isFetching ? (
-        <PostListSkeleton count={5} />
+        <div className="loading-skeleton">
+          <PostListSkeleton count={5} />
+        </div>
       ) : (
         <div className="space-y-4">
           {data.posts.map(post => (
@@ -79,20 +78,17 @@ export const PostList = ({ mode = 'pagination' }) => {
 
       {mode === 'infinite' && (
         <>
-          {data.isLoadingMore && (
-            <div className="space-y-4">
-              <div className="text-center py-4">
-                <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-emerald-600"></div>
-                <p className="text-emerald-600 mt-2">Loading more...</p>
-              </div>
-              <PostListSkeleton count={3} />
-            </div>
-          )}
-
-          {data.pagination.hasNextPage && !data.isLoadingMore && (
-            <div ref={data.triggerRef} className="text-center py-4">
-              <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-emerald-600"></div>
-              <p className="text-emerald-600 mt-2">Loading more...</p>
+          {data.pagination.hasNextPage && (
+            <div
+              ref={data.triggerRef}
+              className="py-6 transition-opacity duration-300"
+            >
+              {data.isLoadingMore && (
+                <>
+                  <Loading text="Loading more posts..." className="pb-4" />
+                  <PostListSkeleton count={2} />
+                </>
+              )}
             </div>
           )}
 

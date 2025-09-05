@@ -25,6 +25,27 @@ body {
     }
   }
 
+  /* Smooth scroll optimizations for mobile */
+  .scroll-container {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Infinite scroll optimizations */
+  .infinite-scroll-trigger {
+    @apply transition-all duration-300;
+    min-height: 100px;
+  }
+
+  .loading-skeleton {
+    @apply transition-opacity duration-300;
+  }
+
+  /* Prevent layout shifts during loading */
+  .post-list-container {
+    contain: layout style paint;
+  }
+
   /* End of List Animation */
   .end-of-list {
     @apply transition-all duration-500;
