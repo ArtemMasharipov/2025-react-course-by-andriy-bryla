@@ -1,0 +1,6 @@
+export { postsApi } from './api/postsApi'
+export { PostCard } from './ui/PostCard'
+export { PostForm } from './ui/PostForm'
+export { PostList } from './ui/PostList'
+export { default as PostsManager } from './ui/PostsManager'
+export { PostTabs } from './ui/PostTabs'

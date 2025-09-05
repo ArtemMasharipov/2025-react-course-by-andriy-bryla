@@ -18,6 +18,7 @@ This repository contains all homework assignments from the React JS course by An
 | Lesson 10 | Travel Planner with Context API                           | React 19, Vite 7, Tailwind CSS 4.x, React Router 7                 | :globe_with_meridians: [View Demo](https://hw-lesson-10.vercel.app/)                                                     |
 | Lesson 11 | Products Management App (Redux Toolkit & Performance)     | React 19 + Redux Toolkit, Vite 7, Tailwind CSS 4.x, React Router 7 | :globe_with_meridians: [View Demo](https://hw-lesson-11-rtk-seven.vercel.app/)                                           |
 | Lesson 12 | Posts Management App (Feature-Sliced Design & Full-Stack) | React 19 + Redux Toolkit, Express 5, MongoDB, FSD Architecture     | :globe_with_meridians: [View Demo](https://hw-lesson-12.vercel.app/)                                                     |
+| Lesson 13 | RTK Query Integration (Posts Management) | React 19 + RTK Query, Express 5, MongoDB, FSD Architecture | :globe_with_meridians: [View Demo](https://hw-lesson-13.vercel.app/) |
 
 ## Current Progress
 
@@ -195,6 +196,17 @@ Each homework assignment is in its own folder:
 
 ### Homework 12
 
+### Homework 13
+
+- **Frontend:** React 19, RTK Query, React Router 7, Tailwind CSS 4.x
+- **Backend:** Node.js, Express 5, MongoDB, Mongoose
+- **Build Tool:** Vite 7.0+
+- **Architecture:** Feature-Sliced Design (FSD) with path aliases (@/)
+- **State Management:** RTK Query for data fetching, caching, and synchronization
+- **Performance:** Automatic caching, background refetching, optimistic updates
+- **API:** RTK Query with automatic cache invalidation and data normalization
+- **Features:** Infinite scroll, pagination, scroll-to-top, real-time data sync
+
 - **Frontend:** React 19, Redux Toolkit, React Router 7, Tailwind CSS 4.x
 - **Backend:** Node.js, Express 5, MongoDB, Mongoose
 - **Build Tool:** Vite 7.0+
@@ -208,7 +220,7 @@ Each homework assignment is in its own folder:
 
 This repository tracks my progress through the React JS course by Andriy Bryla. Each lesson builds upon previous concepts, gradually introducing more complex React patterns and best practices.
 
-**Course Status:** ✅ **COMPLETED** (12 lessons finished)
+**Course Status:** ✅ **COMPLETED** (13 lessons finished)
 **Final Project:** Posts Management App with Feature-Sliced Design architecture
 **Technologies Mastered:** React 19, Redux Toolkit, Express 5, MongoDB, FSD Architecture
 
