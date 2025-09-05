@@ -1,3 +1,6 @@
+
+---
+
 ```markdown
 # Posts Management Application – RTK Query
 
@@ -132,4 +135,6 @@ npm run lint   # ESLint checks
 **Student:** Artem Masharipov
 
 ```
+
+---
 ```
