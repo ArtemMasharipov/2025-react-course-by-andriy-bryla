@@ -1,6 +1,3 @@
-
----
-
 ```markdown
 # Posts Management Application – RTK Query
 
@@ -9,12 +6,12 @@ Implements **RTK Query** for efficient data fetching, caching, and synchronizati
 
 ## Features
 
-- Posts CRUD operations with pagination and infinite scroll
-- RTK Query for data fetching, caching, and invalidation
-- Feature-Sliced Design architecture for maintainability and scalability
-- RESTful API with MongoDB and validation
-- Responsive UI with Tailwind CSS
-- Optimistic updates, background refetching, and error handling
+- Posts CRUD operations with pagination and infinite scroll  
+- RTK Query for data fetching, caching, and invalidation  
+- Feature-Sliced Design architecture for maintainability and scalability  
+- RESTful API with MongoDB and validation  
+- Responsive UI with Tailwind CSS  
+- Optimistic updates, background refetching, and error handling  
 
 ## Technology Stack
 
@@ -40,40 +37,40 @@ hw-lesson-13/
 ├── README.md
 ├── .gitignore
 │
-├── server/                 # Backend API (Express + MongoDB)
+├── server/
 │   ├── src/
-│   │   ├── index.js        # Server entry point
-│   │   └── v1/             # API v1
-│   │       ├── controllers/    # Route handlers
-│   │       ├── models/         # Mongoose schemas
-│   │       ├── routes/         # Express routes
-│   │       ├── services/       # Business logic layer
-│   │       ├── utils/          # Helpers (async wrapper, errors)
-│   │       └── validators/     # Validation schemas
-│   ├── config/             # DB + environment config
-│   ├── middleware/         # Global error handling
+│   │   ├── index.js
+│   │   └── v1/
+│   │       ├── controllers/
+│   │       ├── models/
+│   │       ├── routes/
+│   │       ├── services/
+│   │       ├── utils/
+│   │       └── validators/
+│   ├── config/
+│   ├── middleware/
 │   └── package.json
 │
-└── client/                 # Frontend React app (Vite + FSD)
+└── client/
 ├── src/
-│   ├── app/            # Core (router, store, entry point)
-│   ├── entities/       # Domain entities (posts, etc.)
+│   ├── app/
+│   ├── entities/
 │   │   └── post/
 │   │       ├── api/
-│   │       │   └── postApi.js        # RTK Query API slice
+│   │       │   └── postApi.js
 │   │       ├── model/
-│   │       │   └── selectors.js      # Entity selectors
-│   │       └── ui/                   # Post UI components
-│   ├── features/       # Features (pagination, infinite scroll)
+│   │       │   └── selectors.js
+│   │       └── ui/
+│   ├── features/
 │   │   ├── infinite-scroll/
 │   │   └── pagination/
-│   ├── shared/         # Shared UI, hooks, config
-│   ├── layouts/        # Application layouts
-│   ├── pages/          # Page-level components
-│   ├── widgets/        # UI widgets (navbar, drawers, breadcrumbs)
-│   ├── main.jsx        # App entry
-│   └── index.css       # Tailwind global styles
-├── vite.config.js      # Vite config + path aliases
+│   ├── shared/
+│   ├── layouts/
+│   ├── pages/
+│   ├── widgets/
+│   ├── main.jsx
+│   └── index.css
+├── vite.config.js
 ├── tailwind.config.js
 └── package.json
 
@@ -128,6 +125,13 @@ npm run build  # Production build
 npm run lint   # ESLint checks
 ```
 
+## Comparison with Lesson 12
+
+* **Lesson 12**: Implemented posts management using **Redux Toolkit slices** with entity adapters and async thunks. Data fetching was handled manually with Axios, and caching or invalidation logic had to be written explicitly.
+* **Lesson 13**: Migrated to **RTK Query**, which introduced declarative data fetching, automatic caching, invalidation, background refetching, and optimistic updates. This reduced boilerplate code and improved maintainability.
+
+This evolution demonstrates a clear progression from traditional Redux data management to **modern RTK Query patterns**, aligning with current best practices in React development.
+
 ---
 
 **Course:** React JS by Andriy Bryla (2025)
@@ -135,6 +139,4 @@ npm run lint   # ESLint checks
 **Student:** Artem Masharipov
 
 ```
-
----
 ```
