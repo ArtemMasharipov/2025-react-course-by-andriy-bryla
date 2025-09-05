@@ -82,6 +82,7 @@ export const PostList = ({ mode = 'pagination' }) => {
             <div
               ref={data.triggerRef}
               className="py-6 transition-opacity duration-300"
+              style={{ minHeight: '80px' }}
             >
               {data.isLoadingMore && (
                 <>

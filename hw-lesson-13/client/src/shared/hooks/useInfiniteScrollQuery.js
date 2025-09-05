@@ -26,26 +26,30 @@ export const useInfiniteScrollQuery = (limit = 10) => {
           ]
     )
 
-    // Убираем загрузку с небольшой задержкой для плавности
+    // Убираем загрузку с задержкой для плавности
     if (isLoadingMore && !isFetching) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setIsLoadingMore(false)
         requestInProgress.current = false
-      }, 500)
+      }, 300) // Уменьшили задержку
+      
+      return () => clearTimeout(timer)
     }
   }, [data, page, isLoadingMore, isFetching])
 
   const triggerRef = useCallback(
     node => {
-      if (!node || isLoadingMore || requestInProgress.current) return
+      if (!node) return
 
       observer.current?.disconnect()
       observer.current = new IntersectionObserver(
         entries => {
+          const [entry] = entries
           if (
-            entries[0].isIntersecting &&
+            entry.isIntersecting &&
             data?.pagination?.hasNextPage &&
-            !requestInProgress.current
+            !requestInProgress.current &&
+            !isLoadingMore
           ) {
             // Дебаунс для предотвращения множественных запросов
             if (debounceTimer.current) {
@@ -53,24 +57,24 @@ export const useInfiniteScrollQuery = (limit = 10) => {
             }
 
             debounceTimer.current = setTimeout(() => {
-              if (!requestInProgress.current) {
+              if (!requestInProgress.current && !isLoadingMore) {
                 requestInProgress.current = true
                 setIsLoadingMore(true)
                 setPage(p => p + 1)
               }
-            }, 100) // Уменьшенный дебаунс для быстрой реакции
+            }, 200) // Увеличенный дебаунс для стабильности
           }
         },
         {
-          // Триггер срабатывает когда элемент на 50% появляется в области видимости
-          rootMargin: '50px 0px',
-          threshold: 0.5,
+          // Более консервативные настройки для предотвращения дерганья
+          rootMargin: '100px 0px',
+          threshold: 0.1,
         }
       )
 
       observer.current.observe(node)
     },
-    [isLoadingMore, data?.pagination?.hasNextPage]
+    [data?.pagination?.hasNextPage, isLoadingMore] // Возвращаем необходимые зависимости
   )
 
   // Очистка таймеров при размонтировании
@@ -87,7 +91,7 @@ export const useInfiniteScrollQuery = (limit = 10) => {
     posts: allPosts,
     pagination: data?.pagination || {},
     isLoading: isLoading && page === 1,
-    isLoadingMore: isLoadingMore && isFetching,
+    isLoadingMore: isLoadingMore || (requestInProgress.current && isFetching),
     error,
     triggerRef,
     reset: () => {
