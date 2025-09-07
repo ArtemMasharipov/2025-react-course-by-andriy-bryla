@@ -63,7 +63,6 @@ export const PostForm = ({
           />
         </div>
 
-        {/* Слот для кнопок действий */}
         <div className="flex gap-4 pt-4">
           {children}
         </div>
@@ -71,3 +70,4 @@ export const PostForm = ({
     </div>
   )
 }
+
