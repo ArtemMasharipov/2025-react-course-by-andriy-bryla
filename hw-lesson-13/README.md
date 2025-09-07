@@ -9,7 +9,7 @@ Advanced full-stack posts management system showcasing RTK Query for efficient d
 - **Dual View Modes**: Toggle between pagination and infinite scroll
 - **Optimistic Updates**: Real-time UI updates with automatic cache invalidation
 - **Scroll-to-Top**: Enhanced UX with smooth scrolling functionality
-- **Feature-Sliced Design**: Modern architecture with clean separation of concerns
+- **Feature-Sliced Design**: Modern architecture with clean separation of concerns (app, features, entities, shared, widgets)
 - **Responsive Design**: Mobile-first approach with Tailwind CSS 4.x
 
 ## Technology Stack
@@ -70,6 +70,12 @@ hw-lesson-13/
     │   │   │   └── routes.constants.js # Route definitions
     │   │   └── store/
     │   │       └── index.js            # RTK Query store setup
+    │   ├── features/       # Business features (FSD)
+    │   │   ├── post-management/        # Post management feature
+    │   │   │   ├── ui/
+    │   │   │   │   └── PostFormFeature.jsx # Post form with business logic
+    │   │   │   └── index.js            # Feature exports
+    │   │   └── index.js                # Features public API
     │   ├── entities/       # Business entities (FSD)
     │   │   └── post/       # Post domain entity
     │   │       ├── api/
@@ -122,23 +128,33 @@ hw-lesson-13/
 
 **Prerequisites:** Node.js 18+, MongoDB
 
-**Installation:**
+**Installation & Development:**
 
 ```bash
+# Clone repository
 git clone https://github.com/ArtemMasharipov/2025-react-course-by-andriy-bryla.git
 cd 2025-react-course-by-andriy-bryla/hw-lesson-13
 
-# Server
-cd server && npm install && npm run dev
+# Install server dependencies
+cd server && npm install
 
-# Client (new terminal)
-cd client && npm install && npm run dev
+# Install client dependencies (new terminal)
+cd ../client && npm install
+
+# Start MongoDB (if not running)
+# mongod
+
+# Start server (terminal 1)
+cd server && npm run dev
+
+# Start client (terminal 2)
+cd client && npm run dev
 ```
 
 **Access:**
 
 - Frontend: http://localhost:5173
-- Backend: http://localhost:4000
+- Backend API: http://localhost:4000
 
 ## RTK Query Implementation
 
@@ -158,9 +174,13 @@ cd client && npm install && npm run dev
 
 **Component Architecture:**
 
+- **Feature-Sliced Design (FSD)**: Clean separation into layers (app, features, entities, shared, widgets)
+- **Features Layer**: Business logic components (PostFormFeature) that orchestrate entities
+- **Entities Layer**: Pure UI components (PostForm, PostCard) with slots for actions
+- **Pages Layer**: Thin orchestrators that compose features with routing logic
 - Extracted `PaginationControls` for modularity
 - Clean separation between pagination and infinite scroll modes
-- Feature-Sliced Design with RTK Query integration
+- RTK Query integration with automatic cache management
 
 ### API Endpoints
 
@@ -174,21 +194,53 @@ DELETE /api/v1/posts/:id       # Delete post
 
 ## Development
 
+**Available Scripts:**
+
 **Server:**
 
 ```bash
 cd server
 npm run dev    # Development with nodemon
-npm start      # Production
+npm start      # Production mode
 ```
 
 **Client:**
 
 ```bash
 cd client
-npm run dev    # Development server
-npm run build  # Production build
-npm run lint   # Code linting
+npm run dev          # Development server
+npm run build        # Production build
+npm run lint         # Code linting
+npm run format       # Code formatting
+npm run typecheck    # TypeScript checking (if applicable)
+```
+
+## Git Workflow
+
+**Before committing:**
+
+```bash
+# Client
+cd client
+npm run lint         # Fix any linting issues
+npm run format       # Format code
+npm run build        # Ensure build passes
+
+# Server
+cd ../server
+npm run lint         # Check server code quality
+```
+
+**Commit structure:**
+
+```bash
+git add .
+git commit -m "feat: implement post management with RTK Query
+
+- Add PostFormFeature component with business logic
+- Implement create/update post functionality
+- Add proper error handling and loading states
+- Update README with project structure"
 ```
 
 ---
@@ -198,6 +250,7 @@ npm run lint   # Code linting
 **Key Learning Outcomes:**
 
 - RTK Query for efficient data management
+- Feature-Sliced Design architecture
 - Intersection Observer API for infinite scroll
 - Component extraction and modular design
 - Performance optimization with automatic caching

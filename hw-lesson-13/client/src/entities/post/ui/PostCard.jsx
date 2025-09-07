@@ -10,8 +10,8 @@ export const PostCard = ({ post }) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
         await deletePost(post._id).unwrap()
-      } catch (error) {
-        // Error handling is managed by RTK Query
+      } catch {
+        // RTK Query handles errors
       }
     }
   }
