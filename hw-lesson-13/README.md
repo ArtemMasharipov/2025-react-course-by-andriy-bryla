@@ -76,7 +76,7 @@ hw-lesson-13/
     │   │       │   └── postsApi.js     # RTK Query API slice
     │   │       ├── ui/
     │   │       │   ├── PostCard.jsx    # Post display component
-    │   │       │   ├── PostForm.jsx    # Post creation/editing
+    │   │       │   ├── PostForm.jsx    # Post form UI (no actions, uses slots)
     │   │       │   ├── PostList/       # Posts list components
     │   │       │   │   ├── PostList.jsx # Main posts list with modes
     │   │       │   │   ├── components/
