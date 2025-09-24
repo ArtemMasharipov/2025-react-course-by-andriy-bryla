@@ -1,4 +1,6 @@
-export const PostListSkeleton = ({ count = 5, className = "" }) => {
+const DEFAULT_SKELETON_COUNT = 5
+
+export const PostListSkeleton = ({ count = DEFAULT_SKELETON_COUNT, className = "" }) => {
   return (
     <div className={`space-y-4 ${className}`}>
       {Array.from({ length: count }).map((_, index) => (

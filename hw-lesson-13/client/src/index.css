@@ -5,53 +5,5 @@ html {
 }
 
 body {
-  @apply bg-gray-50;
-}
-
-@layer components {
-  /* Mobile optimizations */
-  .mobile-container {
-    @apply px-4 sm:px-6 lg:px-8;
-  }
-
-  .mobile-full-width {
-    @apply w-full sm:w-auto;
-  }
-
-  /* Remove outer margins on mobile */
-  @media (max-width: 640px) {
-    .container {
-      @apply px-0 mx-0 w-full;
-    }
-  }
-
-  /* Smooth scroll optimizations for mobile */
-  .scroll-container {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-  }
-
-  /* Infinite scroll optimizations */
-  .infinite-scroll-trigger {
-    @apply transition-all duration-300;
-    min-height: 100px;
-  }
-
-  .loading-skeleton {
-    @apply transition-opacity duration-300;
-  }
-
-  /* Prevent layout shifts during loading */
-  .post-list-container {
-    contain: layout style paint;
-  }
-
-  /* End of List Animation */
-  .end-of-list {
-    @apply transition-all duration-500;
-  }
-
-  .end-of-list-icon {
-    @apply animate-bounce;
-  }
+  background-color: #f9fafb;
 }

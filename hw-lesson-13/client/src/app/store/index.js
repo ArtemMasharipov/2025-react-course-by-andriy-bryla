@@ -1,15 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { baseApi } from '../../shared/api/baseApi'
+import { baseApi } from '@shared/api/baseApi'
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ['persist/PERSIST'],
-      },
-    }).concat(baseApi.middleware),
+    getDefaultMiddleware().concat(baseApi.middleware),
 })

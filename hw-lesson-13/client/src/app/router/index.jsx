@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import { MainLayout } from '@/layouts/MainLayout'
-import { HomePage } from '@/pages/HomePage'
-import { PostFormPage } from '@/pages/PostFormPage'
-import { PostsPage } from '@/pages/PostsPage'
+import { MainLayout } from '@layouts/MainLayout'
+import { HomePage } from '@pages/HomePage'
+import { PostFormPage } from '@pages/PostFormPage'
+import { PostsPage } from '@pages/PostsPage'
 
 import { ROUTES } from './routes.constants'
 

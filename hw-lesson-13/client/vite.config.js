@@ -1,23 +1,22 @@
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const createAlias = dir => resolve(import.meta.dirname, 'src', dir)
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@shared': path.resolve(__dirname, './src/shared'),
-      '@entities': path.resolve(__dirname, './src/entities'),
-      '@features': path.resolve(__dirname, './src/features'),
-      '@widgets': path.resolve(__dirname, './src/widgets'),
-      '@pages': path.resolve(__dirname, './src/pages'),
-      '@layouts': path.resolve(__dirname, './src/layouts'),
-      '@app': path.resolve(__dirname, './src/app'),
+      '@': createAlias('.'),
+      '@shared': createAlias('shared'),
+      '@entities': createAlias('entities'),
+      '@features': createAlias('features'),
+      '@widgets': createAlias('widgets'),
+      '@pages': createAlias('pages'),
+      '@layouts': createAlias('layouts'),
+      '@app': createAlias('app'),
     },
   },
 })

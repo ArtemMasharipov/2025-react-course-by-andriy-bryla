@@ -1,17 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { ROUTES } from '@/app/router/routes.constants'
+import { ROUTES } from '@app/router/routes.constants'
 
-import { PostList } from './PostList'
-import { PostTabs } from './PostTabs'
+import { PostList } from '@entities/post/ui/PostList'
+import { PostTabs } from '@entities/post/ui/PostTabs'
 
 const PostsManager = () => {
   const [activeTab, setActiveTab] = useState('pagination')
-
-  const handleTabChange = (tabId) => {
-    setActiveTab(tabId)
-  }
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-0">
@@ -23,9 +19,8 @@ const PostsManager = () => {
       </div>
 
       <div className="bg-white rounded-lg shadow-sm border border-emerald-200 p-4 sm:p-6">
-        {/* Табы и кнопка создания */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
-          <PostTabs activeTab={activeTab} onTabChange={handleTabChange} />
+          <PostTabs activeTab={activeTab} onTabChange={setActiveTab} />
           <Link
             to={ROUTES.CREATE_POST}
             className="w-full sm:w-auto px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-md hover:bg-emerald-700 transition-colors text-center"
@@ -34,7 +29,6 @@ const PostsManager = () => {
           </Link>
         </div>
 
-        {/* Список постов */}
         <div className="mt-4 sm:mt-6">
           <PostList mode={activeTab} />
         </div>
@@ -43,4 +37,4 @@ const PostsManager = () => {
   )
 }
 
-export default PostsManager
+export { PostsManager }

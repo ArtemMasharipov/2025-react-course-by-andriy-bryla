@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-import { ROUTES } from '@/app/router/routes.constants'
-import { MobileDrawer, MobileMenuButton } from '@/widgets/MobileDrawer'
+import { ROUTES } from '@app/router/routes.constants'
+import { MobileDrawer, MobileMenuButton } from '@widgets/MobileDrawer'
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

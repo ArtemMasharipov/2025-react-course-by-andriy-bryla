@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
-import { Breadcrumbs } from '@/widgets/Breadcrumbs'
-import { Navbar } from '@/widgets/Navbar'
+import { Breadcrumbs } from '@widgets/Breadcrumbs'
+import { Navbar } from '@widgets/Navbar'
 
 export const MainLayout = () => {
   return (

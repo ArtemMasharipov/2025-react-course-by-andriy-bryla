@@ -1,26 +1,23 @@
+import { useGetPostsQuery } from '@entities/post/api/postsApi'
 import { useState } from 'react'
-import { useGetPostsQuery } from '../../entities/post/api/postsApi'
 
-export const usePostsQuery = (limit = 10) => {
+const DEFAULT_LIMIT = 10
+
+export const usePostsQuery = (limit = DEFAULT_LIMIT) => {
   const [page, setPage] = useState(1)
-  const { data, isLoading, isFetching, error, refetch } = useGetPostsQuery({
+  const { data, isLoading, isFetching, error } = useGetPostsQuery({
     page,
     limit,
   })
 
-  const pagination = data?.pagination || {}
-
   return {
     posts: data?.posts || [],
-    pagination,
+    pagination: data?.pagination || {},
     isLoading,
     isFetching,
     error,
-    refetch,
     currentPage: page,
-    goToPage: newPage =>
-      newPage >= 1 && newPage <= pagination.totalPages && setPage(newPage),
-    nextPage: () => pagination.hasNextPage && setPage(p => p + 1),
-    prevPage: () => pagination.hasPrevPage && setPage(p => p - 1),
+    nextPage: () => data?.pagination?.hasNextPage && setPage(p => p + 1),
+    prevPage: () => data?.pagination?.hasPrevPage && setPage(p => p - 1),
   }
 }

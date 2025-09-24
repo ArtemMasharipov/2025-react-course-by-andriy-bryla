@@ -1,4 +1,4 @@
-import { PostsManager } from '@/entities/post'
+import { PostsManager } from '@entities/post'
 
 export const PostsPage = () => {
   return (

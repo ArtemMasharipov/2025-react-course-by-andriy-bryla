@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import { ROUTES } from '@/app/router/routes.constants'
-import { useDeletePostMutation } from '../api/postsApi'
+import { ROUTES } from '@app/router/routes.constants'
+import { useDeletePostMutation } from '@entities/post/api/postsApi'
 
 export const PostCard = ({ post }) => {
   const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation()
@@ -10,9 +10,8 @@ export const PostCard = ({ post }) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
         await deletePost(post._id).unwrap()
-      } catch (error) {
-        console.error('Failed to delete post:', error)
-        alert('Failed to delete post. Please try again.')
+      } catch {
+        // RTK Query handles errors
       }
     }
   }
