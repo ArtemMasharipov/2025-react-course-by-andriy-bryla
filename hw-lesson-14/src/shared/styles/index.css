@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gradient-to-br from-lime-50 via-lime-100 to-green-50 text-gray-900 antialiased;
+  overflow-y: scroll;
+  min-height: 100vh;
+}
+
+/* Lime background variations */
+.bg-lime-primary {
+  @apply bg-gradient-to-br from-lime-100 to-lime-200;
+}
+
+.bg-lime-secondary {
+  @apply bg-gradient-to-br from-lime-50 to-lime-100;
+}
+
+.bg-lime-accent {
+  @apply bg-gradient-to-br from-lime-200 to-green-200;
+}
+
+.bg-lime-subtle {
+  @apply bg-gradient-to-br from-lime-50/50 to-green-50/50;
+}
+
+/* Page backgrounds */
+.page-bg {
+  @apply bg-gradient-to-br from-lime-50 via-lime-100/30 to-green-50;
+}
+
+.page-bg-alt {
+  @apply bg-gradient-to-br from-green-50 via-lime-50/50 to-lime-100;
+}
+
+/* Card backgrounds with lime theme */
+.card-lime {
+  @apply bg-gradient-to-br from-white/90 via-lime-50/40 to-white/90 backdrop-blur-sm border border-lime-200/60 shadow-lg shadow-lime-200/40;
+}
+
+.card-lime-subtle {
+  @apply bg-gradient-to-br from-lime-50/80 via-lime-100/30 to-lime-50/80 backdrop-blur-sm border border-lime-200/40 shadow-md shadow-lime-200/30;
+}
+
+.card-lime-soft {
+  @apply bg-gradient-to-br from-lime-50/60 via-white/70 to-lime-50/60 backdrop-blur-sm border border-lime-300/50 shadow-md shadow-lime-200/30;
+}
+
+:focus-visible {
+  @apply outline-none ring-2 ring-lime-500/60 ring-offset-2;
+}
