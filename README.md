@@ -64,13 +64,6 @@ The course covered modern React development, performance optimization, full-stac
 **Final Project:** EMR System with RTK Query, Firebase & Modern UI  
 **Technologies Mastered:** React 19, Redux Toolkit, RTK Query, Context API, Node.js, Express, MongoDB, Firebase, Feature-Sliced Design
 
-## Live Demos
-
-All assignments are deployed and available online:
-
-* **GitHub Pages (Lesson 1):** View
-* **Vercel Deployments:** linked individually in the table above
-* **Firebase Hosting (Lesson 14):** https://hw-lesson-14-erm-rtk-query.web.app
 
 ---
 
