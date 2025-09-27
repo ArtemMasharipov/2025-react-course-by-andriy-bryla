@@ -62,7 +62,7 @@ Each homework is contained in its own folder:
 This repository documents my progress through the **React JS Course by Andriy Bryla (2025)**.  
 The course covered modern React development, performance optimization, full-stack integrations, Feature-Sliced Design architecture, Firebase integration, and authentication systems.
 
-**Course Status:** ✅ Completed – 15 lessons finished  
+**Course Status:** ✅ Completed – 17 lessons finished  
 **Final Project:** Full-Stack Authentication App with React 19, Redux Toolkit, and JWT  
 **Technologies Mastered:** React 19, Redux Toolkit, RTK Query, Context API, Node.js, Express, MongoDB, Firebase, Feature-Sliced Design, JWT Authentication
 
