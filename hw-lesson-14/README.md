@@ -405,3 +405,5 @@ This project is part of a React JS course by Andriy Bryla.
 - Feature-Sliced Design architecture
 - Modern UI/UX with Tailwind CSS 4.x
 - Firebase deployment and configuration
+
+

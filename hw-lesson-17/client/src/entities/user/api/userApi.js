@@ -1,0 +1,42 @@
+import { baseApi } from '@/shared/api/baseApi'
+import { apiRoutes } from '@/shared/config/routes/apiRoutes'
+
+export const userApi = baseApi.injectEndpoints({
+  endpoints: (build) => ({
+    getUsers: build.query({
+      query: () => ({
+        url: apiRoutes.users,
+      }),
+      providesTags: ['User'],
+    }),
+    getUserById: build.query({
+      query: (id) => `${apiRoutes.users}/${id}`,
+      providesTags: ['User'],
+    }),
+    getProfile: build.query({
+      query: () => apiRoutes.profile,
+      providesTags: ['User'],
+    }),
+    createUser: build.mutation({
+      query: (userData) => ({
+        url: apiRoutes.users,
+        method: 'POST',
+        body: userData,
+      }),
+      invalidatesTags: ['User'],
+    }),
+    deleteUser: build.mutation({
+      query: (id) => ({
+        url: `${apiRoutes.users}/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['User'],
+    }),
+  }),
+})
+
+export const { 
+  useGetUsersQuery, 
+  useCreateUserMutation,
+  useDeleteUserMutation 
+} = userApi
