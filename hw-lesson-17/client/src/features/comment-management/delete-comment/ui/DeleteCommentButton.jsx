@@ -1,7 +1,11 @@
 import { useDeleteCommentMutation } from '@/entities/post/comments/api/commentApi'
+import { selectAuthUser } from '@/features/auth/api/authSlice'
+import { roles } from '@/shared/config/roles'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export function DeleteCommentButton({ comment, onDeleting }) {
+  const currentUser = useSelector(selectAuthUser)
   const [deleteComment] = useDeleteCommentMutation()
   const [isDeleting, setIsDeleting] = useState(false)
 
@@ -16,6 +20,12 @@ export function DeleteCommentButton({ comment, onDeleting }) {
     }
   }
 
+  const canDelete = currentUser && (
+    currentUser.role === roles.admin || 
+    currentUser.id === comment.authorId
+  )
+
+  if (!canDelete) return null
 
   return (
     <button
