@@ -97,23 +97,8 @@ npm run dev
 4. **Access the application**
 - Frontend: http://localhost:5173
 - Backend: http://localhost:4000
-
-### 🔧 **Environment Variables**
-
-#### Frontend (.env)
-```env
-VITE_API_URL=http://localhost:4000/api
-```
-
-#### Backend (.env)
-```env
-PORT=4000
-FRONTEND_URL=http://localhost:5173
-JWT_SECRET=your-super-secret-jwt-key
-NODE_ENV=development
-```
-
 ### 📦 **Deployment**
+
 
 #### Frontend (Vercel)
 1. Connect GitHub repository to Vercel
