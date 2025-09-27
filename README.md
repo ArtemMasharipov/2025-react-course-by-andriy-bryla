@@ -54,30 +54,6 @@ Each homework is contained in its own folder:
 * `/hw-lesson-13/` – Posts management with RTK Query
 * `/hw-lesson-14/` – EMR System with Firebase & RTK Query
 
-## Technologies Used
-
-### Lesson 14 – EMR System with Firebase & RTK Query
-
-* **Frontend:** React 19, RTK Query, React Router 7, Tailwind CSS 4.x
-* **Backend:** Firebase Firestore, Firebase Hosting
-* **Build Tool:** Vite 7
-* **Architecture:** Feature-Sliced Design (FSD) with path aliases (@shared, @modules)
-* **State Management:** RTK Query for fetching, caching, and real-time synchronization
-* **UI/UX:** Modern lime-themed design with gradients, responsive layout, mobile optimization
-* **Performance:** Automatic caching, background refetching, optimistic updates, code splitting
-* **Features:** Patient/Doctor/Appointment management, real-time sync, advanced search, pagination
-
-### Lesson 13 – RTK Query & Advanced Posts Management
-
-* **Frontend:** React 19, RTK Query, React Router 7, Tailwind CSS 4.x
-* **Backend:** Node.js, Express 5, MongoDB, Mongoose
-* **Build Tool:** Vite 7
-* **Architecture:** Feature-Sliced Design (FSD) with path aliases (@/)
-* **State Management:** RTK Query for fetching, caching, and synchronization
-* **Performance:** Automatic caching, background refetching, optimistic updates
-* **Features:** Infinite scroll, pagination, scroll-to-top, real-time synchronization, error boundaries
-
-_(Other lessons use matching stacks: React, Redux Toolkit, Context API, Express, MongoDB, Tailwind, Vite depending on requirements.)_
 
 ## About the Course
 
@@ -88,13 +64,6 @@ The course covered modern React development, performance optimization, full-stac
 **Final Project:** EMR System with RTK Query, Firebase & Modern UI  
 **Technologies Mastered:** React 19, Redux Toolkit, RTK Query, Context API, Node.js, Express, MongoDB, Firebase, Feature-Sliced Design
 
-## Live Demos
-
-All assignments are deployed and available online:
-
-* **GitHub Pages (Lesson 1):** View
-* **Vercel Deployments:** linked individually in the table above
-* **Firebase Hosting (Lesson 14):** https://hw-lesson-14-erm-rtk-query.web.app
 
 ---
 
