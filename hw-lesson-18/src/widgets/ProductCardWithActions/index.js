@@ -1,0 +1,1 @@
+export { ProductCardWithActions } from './ProductCardWithActions'

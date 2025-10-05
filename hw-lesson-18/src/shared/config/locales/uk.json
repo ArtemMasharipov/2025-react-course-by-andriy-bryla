@@ -1,0 +1,121 @@
+{
+  "navigation": {
+    "home": "Головна",
+    "products": "Товари",
+    "users": "Користувачі",
+    "cart": "Кошик",
+    "favorites": "Улюблені",
+    "login": "Увійти",
+    "logout": "Вийти"
+  },
+  "auth": {
+    "login": "Увійти",
+    "signup": "Зареєструватися",
+    "email": "Email",
+    "password": "Пароль",
+    "displayName": "Ім'я",
+    "loginSuccess": "Успішний вхід",
+    "signupSuccess": "Успішна реєстрація",
+    "logoutSuccess": "Успішний вихід",
+    "loginError": "Помилка входу",
+    "signupError": "Помилка реєстрації",
+    "googleAuthError": "Помилка Google-автентифікації",
+    "enterEmail": "Введіть email",
+    "enterPassword": "Введіть пароль",
+    "enterName": "Введіть ім'я",
+    "needAuth": "Потрібна авторизація",
+    "loginToView": "Увійдіть в систему для перегляду"
+  },
+  "products": {
+    "title": "Товари",
+    "name": "Назва",
+    "price": "Ціна",
+    "image": "Зображення",
+    "add": "Додати товар",
+    "edit": "Редагувати товар",
+    "delete": "Видалити товар",
+    "save": "Зберегти",
+    "addToCart": "Додати в кошик",
+    "addToFavorites": "Додати до улюблених",
+    "removeFromFavorites": "Видалити з улюблених",
+    "catalog": "Каталог продуктів",
+    "catalogDescription": "Переглядайте та керуйте товарами в магазині",
+    "noProducts": "Немає товарів",
+    "emptyList": "Список товарів порожній",
+    "addToCartMessage": "Додайте товари до кошика",
+    "addToFavoritesMessage": "Додайте товари до улюблених",
+    "itemsCount": "товарів",
+    "editDescription": "Редагування інформації про товар",
+    "addDescription": "Додавання нового товару до каталогу"
+  },
+  "users": {
+    "title": "Користувачі",
+    "email": "Email",
+    "displayName": "Ім'я",
+    "role": "Роль",
+    "edit": "Редагувати користувача",
+    "delete": "Видалити користувача",
+    "add": "Додати користувача",
+    "save": "Зберегти",
+    "management": "Користувачі",
+    "managementDescription": "Керування користувачами системи"
+  },
+  "cart": {
+    "title": "Кошик",
+    "myCart": "Мій кошик",
+    "cartDescription": "Переглядайте та керуйте товарами в кошику",
+    "empty": "Кошик порожній",
+    "total": "Загальна вартість",
+    "quantity": "Кількість",
+    "remove": "Видалити",
+    "increase": "Збільшити",
+    "decrease": "Зменшити",
+    "addToCartMessage": "Додайте товари до кошика",
+    "totalAmount": "Загалом: {{amount}} грн",
+    "adding": "Додавання..."
+  },
+  "favorites": {
+    "title": "Улюблені товари",
+    "favoritesDescription": "Ваші збережені товари для швидкого доступу",
+    "empty": "Список улюблених порожній",
+    "addToFavoritesMessage": "Додайте товари до улюблених",
+    "itemsCount": "товарів"
+  },
+  "common": {
+    "loading": "Завантаження...",
+    "error": "Помилка",
+    "success": "Успішно",
+    "cancel": "Скасувати",
+    "confirm": "Підтвердити",
+    "save": "Зберегти",
+    "edit": "Редагувати",
+    "delete": "Видалити",
+    "add": "Додати",
+    "google": "Google",
+    "currency": "грн",
+    "confirmDelete": "Ви впевнені, що хочете видалити {{entity}}? Цю дію неможливо скасувати."
+  },
+  "roles": {
+    "admin": "Адміністратор",
+    "manager": "Менеджер",
+    "user": "Користувач"
+  },
+  "pages": {
+    "home": "Головна сторінка",
+    "homeTitle": "Вітаємо у",
+    "homeSubtitle": "Ваш надійний інтернет-магазин з широким асортиментом товарів та зручним інтерфейсом",
+    "notFound": "Сторінка не знайдена",
+    "forbidden": "Доступ заборонено"
+  },
+  "mobile": {
+    "menu": "Меню",
+    "language": "Мова",
+    "closeMenu": "Закрити меню",
+    "openMenu": "Відкрити меню"
+  },
+  "image": {
+    "upload": "Завантажити зображення",
+    "preview": "Попередній перегляд",
+    "remove": "Видалити"
+  }
+}

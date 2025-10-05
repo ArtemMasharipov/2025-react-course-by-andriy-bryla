@@ -1,0 +1,80 @@
+rules_version = '2';
+// ======= ПОТРІБНО ДОДАТИ ДО ПРАВИЛ ДОСТУПУ ДО КОЛЕКЦІЙ У FIREBASE ========
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================
+    // USERS
+    // =========================
+    match /users/{userId} {
+      function userRole() {
+        return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+      }
+
+      // Читати:
+      // - свій документ
+      // - або якщо admin
+      allow read: if request.auth != null && (
+        request.auth.uid == userId ||
+        userRole() == "admin"
+      );
+
+      // Записувати:
+      // - адміну — завжди
+      // - користувачу — тільки свій документ і роль має бути "user"
+      allow write: if request.auth != null && (
+        userRole() == "admin" ||
+        // Звичайний користувач
+        (
+          request.auth.uid == userId &&
+          request.resource.data.role == "user"
+        )
+      )
+    }
+
+
+    // =========================
+    // PRODUCTS
+    // =========================
+    match /products/{productId} {
+      function userRole() {
+        return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+      }
+
+      // Читати: всі
+      allow read: if true;
+
+      // Записувати:
+      // - admin → будь-що
+      // - manager → тільки свої продукти
+      allow write: if request.auth != null && (
+        userRole() == "admin" ||
+        (userRole() == "manager" && request.auth.uid == resource.data.ownerId)
+      );
+    }
+
+
+    // =========================
+    // CARTS
+    // =========================
+    match /carts/{cartId} {
+      // Читати: тільки свій документ
+      allow read: if request.auth != null && request.auth.uid == cartId;
+
+      // Записувати: тільки свій документ
+      allow write: if request.auth != null && request.auth.uid == cartId;
+    }
+
+    // =========================
+    // FAVORITES
+    // =========================
+    match /favorites/{favoriteId} {
+      // Читати: тільки свій документ
+      allow read: if request.auth != null && request.auth.uid == favoriteId;
+
+      // Записувати: тільки свій документ
+      allow write: if request.auth != null && request.auth.uid == favoriteId;
+    }
+
+  }
+}

@@ -22,6 +22,7 @@ Each lesson builds on previous concepts, gradually introducing advanced patterns
 | Lesson 13 | Posts Management App with RTK Query                       | React 19, RTK Query, Express 5, MongoDB, FSD Architecture         | 🌐 [View Demo](https://hw-lesson-13.vercel.app/)                                                     |
 | Lesson 14 | EMR System with RTK Query & Firebase                      | React 19, RTK Query, Firebase Firestore, Tailwind CSS 4.x, FSD   | 🌐 [View Demo](https://hw-lesson-14-erm-rtk-query.web.app/)                                          |
 | Lesson 17 | **Full-Stack App with Authentication**                     | React 19, Redux Toolkit, Node.js, Express, JWT, Tailwind CSS     | 🌐 [View Demo](https://your-app.vercel.app)                                                          |
+| Lesson 18 | **Firebase E-Commerce Platform**                           | React 19, Redux Toolkit, Firebase Firestore, Tailwind CSS 4.x   | 🌐 [View Demo](https://hw-lesson-18.web.app)                                                         |
 
 ## Current Progress
 
@@ -37,7 +38,8 @@ Each lesson builds on previous concepts, gradually introducing advanced patterns
 **Lesson 12:** Posts Management – FSD architecture, custom hooks, lazy loading, REST API with validation.  
 **Lesson 13:** RTK Query integration – automatic caching, infinite scroll, pagination, background refetching, optimistic updates.  
 **Lesson 14:** EMR System – comprehensive medical records management with Firebase, real-time sync, modern lime-themed UI, responsive design.  
-**Lesson 17:** Full-Stack Authentication App – modern React 19 application with Redux Toolkit, JWT authentication, role-based access control, user management, posts and comments system, ready for production deployment.
+**Lesson 17:** Full-Stack Authentication App – modern React 19 application with Redux Toolkit, JWT authentication, role-based access control, user management, posts and comments system, ready for production deployment.  
+**Lesson 18:** Firebase E-Commerce Platform – comprehensive e-commerce application with Firebase Firestore, user authentication, role-based access control, product management, shopping cart, favorites system, and internationalization support.
 
 ## Project Structure
 
@@ -56,15 +58,16 @@ Each homework is contained in its own folder:
 * `/hw-lesson-13/` – Posts management with RTK Query
 * `/hw-lesson-14/` – EMR System with Firebase & RTK Query
 * `/hw-lesson-17/` – Full-Stack App with Authentication
+* `/hw-lesson-18/` – Firebase E-Commerce Platform
 
 ## About the Course
 
 This repository documents my progress through the **React JS Course by Andriy Bryla (2025)**.  
 The course covered modern React development, performance optimization, full-stack integrations, Feature-Sliced Design architecture, Firebase integration, and authentication systems.
 
-**Course Status:** ✅ Completed – 17 lessons finished  
-**Final Project:** Full-Stack Authentication App with React 19, Redux Toolkit, and JWT  
-**Technologies Mastered:** React 19, Redux Toolkit, RTK Query, Context API, Node.js, Express, MongoDB, Firebase, Feature-Sliced Design, JWT Authentication
+**Course Status:** ✅ Completed – 18 lessons finished  
+**Final Project:** Firebase E-Commerce Platform with React 19, Redux Toolkit, and Firebase  
+**Technologies Mastered:** React 19, Redux Toolkit, RTK Query, Context API, Node.js, Express, MongoDB, Firebase, Feature-Sliced Design, JWT Authentication, E-Commerce Development
 
 
 ---

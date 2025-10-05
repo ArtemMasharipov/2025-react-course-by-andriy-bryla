@@ -1,0 +1,122 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "users": "Users",
+    "cart": "Cart",
+    "favorites": "Favorites",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "displayName": "Name",
+    "loginSuccess": "Login successful",
+    "signupSuccess": "Registration successful",
+    "logoutSuccess": "Logout successful",
+    "loginError": "Login error",
+    "signupError": "Registration error",
+    "googleAuthError": "Google authentication error",
+    "enterEmail": "Enter email",
+    "enterPassword": "Enter password",
+    "enterName": "Enter name",
+    "needAuth": "Authentication required",
+    "loginToView": "Login to view"
+  },
+  "products": {
+    "title": "Products",
+    "name": "Name",
+    "price": "Price",
+    "image": "Image",
+    "add": "Add Product",
+    "edit": "Edit Product",
+    "delete": "Delete Product",
+    "save": "Save",
+    "addToCart": "Add to Cart",
+    "addToFavorites": "Add to Favorites",
+    "removeFromFavorites": "Remove from Favorites",
+    "catalog": "Product Catalog",
+    "catalogDescription": "Browse and manage store products",
+    "noProducts": "No products",
+    "emptyList": "Product list is empty",
+    "addToCartMessage": "Add products to cart",
+    "addToFavoritesMessage": "Add products to favorites",
+    "itemsCount": "items",
+    "editDescription": "Edit product information",
+    "addDescription": "Add new product to catalog"
+  },
+  "users": {
+    "title": "Users",
+    "email": "Email",
+    "displayName": "Name",
+    "role": "Role",
+    "edit": "Edit User",
+    "delete": "Delete User",
+    "add": "Add User",
+    "save": "Save",
+    "management": "User Management",
+    "managementDescription": "Manage system users"
+  },
+  "cart": {
+    "title": "Cart",
+    "myCart": "My Cart",
+    "cartDescription": "View and manage items in cart",
+    "empty": "Cart is empty",
+    "total": "Total",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "increase": "Increase",
+    "decrease": "Decrease",
+    "addToCartMessage": "Add products to cart",
+    "totalAmount": "Total: {{amount}} UAH",
+    "adding": "Adding..."
+  },
+  "favorites": {
+    "title": "Favorite Products",
+    "favoritesDescription": "Your saved products for quick access",
+    "empty": "Favorites list is empty",
+    "addToFavoritesMessage": "Add products to favorites",
+    "itemsCount": "items"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "google": "Google",
+    "currency": "UAH",
+    "reload": "Reload Page",
+    "confirmDelete": "Are you sure you want to delete {{entity}}? This action cannot be undone."
+  },
+  "roles": {
+    "admin": "Administrator",
+    "manager": "Manager",
+    "user": "User"
+  },
+  "pages": {
+    "home": "Home Page",
+    "homeTitle": "Welcome to",
+    "homeSubtitle": "Your reliable online store with a wide range of products and convenient interface",
+    "notFound": "Page Not Found",
+    "forbidden": "Access Forbidden"
+  },
+  "mobile": {
+    "menu": "Menu",
+    "language": "Language",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu"
+  },
+  "image": {
+    "upload": "Upload Image",
+    "preview": "Preview",
+    "remove": "Remove"
+  }
+}
