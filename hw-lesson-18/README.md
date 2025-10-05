@@ -218,9 +218,8 @@ VITE_FIREBASE_APP_ID=your_app_id
 ## 🧪 **Testing**
 
 ### Default Users
-- **Admin:** admin@example.com / admin123
-- **Manager:** manager@example.com / manager123
-- **User:** user@example.com / user123
+- **Admin:** admin@admin.com / admin123
+- **Manager:** manager@manager.com / manager123
 
 ## 📚 **API Structure**
 
