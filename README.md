@@ -21,7 +21,7 @@ Each lesson builds on previous concepts, gradually introducing advanced patterns
 | Lesson 12 | Posts Management App (Feature-Sliced Design & Full-Stack) | React 19, Redux Toolkit, Express 5, MongoDB, FSD Architecture     | 🌐 [View Demo](https://hw-lesson-12.vercel.app/)                                                     |
 | Lesson 13 | Posts Management App with RTK Query                       | React 19, RTK Query, Express 5, MongoDB, FSD Architecture         | 🌐 [View Demo](https://hw-lesson-13.vercel.app/)                                                     |
 | Lesson 14 | EMR System with RTK Query & Firebase                      | React 19, RTK Query, Firebase Firestore, Tailwind CSS 4.x, FSD   | 🌐 [View Demo](https://hw-lesson-14-erm-rtk-query.web.app/)                                          |
-| Lesson 17 | **Full-Stack App with Authentication**                     | React 19, Redux Toolkit, Node.js, Express, JWT, Tailwind CSS     | 🌐 [View Demo](https://your-app.vercel.app)                                                          |
+| Lesson 17 | **Full-Stack App with Authentication**                     | React 19, Redux Toolkit, Node.js, Express, JWT, Tailwind CSS     | 🌐 [View Demo](https://hw-lesson-17.vercel.app/)                                                          |
 | Lesson 18 | **Firebase E-Commerce Platform**                           | React 19, Redux Toolkit, Firebase Firestore, Tailwind CSS 4.x   | 🌐 [View Demo](https://hw-lesson-18.web.app)                                                         |
 
 ## Current Progress
